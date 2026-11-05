@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "build:preview": "tsc --noEmit && node tools/build-preview.mjs"
   },
   "type": "module",
   "devDependencies": {
