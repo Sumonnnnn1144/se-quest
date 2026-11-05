@@ -1,0 +1,415 @@
+[
+ {
+  "w": 1,
+  "f": "Software = ?",
+  "vi": "Chương trình + tài liệu đi kèm (requirements, design models, user manuals). Generic: bán cho nhiều khách. Custom: một khách, theo spec.",
+  "en": "Programs + associated documentation. Generic: sold to many customers. Custom: one customer, to their spec.",
+  "src": "01#3"
+ },
+ {
+  "w": 1,
+  "f": "4 attributes of good software",
+  "vi": "Maintainability (evolve) · Dependability/Reliability (trustworthy) · Efficiency (không lãng phí tài nguyên) · Acceptability (understandable, usable, compatible).",
+  "en": "Maintainability · Dependability/Reliability · Efficiency · Acceptability.",
+  "src": "01#7"
+ },
+ {
+  "w": 1,
+  "f": "Software costs",
+  "vi": "~60% development / 40% testing. Hệ thống sống lâu: maintenance gấp nhiều lần development. Custom: evolution > development.",
+  "en": "~60% development / 40% testing. Long-lived systems: maintenance several times development.",
+  "src": "01#9, 01#15"
+ },
+ {
+  "w": 1,
+  "f": "CHAOS 2020",
+  "vi": "35% successful · 46% challenged · 19% failed.",
+  "en": "35% successful · 46% challenged · 19% failed.",
+  "src": "01#11"
+ },
+ {
+  "w": 1,
+  "f": "SE vs CS vs System Engineering",
+  "vi": "CS: lý thuyết, nền tảng. SE: thực tiễn phát triển và bàn giao phần mềm. System Eng.: HW + SW + process, bao trùm SE.",
+  "en": "CS: theory. SE: practicalities of delivering software. System eng.: hardware + software + process.",
+  "src": "01#13, 01#14"
+ },
+ {
+  "w": 1,
+  "f": "SE goals",
+  "vi": "Cost effective (within budget) · On time · High quality · Satisfying customer's needs.",
+  "en": "Cost effective · On time · High quality · Satisfying customer's needs.",
+  "src": "01#12"
+ },
+ {
+  "w": 1,
+  "f": "4 process activities",
+  "vi": "Specification (làm gì + ràng buộc) · Development · Validation (đúng ý khách?) · Evolution.",
+  "en": "Specification · Development · Validation · Evolution.",
+  "src": "01#23"
+ },
+ {
+  "w": 1,
+  "f": "3 process model perspectives",
+  "vi": "Workflow: trình tự · Data-flow: luồng thông tin · Role/action: ai làm gì.",
+  "en": "Workflow · Data-flow · Role/action (who does what).",
+  "src": "01#24"
+ },
+ {
+  "w": 1,
+  "f": "CI / CD / DevOps",
+  "vi": "CI: tích hợp code tự động, thường xuyên. CD: tự động build, test, sẵn sàng release. DevOps: văn hoá + practices + tools rút ngắn SDLC.",
+  "en": "CI: frequent automatic integration. CD: auto build/test, release-ready. DevOps: culture + practices + tools to shorten the SDLC.",
+  "src": "01#21"
+ },
+ {
+  "w": 1,
+  "f": "ACM/IEEE Code of Ethics (8)",
+  "vi": "Public · Client & Employer · Product · Judgment · Management · Profession · Colleagues · Self (lifelong learning).",
+  "en": "Public · Client & Employer · Product · Judgment · Management · Profession · Colleagues · Self.",
+  "src": "01#34-36"
+ },
+ {
+  "w": 1,
+  "f": "4 professional responsibility issues",
+  "vi": "Confidentiality · Competence · Intellectual property rights · Computer misuse. Đạo đức hơn cả tuân thủ pháp luật.",
+  "en": "Confidentiality · Competence · IP rights · Computer misuse. Ethics is more than upholding the law.",
+  "src": "01#30-32"
+ },
+ {
+  "w": 2,
+  "f": "Plan-driven vs Agile",
+  "vi": "Plan-driven: plan trước, đo theo plan, document-based, heavy. Agile: plan incremental, đổi theo requirement, tacit knowledge, light.",
+  "en": "Plan-driven: planned, measured against plan, document-based, heavy. Agile: incremental planning, tacit knowledge, light.",
+  "src": "02#6"
+ },
+ {
+  "w": 2,
+  "f": "Which models are plan-driven / agile?",
+  "vi": "Plan-driven: Waterfall, Incremental, Spiral, RUP. Agile: XP, Scrum, Kanban.",
+  "en": "Plan-driven: Waterfall, Incremental, Spiral, RUP. Agile: XP, Scrum, Kanban.",
+  "src": "02#7"
+ },
+ {
+  "w": 2,
+  "f": "CMMI 5 levels",
+  "vi": "1 Initial (reactive) → 2 Managed (mức project) → 3 Defined (chuẩn toàn tổ chức) → 4 Quantitatively Managed (data-driven) → 5 Optimizing. V3.0 (2023), ISACA.",
+  "en": "Initial → Managed (project) → Defined (organization) → Quantitatively Managed → Optimizing. V3.0 (2023), ISACA.",
+  "src": "02#10, 02#11"
+ },
+ {
+  "w": 2,
+  "f": "Waterfall stages",
+  "vi": "Requirements definition → Analysis & Design → Implementation & Unit Testing → Integration & System Testing → Operation & Maintenance. Code khi req đã baseline; quay lại được.",
+  "en": "Requirements → Analysis & Design → Implementation & Unit Test → Integration & System Test → Operation & Maintenance.",
+  "src": "02#14, 02#15"
+ },
+ {
+  "w": 2,
+  "f": "Incremental: pros & cons",
+  "vi": "✓ chức năng có sớm, increment đầu như prototype, ưu tiên cao được test nhiều, giảm rủi ro. ✗ process không visible, cấu trúc xuống cấp.",
+  "en": "+ early functionality, lower risk. − process not visible, structure degrades.",
+  "src": "02#23, 02#24"
+ },
+ {
+  "w": 2,
+  "f": "Spiral model",
+  "vi": "Plan → Risk Analysis (prototyping) → Engineering → Evaluate. Mỗi vòng = 1 phase. ✓ quản lý rủi ro, dự án lớn. ✗ phức tạp, đắt.",
+  "en": "Plan → Risk Analysis → Engineering → Evaluate; each loop = a phase. + risk focus. − complex, expensive.",
+  "src": "02#25-29"
+ },
+ {
+  "w": 2,
+  "f": "RUP phases",
+  "vi": "Inception (business case) → Elaboration (domain + kiến trúc) → Construction (design, code, test) → Transition (deploy). Mỗi iteration = 1 chu kỳ waterfall.",
+  "en": "Inception → Elaboration → Construction → Transition. Each iteration is a waterfall cycle.",
+  "src": "02#33, 02#34"
+ },
+ {
+  "w": 2,
+  "f": "4 Agile values",
+  "vi": "Individuals & interactions > processes & tools · Working software > documentation · Customer collaboration > contract negotiation · Responding to change > following a plan.",
+  "en": "Individuals & interactions · Working software · Customer collaboration · Responding to change.",
+  "src": "02#37"
+ },
+ {
+  "w": 2,
+  "f": "XP: 12 practices",
+  "vi": "Planning Game · Small Releases · Metaphor · Simple Design · Acceptance Testing · Refactoring · Pair Programming · Collective Ownership · Continuous Integration · 40-hour Week · On-site Customer · Coding Standards.",
+  "en": "Planning Game, Small Releases, Metaphor, Simple Design, Acceptance Testing, Refactoring, Pair Programming, Collective Ownership, CI, 40-hour Week, On-site Customer, Coding Standards.",
+  "src": "02#46"
+ },
+ {
+  "w": 2,
+  "f": "Scrum artifacts ↔ commitments",
+  "vi": "Product Backlog ↔ Product Goal · Sprint Backlog ↔ Sprint Goal · Increment ↔ Definition of Done.",
+  "en": "Product Backlog ↔ Product Goal · Sprint Backlog ↔ Sprint Goal · Increment ↔ Definition of Done.",
+  "src": "02#54"
+ },
+ {
+  "w": 2,
+  "f": "Scrum Team (Guide 2020)",
+  "vi": "≤ 10 người, 3 trách nhiệm: PO (value, Product Goal, order backlog) · SM (coach, gỡ impediments) · Developers (Sprint Backlog, Increment, DoD). KHÔNG có manager/team lead.",
+  "en": "≤ 10 people; PO, Scrum Master, Developers. No manager or team lead.",
+  "src": "02#59"
+ },
+ {
+  "w": 2,
+  "f": "Scrum events",
+  "vi": "Sprint (≤ 1 tháng, chứa mọi event) · Sprint Planning · Daily Scrum 15' · Sprint Review (với stakeholders) · Retrospective (cách team làm). Release planning và burndown KHÔNG bắt buộc.",
+  "en": "Sprint ≤ 1 month · Planning · Daily 15' · Review · Retrospective. Release planning and burndown are not required.",
+  "src": "02#54, 02#60"
+ },
+ {
+  "w": 2,
+  "f": "Kanban",
+  "vi": "Taiichi Ohno (Toyota) → David J. Anderson (~2004). Practices: visualize flow, limit WIP, cumulative flow diagram. Không có iteration.",
+  "en": "Ohno (Toyota) → Anderson (~2004). Visualize, limit WIP, CFD. No iterations.",
+  "src": "02#62-71"
+ },
+ {
+  "w": 3,
+  "f": "Project factors & types",
+  "vi": "Scope · Time · Budget. Production → product · Investment → benefit · Research → knowledge.",
+  "en": "Scope · Time · Budget. Production → product; Investment → benefit; Research → knowledge.",
+  "src": "03#4"
+ },
+ {
+  "w": 3,
+  "f": "PM vs Engineering Manager vs Team Lead",
+  "vi": "PM: scope, schedule, cost, risk, stakeholders. EM: chất lượng kỹ thuật, năng lực team, kiến trúc. TL: điều phối kỹ thuật hằng ngày, giao task.",
+  "en": "PM: scope/schedule/cost/risk. EM: technical quality, team capability. TL: daily technical coordination.",
+  "src": "03#9"
+ },
+ {
+  "w": 3,
+  "f": "4 management activities",
+  "vi": "Initiation (feasibility, proposal) → Planning (scope, WBS, estimate, schedule) → Executing (weekly plan, tasks) → Tracking & Control (progress report, issue log, change request).",
+  "en": "Initiation → Planning → Executing → Tracking & Control.",
+  "src": "03#10"
+ },
+ {
+  "w": 3,
+  "f": "WBS",
+  "vi": "Chia scope thành work item nhỏ: phase → deliverable → task. Mỗi item phải assign, estimate, track được.",
+  "en": "Breaks scope into items that can be assigned, estimated and tracked.",
+  "src": "03#17"
+ },
+ {
+  "w": 3,
+  "f": "Estimation formulas",
+  "vi": "$\\text{Effort} = a \\times \\text{KLOC}^{b}$ · $\\text{Duration} = c \\times \\text{Effort}^{d}$ · $\\text{Cost} = \\text{Effort} \\times$ giá/man-month. LOC phụ thuộc ngôn ngữ; FP độc lập ngôn ngữ.",
+  "en": "$\\text{Effort} = a \\times \\text{KLOC}^{b}$ · $\\text{Duration} = c \\times \\text{Effort}^{d}$ · $\\text{Cost} = \\text{Effort} \\times \\text{rate}$. FP is language-independent.",
+  "src": "03#21, 03#22"
+ },
+ {
+  "w": 3,
+  "f": "Effort ≠ Duration",
+  "vi": "24 person-hours, 1 SV × 3h/ngày = 8 ngày; 2 SV ≈ 4 ngày, nhưng thêm người không giảm thời gian tuyến tính.",
+  "en": "24 person-hours at 3 h/day = 8 days; more people does not scale linearly.",
+  "src": "03#23"
+ },
+ {
+  "w": 3,
+  "f": "Agile estimation",
+  "vi": "Story points = effort + complexity + uncertainty (Planning Poker, Fibonacci). $\\text{Số sprint} \\approx \\dfrac{\\text{points còn lại}}{\\text{velocity}}$ (120/20 = 6). Không so velocity giữa team.",
+  "en": "$\\text{Sprints} \\approx \\dfrac{\\text{remaining points}}{\\text{velocity}}$ (120/20 = 6). Don't compare teams by velocity.",
+  "src": "03#24"
+ },
+ {
+  "w": 3,
+  "f": "Milestone vs Deliverable",
+  "vi": "Milestone: điểm kết thúc một giai đoạn. Deliverable: kết quả giao cho khách/user (Build, alpha, beta, GA).",
+  "en": "Milestone: end-point of a period. Deliverable: result delivered to customers.",
+  "src": "03#27"
+ },
+ {
+  "w": 3,
+  "f": "Critical path",
+  "vi": "Chuỗi task phụ thuộc DÀI NHẤT = thời gian tối thiểu. $\\text{Slack} = \\text{LS} - \\text{ES}$; task găng slack = 0. Ví dụ slide: 14 ngày, cả 2 đường đều găng.",
+  "en": "LONGEST chain = minimum duration; critical tasks have zero slack. Slide example: 14 days.",
+  "src": "03#30, 03#31"
+ },
+ {
+  "w": 3,
+  "f": "Risk process & RE",
+  "vi": "Identify → Analyze → Plan → Monitor. $\\text{RE} = \\text{Probability} \\times \\text{Loss}$, thang 10/25/50/75/90. Likely × Catastrophic = 75 × 90 = 6,750.",
+  "en": "Identify → Analyze → Plan → Monitor. $\\text{RE} = P \\times L$; Likely × Catastrophic = 6,750.",
+  "src": "03#35, 03#38-41"
+ },
+ {
+  "w": 3,
+  "f": "5 risk types",
+  "vi": "Technology · People · Organizational · Requirements · Estimation.",
+  "en": "Technology · People · Organizational · Requirements · Estimation.",
+  "src": "03#36"
+ },
+ {
+  "w": 3,
+  "f": "Risk planning strategies",
+  "vi": "Avoidance · Minimization · Contingency plans (dùng khi rủi ro xảy ra) · Risk transfer · Buying information.",
+  "en": "Avoidance · Minimization · Contingency · Transfer · Buying information.",
+  "src": "03#42"
+ },
+ {
+  "w": 4,
+  "f": "Requirement = ?",
+  "vi": "Services hệ thống cung cấp + constraints. Chức năng kép: cơ sở cho bid/contract (high level) và cho dev team (detailed).",
+  "en": "Services + constraints. Basis for a bid/contract (high level) and for developers (detailed).",
+  "src": "04#4"
+ },
+ {
+  "w": 4,
+  "f": "3 viewpoints (ATM)",
+  "vi": "Interactor: khách hàng + account database. Indirect: quản lý, nhân viên bảo mật. Domain: chuẩn giao tiếp liên ngân hàng.",
+  "en": "Interactor: customers + account database. Indirect: management, security. Domain: inter-bank standards.",
+  "src": "04#7"
+ },
+ {
+  "w": 4,
+  "f": "User vs System requirements",
+  "vi": "User: ngôn ngữ tự nhiên, góc nhìn user, high-level. System: tài liệu có cấu trúc, chi tiết, định nghĩa cái cần implement.",
+  "en": "User: natural language, high-level. System: structured, detailed, what to implement.",
+  "src": "04#9"
+ },
+ {
+  "w": 4,
+  "f": "F / NF / Domain",
+  "vi": "F: hệ thống phản ứng thế nào. NF: ràng buộc (Product / Organizational / External). Domain: từ lĩnh vực ứng dụng (Z39.50, bản quyền).",
+  "en": "F: behavior. NF: constraints (Product / Organizational / External). Domain: from the application domain.",
+  "src": "04#12, 04#16, 04#23"
+ },
+ {
+  "w": 4,
+  "f": "Verifiable NFR",
+  "vi": "Có thước đo kiểm tra khách quan. Ví dụ: dùng được mọi chức năng sau 2 giờ đào tạo; ≤ 2 lỗi/ngày.",
+  "en": "Uses an objective measure, e.g. two hours of training, ≤ 2 errors/day.",
+  "src": "04#19"
+ },
+ {
+  "w": 4,
+  "f": "MoSCoW",
+  "vi": "Must: thiếu là release fail · Should: quan trọng, có cách lách · Could: có thì tốt · Won't (this time): thoả thuận bỏ khỏi release này.",
+  "en": "Must · Should (workaround exists) · Could · Won't (this time).",
+  "src": "04#35"
+ },
+ {
+  "w": 4,
+  "f": "Interview vs Observe",
+  "vi": "Interview: direct/indirect, open/closed; tốn thời gian khách, khó kiểm soát. Observe: thấy quy trình thật; tốn thời gian dev, có thể làm phiền khách.",
+  "en": "Interview costs client time. Observation costs team time and may interfere with the client's business.",
+  "src": "04#36, 04#37"
+ },
+ {
+  "w": 4,
+  "f": "SRS & standard",
+  "vi": "SRS nêu WHAT, không HOW. IEEE 830 (1998) → ISO/IEC/IEEE 29148:2018.",
+  "en": "SRS states WHAT not HOW. IEEE 830 → ISO/IEC/IEEE 29148:2018.",
+  "src": "04#42, 04#43"
+ },
+ {
+  "w": 4,
+  "f": "INVEST + Given/When/Then",
+  "vi": "Independent, Negotiable, Valuable, Estimable, Small, Testable. Acceptance criteria dạng Given/When/Then → acceptance test cases.",
+  "en": "INVEST; acceptance criteria as Given/When/Then become acceptance tests.",
+  "src": "04#46"
+ },
+ {
+  "w": 4,
+  "f": "Requirements checking (5)",
+  "vi": "Validity · Verifiability · Consistency · Completeness · Realism.",
+  "en": "Validity · Verifiability · Consistency · Completeness · Realism.",
+  "src": "04#51"
+ },
+ {
+  "w": 4,
+  "f": "Validation techniques",
+  "vi": "Reviews (phổ biến nhất) · Prototyping · Test-case generation.",
+  "en": "Reviews (most common) · Prototyping · Test-case generation.",
+  "src": "04#52"
+ },
+ {
+  "w": 4,
+  "f": "Change management & traceability",
+  "vi": "Change request → analysis & costing → implementation. Traceability matrix: req ↔ use case ↔ design ↔ test → impact analysis, test coverage.",
+  "en": "Request → analysis & costing → implementation. Traceability for impact analysis and coverage.",
+  "src": "04#57, 04#58"
+ },
+ {
+  "w": 5,
+  "f": "UML",
+  "vi": "Booch, Rumbaugh, Jacobson (Rational). OMG chuẩn hoá năm 1997.",
+  "en": "Booch, Rumbaugh, Jacobson; adopted by OMG in 1997.",
+  "src": "05#7"
+ },
+ {
+  "w": 5,
+  "f": "Structural vs Behavioral diagrams",
+  "vi": "Structural: class, package, object, component, deployment. Behavioral: use case, sequence, communication, state machine, activity.",
+  "en": "Structural: class, package, object, component, deployment. Behavioral: use case, sequence, communication, state, activity.",
+  "src": "05#8"
+ },
+ {
+  "w": 5,
+  "f": "Actor",
+  "vi": "Một role tương tác với hệ thống (người, process, thứ khác). 1 người nhiều role; nhiều người cùng role = 1 actor; actor có generalization.",
+  "en": "A role; one user can play many roles; same role = one actor; actors can generalize.",
+  "src": "05#14"
+ },
+ {
+  "w": 5,
+  "f": "Use case & scenario",
+  "vi": "Use case: chuỗi hành động tạo giá trị cho actor; WHAT không HOW; 1 basic flow + alternative/exceptional flows. Scenario = 1 instance của use case.",
+  "en": "Use case: WHAT not HOW; basic + alternative flows. Scenario = an instance.",
+  "src": "05#15-20"
+ },
+ {
+  "w": 5,
+  "f": "Include vs Extend",
+  "vi": "Include: base BIẾT, included không đứng một mình (Checkout → Payment). Extend: base KHÔNG biết, extending đứng một mình được; mũi tên từ extending → base (Verify shipping address → Checkout).",
+  "en": "Include: base aware, included can't stand alone. Extend: base unaware, extending may stand alone; arrow extending → base.",
+  "src": "05#22, 05#23"
+ },
+ {
+  "w": 5,
+  "f": "UI vs UX · memory",
+  "vi": "UI: look & feel của màn hình. UX: toàn bộ trải nghiệm. Trí nhớ ngắn hạn ~4 ± 1 (Miller 7 ± 2).",
+  "en": "UI: look & feel. UX: overall experience. Short-term memory ~4 ± 1 (Miller 7 ± 2).",
+  "src": "05#29, 05#30"
+ },
+ {
+  "w": 5,
+  "f": "6 UI design principles",
+  "vi": "User familiarity · Consistency · Minimal surprise · Recoverability · User guidance · User diversity.",
+  "en": "Familiarity · Consistency · Minimal surprise · Recoverability · Guidance · Diversity.",
+  "src": "05#31-33"
+ },
+ {
+  "w": 5,
+  "f": "WCAG POUR",
+  "vi": "Perceivable (alt text, tương phản ≥ 4.5:1) · Operable (bàn phím) · Understandable (nhãn rõ) · Robust (semantic HTML). Không dùng mỗi màu sắc.",
+  "en": "Perceivable (≥ 4.5:1) · Operable (keyboard) · Understandable · Robust. Never color alone.",
+  "src": "05#34"
+ },
+ {
+  "w": 5,
+  "f": "5 interaction styles",
+  "vi": "Direct manipulation · Menu selection · Form fill-in (nhập liệu) · Command language (học cú pháp) · Natural language.",
+  "en": "Direct manipulation · Menu · Form fill-in · Command language · Natural language.",
+  "src": "05#36-41"
+ },
+ {
+  "w": 5,
+  "f": "UI design process",
+  "vi": "User analysis (task analysis, interview, ethnography) → System prototyping (paper → automated) → Interface evaluation (learnability, speed, robustness, recoverability, adaptability).",
+  "en": "User analysis → Prototyping (paper → automated) → Evaluation.",
+  "src": "05#45-49"
+ },
+ {
+  "w": 5,
+  "f": "Error messages & validation",
+  "vi": "Thông báo lỗi: polite, concise, consistent, constructive. Data validation: không tin người dùng; natural/business constraints; early/late checking.",
+  "en": "Polite, concise, consistent, constructive. Don't trust users; early/late checking.",
+  "src": "05#54, 05#57"
+ }
+]

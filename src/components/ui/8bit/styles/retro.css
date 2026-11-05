@@ -1,0 +1,9 @@
+.retro {
+  font-family: "VT323", ui-monospace, monospace;
+  line-height: 1.2;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

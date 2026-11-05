@@ -1,0 +1,91 @@
+# Lecture 2 · Software Processes
+## Overview
+- Process = **activities + ordering**
+- + products · roles · pre/post-conditions
+- New trends: connected, **rapid req change**, adaptive models
+- **Capabilities determine requirements**
+- **Plan-driven**: plan first, measure against plan, **document-based, heavy**
+- **Agile**: incremental planning, **tacit knowledge, light**
+## Process improvement
+- Evaluate → find bottlenecks → standardize → measure metrics
+- QC = **product** quality · QA = **process** quality
+- **CMMI** (SEI/CMU → ISACA, V3.0 2023)
+  - 1 **Initial**: reactive, late, over budget
+  - 2 **Managed**: managed at **project level**
+  - 3 **Defined**: **organization-wide** standards, proactive
+  - 4 **Quantitatively Managed**: **data-driven**
+  - 5 **Optimizing**: continuous improvement
+## Plan-driven (disciplined, traditional)
+- **Waterfall**
+  - No two stages at the same time
+  - Code once req are **baselined**
+  - Stage done by **checklist**
+  - **Can go back**
+  - Outcomes: req docs → SAD → code & tests → test results → manual
+  - Only for **stable** req; large system-eng. projects
+- **Incremental** (divide and conquer)
+  - High priority **first**
+  - ✓ early functionality, lower risk
+  - ✗ **process not visible**, structure degrades
+- **Spiral** (risk-driven)
+  - Plan → **Risk analysis** → Engineering → Evaluate
+  - Each loop = 1 phase, **no fixed phases**
+  - ✓ large, high-risk projects
+  - ✗ complex, expensive, hard time management
+- **RUP**
+  - **Inception**: business case
+  - **Elaboration**: domain + architecture
+  - **Construction**: design, code, test
+  - **Transition**: deploy
+  - Iteration = **a small waterfall**
+## Agile Manifesto
+- **4 values** (left > right)
+  - Individuals & interactions > processes & tools
+  - **Working software** > documentation
+  - Customer collaboration > contract
+  - Responding to change > following a plan
+- 12 principles
+  - Working software = **primary measure of progress**
+  - Welcome changing requirements
+  - Face-to-face, sustainable pace
+  - **Simplicity**: maximize the work not done
+  - Self-organizing teams, reflect & adjust
+## XP
+- Push good practices **to the extreme**
+- Iterations in seconds, minutes, hours
+- 12 practices
+  - Planning Game · Small Releases · Metaphor
+  - Simple Design · Refactoring · Coding Standards
+  - **Pair Programming** · Collective Ownership · **CI**
+  - **40-hour Week** · **On-site Customer** · Acceptance tests (by customer)
+## Scrum (Guide 2020)
+- Schwaber & Sutherland
+- **Sprint ≤ 1 month**, contains all events
+- Artifact ↔ commitment
+  - Product Backlog ↔ **Product Goal**
+  - Sprint Backlog ↔ **Sprint Goal**
+  - Increment ↔ **Definition of Done**
+- Team ≤ 10, **no manager**
+  - **PO**: value, Product Goal, **orders the backlog**
+  - **SM**: coaches, **removes impediments**
+  - **Developers**: Sprint Backlog, Increment
+- Events
+  - Sprint Planning: why · what · how
+  - Daily Scrum: **15 minutes**
+  - Sprint Review: with **stakeholders**
+  - Retrospective: how the **team works**
+- Not required: **burndown**, **release planning**
+- User story: As a … I want … so that …
+## Kanban
+- **Ohno (Toyota)** → **Anderson ~2004**
+- Board + cards, left → right, even flow
+- 4 principles
+  - Start with what you do now
+  - Incremental, evolutionary change
+  - Respect current roles
+  - Leadership at all levels
+- Core practices
+  - Visualize the flow
+  - **Limit WIP**
+  - **Cumulative Flow Diagram**
+- **No iterations**, short cycle time, few bottlenecks

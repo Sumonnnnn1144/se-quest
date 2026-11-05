@@ -1,0 +1,91 @@
+# Bài 2 · Software Processes
+## Overview
+- Process = **activities + ordering**
+- + products · roles · pre/post-conditions
+- Xu hướng mới: connected, **rapid req change**, adaptive models
+- **Capabilities determine requirements**
+- **Plan-driven**: plan trước, đo theo plan, **document-based, heavy**
+- **Agile**: incremental planning, **tacit knowledge, light**
+## Process improvement
+- Đánh giá → tìm bottleneck → chuẩn hoá → đo metrics
+- QC = chất lượng **sản phẩm** · QA = chất lượng **process**
+- **CMMI** (SEI/CMU → ISACA, V3.0 2023)
+  - 1 **Initial**: reactive, trễ, vượt ngân sách
+  - 2 **Managed**: quản lý **mức project**
+  - 3 **Defined**: chuẩn **toàn tổ chức**, proactive
+  - 4 **Quantitatively Managed**: **data-driven**
+  - 5 **Optimizing**: cải tiến liên tục
+## Plan-driven (disciplined, traditional)
+- **Waterfall**
+  - Không làm 2 stage cùng lúc
+  - Code khi req đã **baseline**
+  - Xong stage theo **checklist**
+  - **Quay lại được**
+  - Outcome: req docs → SAD → code & tests → test results → manual
+  - Chỉ hợp req **ổn định**; dự án system eng. lớn
+- **Incremental** (chia để trị)
+  - Ưu tiên cao **làm trước**
+  - ✓ có chức năng sớm, giảm rủi ro
+  - ✗ **process not visible**, cấu trúc xuống cấp
+- **Spiral** (risk-driven)
+  - Plan → **Risk analysis** → Engineering → Evaluate
+  - Mỗi vòng = 1 phase, **không phase cố định**
+  - ✓ dự án lớn, rủi ro cao
+  - ✗ phức tạp, đắt, khó quản lý thời gian
+- **RUP**
+  - **Inception**: business case
+  - **Elaboration**: domain + kiến trúc
+  - **Construction**: design, code, test
+  - **Transition**: deploy
+  - Iteration = **1 waterfall nhỏ**
+## Agile Manifesto
+- **4 values** (trái > phải)
+  - Individuals & interactions > processes & tools
+  - **Working software** > documentation
+  - Customer collaboration > contract
+  - Responding to change > following a plan
+- 12 principles
+  - Working software = **thước đo tiến độ chính**
+  - Welcome changing requirements
+  - Face-to-face, sustainable pace
+  - **Simplicity**: tối đa việc không cần làm
+  - Self-organizing teams, reflect & adjust
+## XP
+- Đẩy good practices **đến cực đoan**
+- Iteration tính bằng giây, phút, giờ
+- 12 practices
+  - Planning Game · Small Releases · Metaphor
+  - Simple Design · Refactoring · Coding Standards
+  - **Pair Programming** · Collective Ownership · **CI**
+  - **40-hour Week** · **On-site Customer** · Acceptance tests (by customer)
+## Scrum (Guide 2020)
+- Schwaber & Sutherland
+- **Sprint ≤ 1 tháng**, chứa mọi event
+- Artifact ↔ commitment
+  - Product Backlog ↔ **Product Goal**
+  - Sprint Backlog ↔ **Sprint Goal**
+  - Increment ↔ **Definition of Done**
+- Team ≤ 10, **không manager**
+  - **PO**: value, Product Goal, **order backlog**
+  - **SM**: coach, **gỡ impediments**
+  - **Developers**: Sprint Backlog, Increment
+- Events
+  - Sprint Planning: why · what · how
+  - Daily Scrum: **15 phút**
+  - Sprint Review: với **stakeholders**
+  - Retrospective: cách **team làm việc**
+- Không bắt buộc: **burndown**, **release planning**
+- User story: As a … I want … so that …
+## Kanban
+- **Ohno (Toyota)** → **Anderson ~2004**
+- Board + card, trái → phải, flow đều
+- 4 principles
+  - Start with what you do now
+  - Incremental, evolutionary change
+  - Respect current roles
+  - Leadership at all levels
+- Core practices
+  - Visualize flow
+  - **Limit WIP**
+  - **Cumulative Flow Diagram**
+- **Không iteration**, cycle time ngắn, ít bottleneck

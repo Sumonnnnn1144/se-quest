@@ -1,0 +1,2697 @@
+[
+ {
+  "id": "w1-01",
+  "w": 1,
+  "q": "Which definition of software is used in the lecture?",
+  "o": [
+   "Computer programs only",
+   "Computer programs and associated documentation",
+   "Source code and the hardware it runs on",
+   "Executable files and their databases"
+  ],
+  "a": 1,
+  "vi": "Software = chương trình + tài liệu đi kèm (requirements, design models, user manuals).",
+  "en": "Software = computer programs plus associated documentation such as requirements, design models and user manuals.",
+  "src": "01#3"
+ },
+ {
+  "id": "w1-02",
+  "w": 1,
+  "q": "Software developed for a single customer according to their specification is called:",
+  "o": [
+   "Generic software",
+   "Custom software",
+   "Open-source software",
+   "Embedded software"
+  ],
+  "a": 1,
+  "vi": "Custom: cho một khách theo spec của họ. Generic: bán cho nhiều khách.",
+  "en": "Custom software is built for one customer to their spec; generic software is sold to a range of customers.",
+  "src": "01#3"
+ },
+ {
+  "id": "w1-03",
+  "w": 1,
+  "q": "Which of the following is NOT one of the four attributes of good software in the lecture?",
+  "o": [
+   "Maintainability",
+   "Dependability/Reliability",
+   "Scalability",
+   "Acceptability"
+  ],
+  "a": 2,
+  "vi": "4 thuộc tính: Maintainability, Dependability/Reliability, Efficiency, Acceptability. Scalability không nằm trong danh sách.",
+  "en": "The four attributes are Maintainability, Dependability/Reliability, Efficiency and Acceptability. Scalability is not listed.",
+  "src": "01#7"
+ },
+ {
+  "id": "w1-04",
+  "w": 1,
+  "q": "\"Software must evolve to meet changing needs\" describes which attribute?",
+  "o": [
+   "Efficiency",
+   "Maintainability",
+   "Acceptability",
+   "Dependability"
+  ],
+  "a": 1,
+  "vi": "Maintainability: phần mềm phải tiến hoá được theo nhu cầu thay đổi.",
+  "en": "Maintainability: software must evolve to meet changing needs.",
+  "src": "01#7"
+ },
+ {
+  "id": "w1-05",
+  "w": 1,
+  "q": "According to the lecture, Acceptability means software must be:",
+  "o": [
+   "Fast and cheap to run",
+   "Understandable, usable and compatible with other systems",
+   "Free of all defects",
+   "Written in a popular language"
+  ],
+  "a": 1,
+  "vi": "Acceptability: được người dùng chấp nhận; dễ hiểu, dễ dùng, tương thích với hệ thống khác.",
+  "en": "Acceptability: accepted by its users; understandable, usable and compatible with other systems.",
+  "src": "01#7"
+ },
+ {
+  "id": "w1-06",
+  "w": 1,
+  "q": "Roughly how are software engineering costs split between development and testing?",
+  "o": [
+   "40% development, 60% testing",
+   "60% development, 40% testing",
+   "80% development, 20% testing",
+   "50% development, 50% testing"
+  ],
+  "a": 1,
+  "vi": "Khoảng 60% chi phí là development, 40% là testing.",
+  "en": "Roughly 60% of costs are development costs and 40% are testing costs.",
+  "src": "01#15"
+ },
+ {
+  "id": "w1-07",
+  "w": 1,
+  "q": "For systems with a long life, which statement about costs is correct?",
+  "o": [
+   "Development always costs more than maintenance",
+   "Maintenance costs may be several times development costs",
+   "Hardware costs dominate software costs",
+   "Testing costs are negligible"
+  ],
+  "a": 1,
+  "vi": "Với hệ thống sống lâu, chi phí bảo trì có thể gấp nhiều lần chi phí phát triển.",
+  "en": "For long-lived systems, maintenance costs may be several times development costs.",
+  "src": "01#9"
+ },
+ {
+  "id": "w1-08",
+  "w": 1,
+  "q": "According to the CHAOS Report 2020 shown in the lecture, what percentage of IT projects were successful?",
+  "o": [
+   "19%",
+   "35%",
+   "46%",
+   "51%"
+  ],
+  "a": 1,
+  "vi": "CHAOS 2020: 35% thành công, 46% challenged, 19% thất bại.",
+  "en": "CHAOS 2020: 35% successful, 46% challenged, 19% failed.",
+  "src": "01#11"
+ },
+ {
+  "id": "w1-09",
+  "w": 1,
+  "q": "In the CHAOS Report 2020, the largest group of IT projects was:",
+  "o": [
+   "Successful",
+   "Failed",
+   "Challenged",
+   "Cancelled before start"
+  ],
+  "a": 2,
+  "vi": "Challenged chiếm 46%, lớn nhất.",
+  "en": "Challenged projects were the largest group at 46%.",
+  "src": "01#11"
+ },
+ {
+  "id": "w1-10",
+  "w": 1,
+  "q": "Which statement best contrasts software engineering with computer science?",
+  "o": [
+   "SE is concerned with theory and fundamentals",
+   "SE is concerned with the practicalities of developing and delivering useful software",
+   "SE covers hardware, software and process engineering",
+   "SE and CS are the same discipline"
+  ],
+  "a": 1,
+  "vi": "CS: lý thuyết, nền tảng. SE: thực tiễn phát triển và bàn giao phần mềm hữu ích.",
+  "en": "CS is about theory and fundamentals; SE is about the practicalities of developing and delivering useful software.",
+  "src": "01#13"
+ },
+ {
+  "id": "w1-11",
+  "w": 1,
+  "q": "Which discipline is concerned with all aspects of computer-based systems development, including hardware, software and process engineering?",
+  "o": [
+   "Software engineering",
+   "Computer science",
+   "System engineering",
+   "DevOps"
+  ],
+  "a": 2,
+  "vi": "System engineering bao trùm HW + SW + process; SE là một phần trong đó.",
+  "en": "System engineering covers hardware, software and process engineering; SE is the part concerned with software.",
+  "src": "01#14"
+ },
+ {
+  "id": "w1-12",
+  "w": 1,
+  "q": "Which of the following is NOT one of the goals of software engineering listed in the lecture?",
+  "o": [
+   "Cost effective (within budget)",
+   "On time",
+   "High quality",
+   "Using the latest technology"
+  ],
+  "a": 3,
+  "vi": "Mục tiêu: cost effective, on time, high quality, đáp ứng nhu cầu khách hàng. \"Công nghệ mới nhất\" không có.",
+  "en": "Goals: cost effective, on time, high quality, satisfying customer's needs. Latest technology is not one of them.",
+  "src": "01#12"
+ },
+ {
+  "id": "w1-13",
+  "w": 1,
+  "q": "Which is NOT one of the four generic activities in software processes?",
+  "o": [
+   "Specification",
+   "Development",
+   "Deployment",
+   "Evolution"
+  ],
+  "a": 2,
+  "vi": "4 hoạt động: Specification, Development, Validation, Evolution. Deployment là bẫy.",
+  "en": "The four activities are Specification, Development, Validation and Evolution. Deployment is the trap.",
+  "src": "01#23"
+ },
+ {
+  "id": "w1-14",
+  "w": 1,
+  "q": "The process activity \"checking that the software is what the customer wants\" is:",
+  "o": [
+   "Specification",
+   "Validation",
+   "Evolution",
+   "Development"
+  ],
+  "a": 1,
+  "vi": "Validation: kiểm tra phần mềm có đúng là thứ khách hàng muốn.",
+  "en": "Validation checks that the software is what the customer wants.",
+  "src": "01#23"
+ },
+ {
+  "id": "w1-15",
+  "w": 1,
+  "q": "Which process model perspective shows \"who does what\"?",
+  "o": [
+   "Workflow perspective",
+   "Data-flow perspective",
+   "Role/action perspective",
+   "Component perspective"
+  ],
+  "a": 2,
+  "vi": "Workflow: trình tự hoạt động. Data-flow: luồng thông tin. Role/action: ai làm gì.",
+  "en": "Workflow = sequence of activities; data-flow = information flow; role/action = who does what.",
+  "src": "01#24"
+ },
+ {
+  "id": "w1-16",
+  "w": 1,
+  "q": "Which of the following is listed in lecture 01 as a generic process model?",
+  "o": [
+   "Scrum",
+   "Component-based software engineering",
+   "Kanban",
+   "DevOps"
+  ],
+  "a": 1,
+  "vi": "Generic process models: Waterfall, Iterative development, Component-based SE.",
+  "en": "Generic process models: Waterfall, Iterative development, Component-based software engineering.",
+  "src": "01#25"
+ },
+ {
+  "id": "w1-17",
+  "w": 1,
+  "q": "Continuous Integration (CI) means:",
+  "o": [
+   "Automatically and frequently integrating code changes",
+   "Deploying to production once per release",
+   "Integrating hardware and software components",
+   "Merging all branches at the end of the project"
+  ],
+  "a": 0,
+  "vi": "CI: tích hợp thay đổi code tự động và thường xuyên. CD: tự động build, test, sẵn sàng release.",
+  "en": "CI = automatically and frequently integrating code changes. CD = automatically built, tested and prepared for release.",
+  "src": "01#21"
+ },
+ {
+  "id": "w1-18",
+  "w": 1,
+  "q": "According to the lecture, DevOps is:",
+  "o": [
+   "A programming language for operations",
+   "Cultural philosophies, practices and tools that shorten the software development lifecycle",
+   "A replacement for testing",
+   "A CMMI maturity level"
+  ],
+  "a": 1,
+  "vi": "DevOps = Development + Operations: văn hoá, practices, công cụ để rút ngắn SDLC.",
+  "en": "DevOps = Development + Operations: cultural philosophies, practices and tools to shorten the SDLC.",
+  "src": "01#21"
+ },
+ {
+  "id": "w1-19",
+  "w": 1,
+  "q": "With agentic AI in software engineering, which statement matches the lecture?",
+  "o": [
+   "Engineers are no longer accountable for code written by agents",
+   "Clear requirements and good tests matter less",
+   "Engineers remain accountable for quality, security and ethics",
+   "Agents remove the need for code review"
+  ],
+  "a": 2,
+  "vi": "Kỹ sư gõ ít hơn, đặc tả/review/kiểm chứng nhiều hơn, và vẫn chịu trách nhiệm về chất lượng, bảo mật, đạo đức.",
+  "en": "Less typing, more specifying, reviewing and verifying; engineers remain accountable for quality, security and ethics.",
+  "src": "01#22"
+ },
+ {
+  "id": "w1-20",
+  "w": 1,
+  "q": "\"Engineers should not knowingly accept work which is beyond their competence\" belongs to which professional responsibility issue?",
+  "o": [
+   "Confidentiality",
+   "Competence",
+   "Intellectual property rights",
+   "Computer misuse"
+  ],
+  "a": 1,
+  "vi": "Competence: không nói quá năng lực, không nhận việc vượt năng lực.",
+  "en": "Competence: do not misrepresent your competence or knowingly accept work beyond it.",
+  "src": "01#31"
+ },
+ {
+  "id": "w1-21",
+  "w": 1,
+  "q": "Which ACM/IEEE Code of Ethics principle requires lifelong learning about the practice of the profession?",
+  "o": [
+   "PROFESSION",
+   "SELF",
+   "COLLEAGUES",
+   "JUDGMENT"
+  ],
+  "a": 1,
+  "vi": "SELF: học tập suốt đời và thúc đẩy cách hành nghề có đạo đức.",
+  "en": "SELF: participate in lifelong learning and promote an ethical approach to practice.",
+  "src": "01#36"
+ },
+ {
+  "id": "w1-22",
+  "w": 1,
+  "q": "\"Software engineers shall maintain integrity and independence in their professional judgment\" is the principle:",
+  "o": [
+   "PRODUCT",
+   "MANAGEMENT",
+   "JUDGMENT",
+   "PUBLIC"
+  ],
+  "a": 2,
+  "vi": "JUDGMENT: giữ sự chính trực và độc lập trong phán đoán chuyên môn.",
+  "en": "JUDGMENT: maintain integrity and independence in professional judgment.",
+  "src": "01#35"
+ },
+ {
+  "id": "w1-23",
+  "w": 1,
+  "q": "How many principles does the ACM/IEEE Software Engineering Code of Ethics have?",
+  "o": [
+   "4",
+   "6",
+   "8",
+   "12"
+  ],
+  "a": 2,
+  "vi": "8 nguyên tắc: Public, Client & Employer, Product, Judgment, Management, Profession, Colleagues, Self.",
+  "en": "Eight: Public, Client and Employer, Product, Judgment, Management, Profession, Colleagues, Self.",
+  "src": "01#34-36"
+ },
+ {
+  "id": "w1-24",
+  "w": 1,
+  "q": "Which statement about ethical behavior matches the lecture?",
+  "o": [
+   "Ethical behavior means simply upholding the law",
+   "Ethical behavior is more than simply upholding the law",
+   "Ethics only applies to managers",
+   "Ethics is replaced by technical skill"
+  ],
+  "a": 1,
+  "vi": "Hành xử đạo đức là hơn cả việc tuân thủ pháp luật.",
+  "en": "Ethical behavior is more than simply upholding the law.",
+  "src": "01#30"
+ },
+ {
+  "id": "w1-25",
+  "w": 1,
+  "q": "Which abbreviation is expanded CORRECTLY?",
+  "o": [
+   "SDLC = Software Development Life Cycle",
+   "CI = Code Integration",
+   "CD = Continuous Design",
+   "DevOps = Development + Optimization"
+  ],
+  "a": 0,
+  "vi": "SDLC = Software Development Life Cycle · CI = Continuous Integration · CD = Continuous Delivery/Deployment · DevOps = Development + Operations.",
+  "en": "SDLC = Software Development Life Cycle · CI = Continuous Integration · CD = Continuous Delivery/Deployment · DevOps = Development + Operations.",
+  "src": "01#21, 01#25",
+  "ng": 1
+ },
+ {
+  "id": "w2-01",
+  "w": 2,
+  "q": "Which characteristic belongs to plan-driven approaches?",
+  "o": [
+   "Tacit knowledge",
+   "Incremental planning",
+   "Document-based, heavy process",
+   "Light process"
+  ],
+  "a": 2,
+  "vi": "Plan-driven: lập kế hoạch trước, đo theo kế hoạch, dựa vào tài liệu, process nặng. Agile: tacit knowledge, process nhẹ.",
+  "en": "Plan-driven: planned activities, progress measured against the plan, document-based, heavy. Agile: tacit knowledge, light.",
+  "src": "02#6"
+ },
+ {
+  "id": "w2-02",
+  "w": 2,
+  "q": "According to the lecture, the Incremental model is classified as:",
+  "o": [
+   "An agile method",
+   "A plan-driven method",
+   "A CMMI level",
+   "A Kanban practice"
+  ],
+  "a": 1,
+  "vi": "Plan-driven: Waterfall, Incremental, Spiral, RUP. Agile: XP, Scrum, Kanban.",
+  "en": "Plan-driven: Waterfall, Incremental, Spiral, RUP. Agile: XP, Scrum, Kanban.",
+  "src": "02#7"
+ },
+ {
+  "id": "w2-03",
+  "w": 2,
+  "q": "Which of the following is listed as an agile method in the lecture?",
+  "o": [
+   "Spiral",
+   "Rational Unified Process",
+   "Kanban",
+   "Waterfall"
+  ],
+  "a": 2,
+  "vi": "Agile methods: Extreme Programming, Scrum, Kanban.",
+  "en": "Agile methods: Extreme Programming, Scrum, Kanban.",
+  "src": "02#7"
+ },
+ {
+  "id": "w2-04",
+  "w": 2,
+  "q": "Which CMMI maturity level is \"Defined\"?",
+  "o": [
+   "Level 2",
+   "Level 3",
+   "Level 4",
+   "Level 5"
+  ],
+  "a": 1,
+  "vi": "1 Initial → 2 Managed → 3 Defined → 4 Quantitatively Managed → 5 Optimizing.",
+  "en": "1 Initial → 2 Managed → 3 Defined → 4 Quantitatively Managed → 5 Optimizing.",
+  "src": "02#11"
+ },
+ {
+  "id": "w2-05",
+  "w": 2,
+  "q": "At CMMI maturity level 2 (Managed), processes are managed at the:",
+  "o": [
+   "Organization level",
+   "Project level",
+   "Industry level",
+   "Individual level"
+  ],
+  "a": 1,
+  "vi": "Level 2 Managed: quản lý ở mức project (planned, performed, measured, controlled). Level 3 mới chuẩn hoá toàn tổ chức.",
+  "en": "Level 2 Managed: managed on the project level. Organization-wide standards come at Level 3.",
+  "src": "02#11"
+ },
+ {
+  "id": "w2-06",
+  "w": 2,
+  "q": "\"The organization is data-driven with quantitative performance improvement objectives\" describes CMMI level:",
+  "o": [
+   "Defined",
+   "Quantitatively Managed",
+   "Optimizing",
+   "Managed"
+  ],
+  "a": 1,
+  "vi": "Level 4 Quantitatively Managed: đo lường và kiểm soát, data-driven.",
+  "en": "Level 4 Quantitatively Managed: measured and controlled, data-driven.",
+  "src": "02#11"
+ },
+ {
+  "id": "w2-07",
+  "w": 2,
+  "q": "Which statement about CMMI is correct according to the lecture?",
+  "o": [
+   "It is maintained by the Scrum Alliance",
+   "It was developed by SEI at CMU and is now maintained by the CMMI Institute (ISACA); current version V3.0 (2023)",
+   "It has three maturity levels",
+   "It applies only to hardware projects"
+  ],
+  "a": 1,
+  "vi": "CMMI: SEI (CMU) phát triển, nay do CMMI Institute (ISACA) duy trì, phiên bản V3.0 (2023).",
+  "en": "CMMI was developed by CMU's SEI and is now maintained by the CMMI Institute (ISACA); current version V3.0 (2023).",
+  "src": "02#10"
+ },
+ {
+  "id": "w2-08",
+  "w": 2,
+  "q": "In the waterfall model, development is not started until:",
+  "o": [
+   "The first prototype is accepted",
+   "Requirements are baselined",
+   "The test plan is written",
+   "The customer signs the invoice"
+  ],
+  "a": 1,
+  "vi": "Waterfall: chưa baseline requirements thì chưa bắt đầu development.",
+  "en": "Waterfall: development is not started when requirements are not baselined.",
+  "src": "02#15"
+ },
+ {
+  "id": "w2-09",
+  "w": 2,
+  "q": "Which statement about the waterfall model in the lecture is FALSE?",
+  "o": [
+   "Two stages cannot be performed at the same time",
+   "Each stage must be completed before doing the next stage",
+   "Going back to a previous stage is impossible",
+   "A stage is completed if a set of criteria is met"
+  ],
+  "a": 2,
+  "vi": "Slide ghi rõ: có thể quay lại stage trước (going back is possible).",
+  "en": "The slide states that going back to the previous stage is possible.",
+  "src": "02#15"
+ },
+ {
+  "id": "w2-10",
+  "w": 2,
+  "q": "The waterfall model is only appropriate when:",
+  "o": [
+   "Requirements are well-understood",
+   "The team is small",
+   "The customer is on-site",
+   "Iterations are very short"
+  ],
+  "a": 0,
+  "vi": "Waterfall chỉ hợp khi requirements đã hiểu rõ và ít thay đổi.",
+  "en": "Waterfall is only appropriate when the requirements are well-understood and changes are limited.",
+  "src": "02#17"
+ },
+ {
+  "id": "w2-11",
+  "w": 2,
+  "q": "In the waterfall diagram, which stage comes right after \"Analysis and Design\"?",
+  "o": [
+   "Requirements definition",
+   "Implementation and Unit Testing",
+   "Integration and System Testing",
+   "Operation and Maintenance"
+  ],
+  "a": 1,
+  "vi": "Requirements definition → Analysis and Design → Implementation and Unit Testing → Integration and System Testing → Operation and Maintenance.",
+  "en": "Requirements definition → Analysis and Design → Implementation and Unit Testing → Integration and System Testing → Operation and Maintenance.",
+  "src": "02#14"
+ },
+ {
+  "id": "w2-12",
+  "w": 2,
+  "q": "In the incremental model, which requirements are developed in early increments?",
+  "o": [
+   "The cheapest ones",
+   "The highest priority ones",
+   "The least understood ones",
+   "Non-functional ones only"
+  ],
+  "a": 1,
+  "vi": "Requirements được ưu tiên; ưu tiên cao nhất làm ở increment đầu.",
+  "en": "Requirements are prioritized; the highest priority ones are developed in early increments.",
+  "src": "02#22"
+ },
+ {
+  "id": "w2-13",
+  "w": 2,
+  "q": "Which is a PROBLEM of the incremental model?",
+  "o": [
+   "System functionality is available earlier",
+   "Lower risk of overall project failure",
+   "The process is not visible",
+   "Highest priority requirements receive most testing"
+  ],
+  "a": 2,
+  "vi": "Nhược điểm: process không visible, cấu trúc hệ thống dễ xuống cấp. Ba lựa chọn còn lại là ưu điểm.",
+  "en": "Problems: the process is not visible and system structure tends to degrade. The other options are benefits.",
+  "src": "02#24"
+ },
+ {
+  "id": "w2-14",
+  "w": 2,
+  "q": "In the spiral model, each spiral (loop) represents:",
+  "o": [
+   "A sprint",
+   "A phase in the process",
+   "A release to production",
+   "A CMMI level"
+  ],
+  "a": 1,
+  "vi": "Mỗi vòng xoắn là một phase; không có phase cố định như specification hay design.",
+  "en": "Each spiral represents a phase in the process; there are no fixed phases such as specification or design.",
+  "src": "02#27"
+ },
+ {
+  "id": "w2-15",
+  "w": 2,
+  "q": "In the spiral model diagram, \"Risk Reduction / Prototyping\" belongs to which quadrant?",
+  "o": [
+   "Plan",
+   "Risk Analysis",
+   "Engineering",
+   "Evaluate"
+  ],
+  "a": 1,
+  "vi": "Plan: requirements gathering. Risk Analysis: risk reduction, prototyping. Engineering: coding, testing. Evaluate: customer evolution.",
+  "en": "Plan: requirements gathering. Risk Analysis: risk reduction, prototyping. Engineering: coding, testing. Evaluate: customer evolution.",
+  "src": "02#25"
+ },
+ {
+  "id": "w2-16",
+  "w": 2,
+  "q": "Which is a PROBLEM of the spiral model?",
+  "o": [
+   "Emphasis on risk management",
+   "Users see the system early",
+   "Complex and expensive",
+   "Flexibility in requirements"
+  ],
+  "a": 2,
+  "vi": "Nhược điểm: phức tạp, đắt, phụ thuộc nhiều vào risk analysis, khó quản lý thời gian.",
+  "en": "Problems: complex and expensive, too dependent on risk analysis, difficult time management.",
+  "src": "02#29"
+ },
+ {
+  "id": "w2-17",
+  "w": 2,
+  "q": "Which RUP phase establishes the business case for the system?",
+  "o": [
+   "Inception",
+   "Elaboration",
+   "Construction",
+   "Transition"
+  ],
+  "a": 0,
+  "vi": "Inception: business case. Elaboration: hiểu domain và kiến trúc. Construction: design, code, test. Transition: deploy.",
+  "en": "Inception: business case. Elaboration: problem domain and architecture. Construction: design, programming, testing. Transition: deploy.",
+  "src": "02#33"
+ },
+ {
+  "id": "w2-18",
+  "w": 2,
+  "q": "In RUP, developing an understanding of the problem domain and the system architecture happens in:",
+  "o": [
+   "Inception",
+   "Elaboration",
+   "Construction",
+   "Transition"
+  ],
+  "a": 1,
+  "vi": "Elaboration: hiểu problem domain và xây kiến trúc hệ thống.",
+  "en": "Elaboration: develop an understanding of the problem domain and the system architecture.",
+  "src": "02#33"
+ },
+ {
+  "id": "w2-19",
+  "w": 2,
+  "q": "Which is the correct order of RUP phases?",
+  "o": [
+   "Inception → Construction → Elaboration → Transition",
+   "Elaboration → Inception → Construction → Transition",
+   "Inception → Elaboration → Construction → Transition",
+   "Inception → Elaboration → Transition → Construction"
+  ],
+  "a": 2,
+  "vi": "Inception → Elaboration → Construction → Transition.",
+  "en": "Inception → Elaboration → Construction → Transition.",
+  "src": "02#32"
+ },
+ {
+  "id": "w2-20",
+  "w": 2,
+  "q": "In RUP, each iteration is considered:",
+  "o": [
+   "A spiral loop",
+   "A waterfall cycle",
+   "A Kanban card",
+   "A sprint review"
+  ],
+  "a": 1,
+  "vi": "Mỗi iteration là một chu kỳ waterfall, có entry/exit criteria.",
+  "en": "Each iteration is considered a waterfall cycle with entry and exit criteria.",
+  "src": "02#34"
+ },
+ {
+  "id": "w2-21",
+  "w": 2,
+  "q": "Complete the Agile value: \"Working software over ___\".",
+  "o": [
+   "Processes and tools",
+   "Comprehensive documentation",
+   "Contract negotiation",
+   "Following a plan"
+  ],
+  "a": 1,
+  "vi": "Working software over comprehensive documentation.",
+  "en": "Working software over comprehensive documentation.",
+  "src": "02#37"
+ },
+ {
+  "id": "w2-22",
+  "w": 2,
+  "q": "Which of the following is NOT one of the four Agile values?",
+  "o": [
+   "Individuals and interactions over processes and tools",
+   "Customer collaboration over contract negotiation",
+   "Following a plan over responding to change",
+   "Working software over comprehensive documentation"
+  ],
+  "a": 2,
+  "vi": "Đúng phải là \"Responding to change over following a plan\". Lựa chọn này bị đảo ngược.",
+  "en": "The real value is \"Responding to change over following a plan\"; this option reverses it.",
+  "src": "02#37"
+ },
+ {
+  "id": "w2-23",
+  "w": 2,
+  "q": "The Agile Manifesto consists of:",
+  "o": [
+   "4 values and 12 principles",
+   "5 values and 10 principles",
+   "3 values and 12 practices",
+   "12 values and 4 principles"
+  ],
+  "a": 0,
+  "vi": "4 giá trị nền tảng + 12 nguyên tắc.",
+  "en": "4 foundational values and 12 supporting principles.",
+  "src": "02#36"
+ },
+ {
+  "id": "w2-24",
+  "w": 2,
+  "q": "The philosophy of Extreme Programming (XP) is to:",
+  "o": [
+   "Document everything before coding",
+   "Take known good practices and push them to extremes",
+   "Avoid customer involvement",
+   "Use long iterations of several months"
+  ],
+  "a": 1,
+  "vi": "XP: lấy các good practice đã biết và đẩy đến mức cực đoan.",
+  "en": "XP takes known good practices and pushes them to extremes.",
+  "src": "02#43"
+ },
+ {
+  "id": "w2-25",
+  "w": 2,
+  "q": "Which of the following is NOT one of the 12 XP practices?",
+  "o": [
+   "Pair Programming",
+   "40-hour Week",
+   "Daily Scrum",
+   "On-site Customer"
+  ],
+  "a": 2,
+  "vi": "Daily Scrum là event của Scrum, không phải XP practice.",
+  "en": "Daily Scrum is a Scrum event, not an XP practice.",
+  "src": "02#46"
+ },
+ {
+  "id": "w2-26",
+  "w": 2,
+  "q": "According to the Scrum Guide 2020, a Sprint lasts:",
+  "o": [
+   "Exactly 2 weeks",
+   "One month or less",
+   "Between 1 and 3 months",
+   "As long as the Product Owner decides"
+  ],
+  "a": 1,
+  "vi": "Sprint ≤ 1 tháng (thường 2 tuần), chứa mọi event khác. \"Đúng 2 tuần\" là bẫy.",
+  "en": "A Sprint is one month or less (commonly 2 weeks) and contains all other events.",
+  "src": "02#54"
+ },
+ {
+  "id": "w2-27",
+  "w": 2,
+  "q": "The Daily Scrum is a 15-minute event for:",
+  "o": [
+   "The Product Owner to report to stakeholders",
+   "The Developers to inspect progress toward the Sprint Goal",
+   "The Scrum Master to assign tasks",
+   "Managers to review performance"
+  ],
+  "a": 1,
+  "vi": "Daily Scrum: 15 phút, cho Developers kiểm tra tiến độ hướng tới Sprint Goal.",
+  "en": "Daily Scrum: 15 minutes for the Developers to inspect progress toward the Sprint Goal.",
+  "src": "02#54"
+ },
+ {
+  "id": "w2-28",
+  "w": 2,
+  "q": "In the Scrum Guide 2020, the commitment for the Increment is:",
+  "o": [
+   "The Product Goal",
+   "The Sprint Goal",
+   "The Definition of Done",
+   "The burndown chart"
+  ],
+  "a": 2,
+  "vi": "Product Backlog ↔ Product Goal; Sprint Backlog ↔ Sprint Goal; Increment ↔ Definition of Done.",
+  "en": "Product Backlog ↔ Product Goal; Sprint Backlog ↔ Sprint Goal; Increment ↔ Definition of Done.",
+  "src": "02#54"
+ },
+ {
+  "id": "w2-29",
+  "w": 2,
+  "q": "The Product Goal is the commitment for which artifact?",
+  "o": [
+   "Product Backlog",
+   "Sprint Backlog",
+   "Increment",
+   "Definition of Done"
+  ],
+  "a": 0,
+  "vi": "Product Goal là commitment của Product Backlog.",
+  "en": "The Product Goal is the commitment for the Product Backlog.",
+  "src": "02#54"
+ },
+ {
+  "id": "w2-30",
+  "w": 2,
+  "q": "Which statement about burndown charts is TRUE according to the lecture?",
+  "o": [
+   "They are a required Scrum artifact",
+   "They are a common practice but not required by the Scrum Guide",
+   "They replace the Sprint Backlog",
+   "They are only used in Kanban"
+  ],
+  "a": 1,
+  "vi": "Burndown chart là thói quen phổ biến, không bắt buộc theo Scrum Guide.",
+  "en": "A burndown chart is a common practice, not required by the Scrum Guide.",
+  "src": "02#54"
+ },
+ {
+  "id": "w2-31",
+  "w": 2,
+  "q": "According to the Scrum Guide 2020, which of the following is NOT an accountability in a Scrum Team?",
+  "o": [
+   "Product Owner",
+   "Scrum Master",
+   "Developers",
+   "Project Manager"
+  ],
+  "a": 3,
+  "vi": "Chỉ có 3 trách nhiệm: PO, SM, Developers. Không có manager hay team lead trong Scrum.",
+  "en": "Only three accountabilities: Product Owner, Scrum Master, Developers. No manager or team lead inside Scrum.",
+  "src": "02#59"
+ },
+ {
+  "id": "w2-32",
+  "w": 2,
+  "q": "In Scrum, who orders the Product Backlog and defines the Product Goal?",
+  "o": [
+   "Scrum Master",
+   "Developers",
+   "Product Owner",
+   "Stakeholders"
+  ],
+  "a": 2,
+  "vi": "Product Owner: tối đa hoá giá trị, định nghĩa Product Goal, sắp thứ tự Product Backlog.",
+  "en": "Product Owner: maximizes value, defines the Product Goal, orders the Product Backlog.",
+  "src": "02#59"
+ },
+ {
+  "id": "w2-33",
+  "w": 2,
+  "q": "In Scrum, who coaches the team and organization and removes impediments?",
+  "o": [
+   "Product Owner",
+   "Scrum Master",
+   "Developers",
+   "Project Manager"
+  ],
+  "a": 1,
+  "vi": "Scrum Master: thiết lập Scrum, coach team và tổ chức, gỡ impediments.",
+  "en": "Scrum Master: establishes Scrum, coaches the team and organization, removes impediments.",
+  "src": "02#59"
+ },
+ {
+  "id": "w2-34",
+  "w": 2,
+  "q": "Which of the following is NOT a Scrum event according to the lecture?",
+  "o": [
+   "Sprint Review",
+   "Sprint Retrospective",
+   "Daily Scrum",
+   "Release Planning"
+  ],
+  "a": 3,
+  "vi": "Release planning là thói quen phổ biến nhưng không phải Scrum event.",
+  "en": "Release planning is a common practice but not a Scrum event.",
+  "src": "02#60"
+ },
+ {
+  "id": "w2-35",
+  "w": 2,
+  "q": "Which Scrum event is used to inspect how the team worked and plan improvements?",
+  "o": [
+   "Sprint Planning",
+   "Sprint Review",
+   "Sprint Retrospective",
+   "Daily Scrum"
+  ],
+  "a": 2,
+  "vi": "Retrospective: xem lại cách team làm việc. Review: xem Increment cùng stakeholders.",
+  "en": "Retrospective: inspect how the team worked. Review: inspect the Increment with stakeholders.",
+  "src": "02#60"
+ },
+ {
+  "id": "w2-36",
+  "w": 2,
+  "q": "A Scrum Team is typically:",
+  "o": [
+   "10 or fewer people",
+   "Exactly 7 people",
+   "At least 15 people",
+   "Led by a team lead"
+  ],
+  "a": 0,
+  "vi": "Một Scrum Team thường 10 người trở xuống, tự quản.",
+  "en": "One Scrum Team, typically 10 or fewer people, self-managing.",
+  "src": "02#59"
+ },
+ {
+  "id": "w2-37",
+  "w": 2,
+  "q": "Kanban was introduced by whom for material production?",
+  "o": [
+   "David J. Anderson at Microsoft",
+   "Taiichi Ohno at Toyota",
+   "Ken Schwaber at Toyota",
+   "Kent Beck at Chrysler"
+  ],
+  "a": 1,
+  "vi": "Taiichi Ohno (Toyota) giới thiệu Kanban; David J. Anderson áp dụng cho phần mềm khoảng 2004.",
+  "en": "Taiichi Ohno introduced Kanban at Toyota; David J. Anderson applied it to software around 2004.",
+  "src": "02#62"
+ },
+ {
+  "id": "w2-38",
+  "w": 2,
+  "q": "Who applied Kanban to software development around 2004?",
+  "o": [
+   "Taiichi Ohno",
+   "Jeff Sutherland",
+   "David J. Anderson",
+   "Grady Booch"
+  ],
+  "a": 2,
+  "vi": "David J. Anderson, khoảng năm 2004.",
+  "en": "David J. Anderson, around 2004.",
+  "src": "02#63"
+ },
+ {
+  "id": "w2-39",
+  "w": 2,
+  "q": "Which is a core practice of Kanban?",
+  "o": [
+   "Fixed-length sprints",
+   "Limit work in progress (WIP)",
+   "Daily Scrum",
+   "Pair programming"
+  ],
+  "a": 1,
+  "vi": "Core practices: visualize the flow, limit WIP, dùng reports/charts (cumulative flow diagram).",
+  "en": "Core practices: visualize the flow of work, limit WIP, use reports and charts (cumulative flow diagram).",
+  "src": "02#69"
+ },
+ {
+  "id": "w2-40",
+  "w": 2,
+  "q": "Which chart does Kanban use to visualize progress?",
+  "o": [
+   "Gantt chart",
+   "Cumulative flow diagram",
+   "Burndown chart",
+   "Pareto chart"
+  ],
+  "a": 1,
+  "vi": "Kanban dùng cumulative flow diagram.",
+  "en": "Kanban uses the cumulative flow diagram.",
+  "src": "02#70"
+ },
+ {
+  "id": "w2-41",
+  "w": 2,
+  "q": "Which statement about Kanban is TRUE?",
+  "o": [
+   "It uses fixed-length iterations like Scrum",
+   "It has no iteration like Scrum",
+   "It requires changing roles immediately",
+   "It is a plan-driven method"
+  ],
+  "a": 1,
+  "vi": "Kanban không có iteration như Scrum: xong một item thì thêm item mới.",
+  "en": "Kanban has no iteration like Scrum: when an item is completed, a new item is added.",
+  "src": "02#71"
+ },
+ {
+  "id": "w2-42",
+  "w": 2,
+  "q": "Which is one of Kanban's four principles?",
+  "o": [
+   "Replace all current processes on day one",
+   "Respect current roles, responsibilities and job titles",
+   "Only senior managers may lead",
+   "Always work in two-week cycles"
+  ],
+  "a": 1,
+  "vi": "4 principles: start with what you do now; incremental, evolutionary change; respect current roles; leadership at all levels.",
+  "en": "Four principles: start with what you do now; incremental, evolutionary change; respect current roles; leadership at all levels.",
+  "src": "02#67"
+ },
+ {
+  "id": "w2-43",
+  "w": 2,
+  "q": "Which format is used for a user story in the lecture?",
+  "o": [
+   "Given [context], When [action], Then [result]",
+   "As a [user], I want [goal], so that [benefit]",
+   "If [condition] then [system shall]",
+   "[Actor] <<include>> [use case]"
+  ],
+  "a": 1,
+  "vi": "User story: As a [user], I want [goal], so that [benefit]. Given/When/Then là acceptance criteria.",
+  "en": "User story: As a [user], I want [goal], so that [benefit]. Given/When/Then is for acceptance criteria.",
+  "src": "02#58"
+ },
+ {
+  "id": "w2-44",
+  "w": 2,
+  "q": "Which abbreviation is expanded INCORRECTLY?",
+  "o": [
+   "CMMI = Capability Maturity Model Integration",
+   "RUP = Rapid Unified Process",
+   "XP = Extreme Programming",
+   "WIP = Work in progress"
+  ],
+  "a": 1,
+  "vi": "RUP = Rational Unified Process, không phải \"Rapid\". Các cách viết còn lại đều đúng.",
+  "en": "RUP = Rational Unified Process, not \"Rapid\". The other expansions are correct.",
+  "src": "02#10, 02#30, 02#43, 02#69",
+  "ng": 1
+ },
+ {
+  "id": "w2-45",
+  "w": 2,
+  "q": "In \"CMMI\", the final \"I\" stands for:",
+  "o": [
+   "Improvement",
+   "Institute",
+   "Integration",
+   "Index"
+  ],
+  "a": 2,
+  "vi": "CMMI = Capability Maturity Model Integration. Bẫy: CMMI dùng để process improvement và do SEI (Institute) phát triển, nhưng chữ I cuối là Integration.",
+  "en": "CMMI = Capability Maturity Model Integration. Trap: CMMI is about process improvement and came from SEI (an Institute), but the final I is Integration.",
+  "src": "02#10",
+  "ng": 1
+ },
+ {
+  "id": "w3-01",
+  "w": 3,
+  "q": "A research project produces mainly:",
+  "o": [
+   "A product",
+   "A benefit",
+   "Knowledge",
+   "A contract"
+  ],
+  "a": 2,
+  "vi": "Production → product; Investment → benefit; Research → knowledge.",
+  "en": "Production → product; Investment → benefit; Research → knowledge.",
+  "src": "03#4"
+ },
+ {
+  "id": "w3-02",
+  "w": 3,
+  "q": "Which three project factors are shown in the lecture?",
+  "o": [
+   "Scope, Time, Budget",
+   "People, Tools, Process",
+   "Quality, Risk, Cost",
+   "Plan, Do, Check"
+  ],
+  "a": 0,
+  "vi": "Ba yếu tố dự án: Scope, Time, Budget.",
+  "en": "The project factors are Scope, Time and Budget.",
+  "src": "03#4"
+ },
+ {
+  "id": "w3-03",
+  "w": 3,
+  "q": "Which is a reason why software projects are different and hard to manage?",
+  "o": [
+   "Software is intangible",
+   "Software never changes",
+   "Software processes are fixed",
+   "Software does not depend on people"
+  ],
+  "a": 0,
+  "vi": "Software vô hình, linh hoạt, process linh hoạt, phụ thuộc yếu tố con người.",
+  "en": "Software is intangible and flexible, processes are flexible, and projects depend on human factors.",
+  "src": "03#5"
+ },
+ {
+  "id": "w3-04",
+  "w": 3,
+  "q": "Which role mainly focuses on technical quality, team capability, architecture and engineering process?",
+  "o": [
+   "Project Manager",
+   "Engineering Manager",
+   "Team Lead",
+   "Product Owner"
+  ],
+  "a": 1,
+  "vi": "Project Manager: scope, schedule, cost, risk. Engineering Manager: chất lượng kỹ thuật, năng lực team. Team Lead: điều phối kỹ thuật hằng ngày.",
+  "en": "PM: scope, schedule, cost, risks. Engineering Manager: technical quality, team capability. Team Lead: daily technical coordination.",
+  "src": "03#9"
+ },
+ {
+  "id": "w3-05",
+  "w": 3,
+  "q": "Which role handles daily technical coordination, task assignment and code/design support?",
+  "o": [
+   "Project Manager",
+   "Engineering Manager",
+   "Team Lead",
+   "Program Manager"
+  ],
+  "a": 2,
+  "vi": "Team Lead: điều phối kỹ thuật hằng ngày, giao task, hỗ trợ code/design.",
+  "en": "Team Lead: daily technical coordination, task assignment, code/design support.",
+  "src": "03#9"
+ },
+ {
+  "id": "w3-06",
+  "w": 3,
+  "q": "A feasibility report and project proposal are key outputs of which management activity?",
+  "o": [
+   "Initiation",
+   "Planning",
+   "Executing",
+   "Tracking & Control"
+  ],
+  "a": 0,
+  "vi": "Initiation: vì sao làm dự án, có khả thi không → feasibility report, proposal.",
+  "en": "Initiation: why do this project, is it feasible → feasibility report, project proposal.",
+  "src": "03#10"
+ },
+ {
+  "id": "w3-07",
+  "w": 3,
+  "q": "Progress reports, issue logs and change requests are outputs of which activity?",
+  "o": [
+   "Initiation",
+   "Planning",
+   "Executing",
+   "Tracking & Control"
+  ],
+  "a": 3,
+  "vi": "Tracking & Control: đang ở đâu, có vấn đề gì, cần đổi gì.",
+  "en": "Tracking & Control: where are we, what problems occur, what should change.",
+  "src": "03#10"
+ },
+ {
+  "id": "w3-08",
+  "w": 3,
+  "q": "Which statement about project planning is correct?",
+  "o": [
+   "Planning is done once at the start",
+   "Planning is a continuous activity and plans are revised to reflect reality",
+   "Agile projects do not plan",
+   "Plans must never change"
+  ],
+  "a": 1,
+  "vi": "Planning liên tục từ đầu đến cuối dự án, kế hoạch được sửa theo thực tế. Agile plan theo release, sprint, ngày.",
+  "en": "Planning is continuous until the project ends and plans are revised. Agile plans in release, sprint and day horizons.",
+  "src": "03#13"
+ },
+ {
+  "id": "w3-09",
+  "w": 3,
+  "q": "Scope definition determines:",
+  "o": [
+   "Only the features that will be delivered",
+   "What the project will and will not deliver",
+   "The team's salary",
+   "The programming language"
+  ],
+  "a": 1,
+  "vi": "Scope: dự án sẽ giao gì và không giao gì.",
+  "en": "Scope definition determines what the project will and will not deliver.",
+  "src": "03#16"
+ },
+ {
+  "id": "w3-10",
+  "w": 3,
+  "q": "According to the WBS rule of thumb, each work item should be clear enough to be:",
+  "o": [
+   "Coded in one day",
+   "Assigned, estimated and tracked",
+   "Approved by the customer",
+   "Tested automatically"
+  ],
+  "a": 1,
+  "vi": "Mỗi work item trong WBS phải đủ rõ để giao, ước lượng và theo dõi.",
+  "en": "Each WBS item should be clear enough to be assigned, estimated and tracked.",
+  "src": "03#17"
+ },
+ {
+  "id": "w3-11",
+  "w": 3,
+  "q": "An estimation approach that uses a formula based on product size and process characteristics is:",
+  "o": [
+   "Experience-based estimation",
+   "Algorithmic cost modeling",
+   "Planning Poker",
+   "Expert guessing"
+  ],
+  "a": 1,
+  "vi": "Algorithmic cost modeling: dùng công thức theo size và đặc điểm process.",
+  "en": "Algorithmic cost modeling uses a formula based on product attributes like size and process characteristics.",
+  "src": "03#20"
+ },
+ {
+  "id": "w3-12",
+  "w": 3,
+  "q": "Which size measure is independent of the programming language?",
+  "o": [
+   "Lines of Code (LOC)",
+   "Function Points (FP)",
+   "KLOC",
+   "Number of files"
+  ],
+  "a": 1,
+  "vi": "FP đo chức năng từ góc nhìn user, độc lập ngôn ngữ. LOC phụ thuộc ngôn ngữ.",
+  "en": "Function Points measure functionality from the user's perspective and are language-independent; LOC is language-dependent.",
+  "src": "03#21"
+ },
+ {
+  "id": "w3-13",
+  "w": 3,
+  "q": "In the COCOMO model shown in the lecture, effort is estimated as:",
+  "o": [
+   "$\\text{Effort} = a \\times (\\text{KLOC})^{b}$",
+   "$\\text{Effort} = c \\times (\\text{Duration})^{d}$",
+   "$\\text{Effort} = \\text{Cost} \\times \\text{rate}$",
+   "$\\text{Effort} = \\text{KLOC} / \\text{velocity}$"
+  ],
+  "a": 0,
+  "vi": "$\\text{Effort} = a \\times \\text{KLOC}^{b}$; $\\text{Duration} = c \\times \\text{Effort}^{d}$; $\\text{Cost} = \\text{Effort} \\times$ giá/man-month.",
+  "en": "$\\text{Effort} = a \\times \\text{KLOC}^{b}$; $\\text{Duration} = c \\times \\text{Effort}^{d}$; $\\text{Cost} = \\text{Effort} \\times \\text{cost per man-month}$.",
+  "src": "03#22"
+ },
+ {
+  "id": "w3-14",
+  "w": 3,
+  "q": "How is cost estimated in the lecture?",
+  "o": [
+   "$\\text{Cost} = \\text{Duration} \\times \\text{number of tasks}$",
+   "$\\text{Cost} = \\text{Effort} \\times (\\text{cost per man-month})$",
+   "$\\text{Cost} = \\text{KLOC} \\times \\text{velocity}$",
+   "$\\text{Cost} = \\text{Risk exposure} \\times \\text{loss}$"
+  ],
+  "a": 1,
+  "vi": "$\\text{Cost} = \\text{Effort} \\times$ chi phí mỗi man-month.",
+  "en": "$\\text{Cost} = \\text{Effort} \\times \\text{cost per man-month}$.",
+  "src": "03#22"
+ },
+ {
+  "id": "w3-15",
+  "w": 3,
+  "q": "A task needs 24 person-hours. One student works 3 hours/day on it. How many days does it take?",
+  "o": [
+   "3 days",
+   "6 days",
+   "8 days",
+   "24 days"
+  ],
+  "a": 2,
+  "vi": "24 / 3 = 8 ngày. Effort khác duration.",
+  "en": "24 / 3 = 8 days. Effort is not the same as duration.",
+  "src": "03#23"
+ },
+ {
+  "id": "w3-16",
+  "w": 3,
+  "q": "The remaining backlog is 120 story points and the average velocity is 20 points per sprint. About how many sprints are needed?",
+  "o": [
+   "4 sprints",
+   "6 sprints",
+   "12 sprints",
+   "20 sprints"
+  ],
+  "a": 1,
+  "vi": "Số sprint $\\approx 120 / 20 = 6$ sprint (12 tuần nếu sprint 2 tuần).",
+  "en": "$\\text{Sprints} \\approx 120 / 20 = 6$ sprints (12 weeks with 2-week sprints).",
+  "src": "03#24"
+ },
+ {
+  "id": "w3-17",
+  "w": 3,
+  "q": "Which statement about story points and velocity is correct?",
+  "o": [
+   "Velocity should be used to compare different teams",
+   "Story points compare items within one team; do not compare teams by velocity",
+   "Story points measure hours exactly",
+   "Velocity is set by the manager"
+  ],
+  "a": 1,
+  "vi": "Story points chỉ so sánh trong một team; không so velocity giữa các team.",
+  "en": "Story points compare items within one team; do not compare teams by velocity.",
+  "src": "03#24"
+ },
+ {
+  "id": "w3-18",
+  "w": 3,
+  "q": "According to the lecture, adding people to a late project:",
+  "o": [
+   "Always finishes it earlier",
+   "Makes it later because of communication overhead and extra training",
+   "Has no effect",
+   "Reduces risk"
+  ],
+  "a": 1,
+  "vi": "Thêm người vào dự án đang trễ làm nó trễ hơn (overhead giao tiếp, đào tạo thêm).",
+  "en": "Adding people to a late project makes it later: communication overheads and extra training.",
+  "src": "03#26"
+ },
+ {
+  "id": "w3-19",
+  "w": 3,
+  "q": "Results delivered to customers or users are called:",
+  "o": [
+   "Milestones",
+   "Deliverables",
+   "Work packages",
+   "Slack"
+  ],
+  "a": 1,
+  "vi": "Deliverable: kết quả giao cho khách/người dùng. Milestone: điểm kết thúc một giai đoạn.",
+  "en": "Deliverables are results delivered to customers or users; milestones are end-points of a period.",
+  "src": "03#27"
+ },
+ {
+  "id": "w3-20",
+  "w": 3,
+  "q": "The critical path is:",
+  "o": [
+   "The shortest chain of tasks",
+   "The longest chain of dependent tasks from start to finish",
+   "The path with the most people",
+   "The path with the highest cost"
+  ],
+  "a": 1,
+  "vi": "Critical path là chuỗi task phụ thuộc DÀI NHẤT, quyết định thời gian tối thiểu của dự án.",
+  "en": "The critical path is the LONGEST chain of dependent tasks; it determines the minimum project duration.",
+  "src": "03#31"
+ },
+ {
+  "id": "w3-21",
+  "w": 3,
+  "q": "Tasks on the critical path have:",
+  "o": [
+   "Maximum slack",
+   "Zero slack",
+   "Negative cost",
+   "No dependencies"
+  ],
+  "a": 1,
+  "vi": "$\\text{Slack} = \\text{latest start} - \\text{earliest start}$; task găng có slack = 0.",
+  "en": "$\\text{Slack} = \\text{latest start} - \\text{earliest start}$; critical tasks have zero slack.",
+  "src": "03#31"
+ },
+ {
+  "id": "w3-22",
+  "w": 3,
+  "q": "Tasks: T1 3d (none), T2 2d (T1), T3 2d (T1), T4 5d (T2, T3), T5 3d (T4), T6 1d (T5). What is the minimum project duration?",
+  "o": [
+   "11 days",
+   "14 days",
+   "16 days",
+   "10 days"
+  ],
+  "a": 1,
+  "vi": "T1→T2→T4→T5→T6 = 3+2+5+3+1 = 14; đường qua T3 cũng 14. Cả hai đều găng.",
+  "en": "T1→T2→T4→T5→T6 = 3+2+5+3+1 = 14; the path via T3 is also 14. Both are critical.",
+  "src": "03#31"
+ },
+ {
+  "id": "w3-23",
+  "w": 3,
+  "q": "In the same example (minimum 14 days), if T4 is delayed by 2 days, the project duration becomes:",
+  "o": [
+   "14 days",
+   "15 days",
+   "16 days",
+   "19 days"
+  ],
+  "a": 2,
+  "vi": "T4 nằm trên critical path nên trễ 2 ngày thì cả dự án trễ 2 ngày: 16.",
+  "en": "T4 is on the critical path, so a 2-day delay delays the project: 16 days.",
+  "src": "03#31"
+ },
+ {
+  "id": "w3-24",
+  "w": 3,
+  "q": "In the same example, if T2 is delayed by 1 day, the project duration becomes:",
+  "o": [
+   "14 days, because T3 runs in parallel",
+   "15 days, because T2 is on a critical path",
+   "13 days",
+   "17 days"
+  ],
+  "a": 1,
+  "vi": "Cả hai đường đều găng (slack = 0), nên T2 trễ 1 ngày thì dự án thành 15 ngày.",
+  "en": "Both paths are critical (zero slack), so a 1-day delay on T2 makes it 15 days.",
+  "src": "03#31"
+ },
+ {
+  "id": "w3-25",
+  "w": 3,
+  "q": "What is the correct order of risk management activities?",
+  "o": [
+   "Identification → Analysis → Planning → Monitoring",
+   "Analysis → Identification → Monitoring → Planning",
+   "Planning → Identification → Analysis → Monitoring",
+   "Monitoring → Planning → Analysis → Identification"
+  ],
+  "a": 0,
+  "vi": "Identify → Analyze → Plan → Monitor.",
+  "en": "Identification → Analysis → Planning → Monitoring.",
+  "src": "03#35"
+ },
+ {
+  "id": "w3-26",
+  "w": 3,
+  "q": "Risk exposure (RE) is calculated as:",
+  "o": [
+   "Probability + Loss",
+   "Probability × Loss",
+   "Loss / Probability",
+   "Probability × Duration"
+  ],
+  "a": 1,
+  "vi": "$\\text{RE} = \\text{Probability} \\times \\text{Loss}$.",
+  "en": "$\\text{RE} = \\text{Probability} \\times \\text{Loss}$.",
+  "src": "03#38"
+ },
+ {
+  "id": "w3-27",
+  "w": 3,
+  "q": "Using the lecture's scale (Unlikely 10, Seldom 25, Occasional 50, Likely 75, Frequently 90; Catastrophic 90), what is the RE of a Likely × Catastrophic risk?",
+  "o": [
+   "165",
+   "2,250",
+   "6,750",
+   "8,100"
+  ],
+  "a": 2,
+  "vi": "75 × 90 = 6,750.",
+  "en": "75 × 90 = 6,750.",
+  "src": "03#41"
+ },
+ {
+  "id": "w3-28",
+  "w": 3,
+  "q": "Using the lecture's scale (Occasional = 50, Serious = 75), what is the RE of an Occasional × Serious risk?",
+  "o": [
+   "125",
+   "2,250",
+   "3,750",
+   "5,625"
+  ],
+  "a": 2,
+  "vi": "50 × 75 = 3,750.",
+  "en": "50 × 75 = 3,750.",
+  "src": "03#41"
+ },
+ {
+  "id": "w3-29",
+  "w": 3,
+  "q": "\"Key staff are ill and unavailable at critical times\" is which type of risk?",
+  "o": [
+   "Technology",
+   "People",
+   "Organizational",
+   "Estimation"
+  ],
+  "a": 1,
+  "vi": "People risk: nhân sự ốm, không tuyển được người đủ kỹ năng, thiếu đào tạo.",
+  "en": "People risk: key staff ill, cannot recruit skilled staff, training unavailable.",
+  "src": "03#37"
+ },
+ {
+  "id": "w3-30",
+  "w": 3,
+  "q": "\"The database cannot process as many transactions per second as expected\" is which type of risk?",
+  "o": [
+   "Technology",
+   "People",
+   "Requirements",
+   "Estimation"
+  ],
+  "a": 0,
+  "vi": "Technology risk.",
+  "en": "Technology risk.",
+  "src": "03#37"
+ },
+ {
+  "id": "w3-31",
+  "w": 3,
+  "q": "\"The size of the software is underestimated\" is which type of risk?",
+  "o": [
+   "Organizational",
+   "Requirements",
+   "Estimation",
+   "Technology"
+  ],
+  "a": 2,
+  "vi": "Estimation risk: ước lượng thiếu thời gian hoặc kích thước.",
+  "en": "Estimation risk: time or size underestimated.",
+  "src": "03#37"
+ },
+ {
+  "id": "w3-32",
+  "w": 3,
+  "q": "In risk planning, which plans are followed when a risk actually arises?",
+  "o": [
+   "Avoidance strategies",
+   "Minimization strategies",
+   "Contingency plans",
+   "Buying information"
+  ],
+  "a": 2,
+  "vi": "Contingency plans: kế hoạch dự phòng, dùng khi rủi ro xảy ra.",
+  "en": "Contingency plans are followed if risks arise.",
+  "src": "03#42"
+ },
+ {
+  "id": "w3-33",
+  "w": 3,
+  "q": "In the software risks table, \"Product competition\" mainly affects the:",
+  "o": [
+   "Project",
+   "Product",
+   "Business",
+   "Process"
+  ],
+  "a": 2,
+  "vi": "Product competition và Technology change ảnh hưởng tới Business.",
+  "en": "Product competition and technology change affect the Business.",
+  "src": "03#34"
+ },
+ {
+  "id": "w3-34",
+  "w": 3,
+  "q": "Which practice is recommended for risk monitoring?",
+  "o": [
+   "Assess risks only at project start",
+   "Maintain a list of top-10 risks and review it regularly",
+   "Hide risks from management",
+   "Monitor only technology risks"
+  ],
+  "a": 1,
+  "vi": "Đánh giá rủi ro định kỳ, giữ danh sách top-10, rủi ro ưu tiên cao báo cáo hằng tuần.",
+  "en": "Assess risks regularly, maintain a top-10 list, and report high-priority risks weekly.",
+  "src": "03#45"
+ },
+ {
+  "id": "w3-35",
+  "w": 3,
+  "q": "In the lecture, a risk is defined as:",
+  "o": [
+   "A defect in the code",
+   "A probability that some adverse circumstance will occur",
+   "A missing requirement",
+   "A delayed task"
+  ],
+  "a": 1,
+  "vi": "Risk là xác suất một sự cố bất lợi xảy ra.",
+  "en": "A risk is a probability that some adverse circumstance will occur.",
+  "src": "03#33"
+ },
+ {
+  "id": "w3-36",
+  "w": 3,
+  "q": "Which pair of abbreviations is expanded correctly?",
+  "o": [
+   "WBS = Work Budget Sheet · CPM = Critical Path Method",
+   "WBS = Work Breakdown Structure · CPM = Cost Performance Metric",
+   "WBS = Weekly Build Schedule · CPM = Change Planning Model",
+   "WBS = Work Breakdown Structure · CPM = Critical Path Method"
+  ],
+  "a": 3,
+  "vi": "WBS = Work Breakdown Structure (03#17) · CPM = Critical Path Method (03#31).",
+  "en": "WBS = Work Breakdown Structure (03#17) · CPM = Critical Path Method (03#31).",
+  "src": "03#17, 03#31",
+  "ng": 1
+ },
+ {
+  "id": "w3-37",
+  "w": 3,
+  "q": "In $\\text{RE} = \\text{Probability} \\times \\text{Loss}$, RE means:",
+  "o": [
+   "Risk exposure",
+   "Requirements engineering",
+   "Risk elimination",
+   "Return on effort"
+  ],
+  "a": 0,
+  "vi": "RE = Risk exposure, dùng để xếp ưu tiên rủi ro. Requirements engineering là chủ đề bài 04, không liên quan công thức này.",
+  "en": "RE = Risk exposure, used to prioritize risks. Requirements engineering is lecture 04 and unrelated to this formula.",
+  "src": "03#38",
+  "ng": 1
+ },
+ {
+  "id": "w3-38",
+  "w": 3,
+  "q": "Which statement about LOC and FP is correct?",
+  "o": [
+   "LOC = Lines of Code, language-independent; FP = Function Points, language-dependent",
+   "LOC = Lines of Code, language-dependent; FP = Function Points, language-independent",
+   "LOC = Level of Complexity, language-dependent; FP = Function Points, language-independent",
+   "LOC = Lines of Code, language-dependent; FP = Feature Priority, language-independent"
+  ],
+  "a": 1,
+  "vi": "LOC = Lines of Code: đơn giản nhưng phụ thuộc ngôn ngữ. FP = Function Points: đo chức năng từ góc nhìn người dùng, độc lập ngôn ngữ.",
+  "en": "LOC = Lines of Code: simple but language-dependent. FP = Function Points: functionality from the user's view, language-independent.",
+  "src": "03#21",
+  "ng": 1
+ },
+ {
+  "id": "w4-01",
+  "w": 4,
+  "q": "Requirements specify:",
+  "o": [
+   "Only the user interface",
+   "The services that a system provides and the constraints for the system",
+   "The project budget",
+   "The programming language"
+  ],
+  "a": 1,
+  "vi": "Requirements = services hệ thống cung cấp + constraints.",
+  "en": "Requirements specify the services a system provides and its constraints.",
+  "src": "04#4"
+ },
+ {
+  "id": "w4-02",
+  "w": 4,
+  "q": "A system stakeholder is:",
+  "o": [
+   "Only the paying customer",
+   "Any person or organization who is affected by the system",
+   "Only the development team",
+   "Only end users"
+  ],
+  "a": 1,
+  "vi": "Stakeholder: bất kỳ người hay tổ chức nào bị hệ thống ảnh hưởng.",
+  "en": "Any person or organization who is affected by the system.",
+  "src": "04#5"
+ },
+ {
+  "id": "w4-03",
+  "w": 4,
+  "q": "In an ATM system, the account database is an example of which viewpoint?",
+  "o": [
+   "Interactor viewpoint",
+   "Indirect viewpoint",
+   "Domain viewpoint",
+   "Business viewpoint"
+  ],
+  "a": 0,
+  "vi": "Interactor: người hoặc hệ thống tương tác trực tiếp, gồm khách hàng VÀ account database.",
+  "en": "Interactor viewpoints are people or systems interacting directly: customers AND the account database.",
+  "src": "04#7"
+ },
+ {
+  "id": "w4-04",
+  "w": 4,
+  "q": "In an ATM system, management and security staff are which viewpoint?",
+  "o": [
+   "Interactor viewpoint",
+   "Indirect viewpoint",
+   "Domain viewpoint",
+   "External viewpoint"
+  ],
+  "a": 1,
+  "vi": "Indirect: không trực tiếp dùng hệ thống nhưng ảnh hưởng requirements.",
+  "en": "Indirect viewpoints don't use the system themselves but influence the requirements.",
+  "src": "04#7"
+ },
+ {
+  "id": "w4-05",
+  "w": 4,
+  "q": "Standards for inter-bank communications are an example of which viewpoint?",
+  "o": [
+   "Interactor",
+   "Indirect",
+   "Domain",
+   "Organizational"
+  ],
+  "a": 2,
+  "vi": "Domain viewpoint: đặc điểm và ràng buộc của lĩnh vực.",
+  "en": "Domain viewpoints are domain characteristics and constraints.",
+  "src": "04#7"
+ },
+ {
+  "id": "w4-06",
+  "w": 4,
+  "q": "Which statement describes system requirements?",
+  "o": [
+   "Natural-language statements from the user's point of view",
+   "A structured document detailing the system's functions, services and operational constraints",
+   "A marketing brochure",
+   "A list of stakeholders"
+  ],
+  "a": 1,
+  "vi": "User requirements: ngôn ngữ tự nhiên, góc nhìn user. System requirements: tài liệu có cấu trúc, chi tiết, góc nhìn kỹ thuật.",
+  "en": "User requirements: natural language, user's view. System requirements: structured, detailed, technical view.",
+  "src": "04#9"
+ },
+ {
+  "id": "w4-07",
+  "w": 4,
+  "q": "\"The user shall be able to search either all of the initial set of databases or select a subset from it\" is a:",
+  "o": [
+   "Functional requirement",
+   "Non-functional requirement",
+   "Domain requirement",
+   "Organizational requirement"
+  ],
+  "a": 0,
+  "vi": "Đây là ví dụ functional requirement của library system trên slide.",
+  "en": "This is the lecture's functional requirement example for the library system.",
+  "src": "04#14"
+ },
+ {
+  "id": "w4-08",
+  "w": 4,
+  "q": "\"There shall be a standard user interface to all databases which shall be based on the Z39.50 standard\" is a:",
+  "o": [
+   "Functional requirement",
+   "Non-functional product requirement",
+   "Domain requirement",
+   "User story"
+  ],
+  "a": 2,
+  "vi": "Ví dụ domain requirement của library system trên slide.",
+  "en": "The lecture's domain requirement example for the library system.",
+  "src": "04#23"
+ },
+ {
+  "id": "w4-09",
+  "w": 4,
+  "q": "Ethical, privacy and safety requirements belong to which non-functional requirement type?",
+  "o": [
+   "Product requirements",
+   "Organizational requirements",
+   "External requirements",
+   "Domain requirements"
+  ],
+  "a": 2,
+  "vi": "Product: usability, security, performance… Organizational: delivery, implementation, standards. External: ethical, privacy, safety.",
+  "en": "Product: usability, security, performance. Organizational: delivery, implementation, standards. External: ethical, privacy, safety.",
+  "src": "04#16"
+ },
+ {
+  "id": "w4-10",
+  "w": 4,
+  "q": "Delivery, implementation and standards requirements are which NFR type?",
+  "o": [
+   "Product",
+   "Organizational",
+   "External",
+   "Functional"
+  ],
+  "a": 1,
+  "vi": "Organizational requirements: delivery, implementation, standards.",
+  "en": "Organizational requirements: delivery, implementation, standards.",
+  "src": "04#16"
+ },
+ {
+  "id": "w4-11",
+  "w": 4,
+  "q": "Which is a VERIFIABLE non-functional requirement?",
+  "o": [
+   "The system should be easy to use",
+   "The system should minimize user errors",
+   "Experienced controllers shall be able to use all the system functions after a total of two hours training",
+   "The system should be user-friendly"
+  ],
+  "a": 2,
+  "vi": "Verifiable NFR phải có thước đo kiểm tra khách quan (2 giờ đào tạo). Các câu còn lại chỉ là goal.",
+  "en": "A verifiable NFR uses a measure that can be objectively tested (two hours of training); the others are goals.",
+  "src": "04#19"
+ },
+ {
+  "id": "w4-12",
+  "w": 4,
+  "q": "Which is NOT listed as a property of good functional requirements?",
+  "o": [
+   "Precision",
+   "Completeness",
+   "Consistency",
+   "Portability"
+  ],
+  "a": 3,
+  "vi": "FR tốt: precision, completeness, consistency. Portability là NFR.",
+  "en": "Good FRs: precision, completeness, consistency. Portability is an NFR.",
+  "src": "04#15"
+ },
+ {
+  "id": "w4-13",
+  "w": 4,
+  "q": "Which are the problems of domain requirements?",
+  "o": [
+   "Understandability and implicitness",
+   "Cost and speed",
+   "Security and privacy",
+   "Portability and compliance"
+  ],
+  "a": 0,
+  "vi": "Understandability: dùng ngôn ngữ của domain. Implicitness: chuyên gia domain quên nói rõ.",
+  "en": "Understandability (domain language) and implicitness (experts don't make them explicit).",
+  "src": "04#24"
+ },
+ {
+  "id": "w4-14",
+  "w": 4,
+  "q": "In the lecture's RE process (Feasibility study → Gathering → Specification → Validation), which activity is performed throughout the project rather than as one step in that sequence?",
+  "o": [
+   "Feasibility study",
+   "Requirements gathering",
+   "Requirements specification",
+   "Requirements management"
+  ],
+  "a": 3,
+  "vi": "Sơ đồ vẽ Requirements management tách riêng, vì quản lý thay đổi requirement được thực hiện xuyên suốt dự án.",
+  "en": "Requirements management is drawn separately because requirements change management is performed throughout the project.",
+  "src": "04#26, 04#57"
+ },
+ {
+  "id": "w4-15",
+  "w": 4,
+  "q": "Requirements gathering is also called:",
+  "o": [
+   "Requirements validation",
+   "Requirements elicitation or discovery",
+   "Requirements traceability",
+   "Requirements baselining"
+  ],
+  "a": 1,
+  "vi": "Requirements gathering = elicitation = discovery.",
+  "en": "Requirements gathering is also called elicitation or discovery.",
+  "src": "04#32"
+ },
+ {
+  "id": "w4-16",
+  "w": 4,
+  "q": "In MoSCoW, \"important but not vital; a workaround exists\" describes:",
+  "o": [
+   "Must have",
+   "Should have",
+   "Could have",
+   "Won't have (this time)"
+  ],
+  "a": 1,
+  "vi": "Must: thiếu là release fail. Should: quan trọng nhưng có cách lách. Could: có thì tốt. Won't: thoả thuận bỏ khỏi release này.",
+  "en": "Must: release fails without it. Should: important, workaround exists. Could: nice to have. Won't: agreed to leave out this release.",
+  "src": "04#35"
+ },
+ {
+  "id": "w4-17",
+  "w": 4,
+  "q": "In MoSCoW, \"Won't have (this time)\" means:",
+  "o": [
+   "The requirement is rejected forever",
+   "Agreed to leave out of this release",
+   "Nice to have if time allows",
+   "The release fails without it"
+  ],
+  "a": 1,
+  "vi": "Won't (this time): thoả thuận không làm trong release này, không phải bỏ vĩnh viễn.",
+  "en": "Won't (this time): agreed to leave out of this release, not rejected forever.",
+  "src": "04#35"
+ },
+ {
+  "id": "w4-18",
+  "w": 4,
+  "q": "Which gathering method has the limitation that it may interfere with the client's business?",
+  "o": [
+   "Interviewing",
+   "Observing",
+   "Questionnaires",
+   "Document analysis"
+  ],
+  "a": 1,
+  "vi": "Observing: tốn thời gian của dev team và có thể làm phiền hoạt động của khách. Interview tốn thời gian khách.",
+  "en": "Observing costs the development team's time and may interfere with the client's business. Interviews cost the client's time.",
+  "src": "04#37"
+ },
+ {
+  "id": "w4-19",
+  "w": 4,
+  "q": "Which gathering technique reaches many users quickly and is good for quantitative data?",
+  "o": [
+   "Workshops (JAD)",
+   "Questionnaires and surveys",
+   "Prototyping",
+   "Observation"
+  ],
+  "a": 1,
+  "vi": "Questionnaires/surveys: tiếp cận nhiều người nhanh, hợp dữ liệu định lượng.",
+  "en": "Questionnaires and surveys reach many users quickly and suit quantitative data.",
+  "src": "04#38"
+ },
+ {
+  "id": "w4-20",
+  "w": 4,
+  "q": "A software requirements document should state:",
+  "o": [
+   "HOW the system should do it",
+   "WHAT the system should do rather than HOW",
+   "Only the database design",
+   "Only the test cases"
+  ],
+  "a": 1,
+  "vi": "SRS nêu WHAT, không phải HOW.",
+  "en": "The SRS states WHAT the system should do rather than HOW.",
+  "src": "04#42"
+ },
+ {
+  "id": "w4-21",
+  "w": 4,
+  "q": "IEEE 830 (1998) has been replaced by:",
+  "o": [
+   "ISO 9001",
+   "ISO/IEC/IEEE 29148:2018",
+   "IEEE 1012",
+   "ISO/IEC 25010"
+  ],
+  "a": 1,
+  "vi": "IEEE 830 → ISO/IEC/IEEE 29148:2018.",
+  "en": "IEEE 830 was replaced by ISO/IEC/IEEE 29148:2018.",
+  "src": "04#43"
+ },
+ {
+  "id": "w4-22",
+  "w": 4,
+  "q": "In the INVEST criteria for user stories, \"E\" stands for:",
+  "o": [
+   "Efficient",
+   "Estimable",
+   "Explicit",
+   "Extensible"
+  ],
+  "a": 1,
+  "vi": "INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable.",
+  "en": "INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable.",
+  "src": "04#46"
+ },
+ {
+  "id": "w4-23",
+  "w": 4,
+  "q": "Acceptance criteria in the lecture are written in which format, and what do they become?",
+  "o": [
+   "As a/I want/so that; they become epics",
+   "Given/When/Then; they become acceptance test cases",
+   "MoSCoW; they become priorities",
+   "Include/Extend; they become use cases"
+  ],
+  "a": 1,
+  "vi": "Acceptance criteria viết dạng Given/When/Then và trở thành acceptance test cases.",
+  "en": "Acceptance criteria use Given/When/Then and become acceptance test cases.",
+  "src": "04#46"
+ },
+ {
+  "id": "w4-24",
+  "w": 4,
+  "q": "\"Can the requirements be implemented given available budget and technology?\" is which requirements check?",
+  "o": [
+   "Validity",
+   "Verifiability",
+   "Consistency",
+   "Realism"
+  ],
+  "a": 3,
+  "vi": "Realism: có làm được với ngân sách và công nghệ hiện có không.",
+  "en": "Realism: can they be implemented with the available budget and technology.",
+  "src": "04#51"
+ },
+ {
+  "id": "w4-25",
+  "w": 4,
+  "q": "\"Are there any requirements conflicts?\" is which requirements check?",
+  "o": [
+   "Completeness",
+   "Consistency",
+   "Validity",
+   "Realism"
+  ],
+  "a": 1,
+  "vi": "Consistency: có mâu thuẫn giữa các requirement không.",
+  "en": "Consistency: are there any requirement conflicts.",
+  "src": "04#51"
+ },
+ {
+  "id": "w4-26",
+  "w": 4,
+  "q": "\"Does the system provide the functions which best support the customer's needs?\" is which check?",
+  "o": [
+   "Validity",
+   "Verifiability",
+   "Completeness",
+   "Realism"
+  ],
+  "a": 0,
+  "vi": "Validity: chức năng có hỗ trợ tốt nhất nhu cầu khách không.",
+  "en": "Validity: does the system provide the functions that best support the customer's needs.",
+  "src": "04#51"
+ },
+ {
+  "id": "w4-27",
+  "w": 4,
+  "q": "Which requirements validation technique is the most common approach?",
+  "o": [
+   "Prototyping",
+   "Test-case generation",
+   "Requirements reviews",
+   "Formal proof"
+  ],
+  "a": 2,
+  "vi": "Requirements reviews: phân tích thủ công có hệ thống, phổ biến nhất.",
+  "en": "Requirements reviews (systematic manual analysis) are the most common approach.",
+  "src": "04#52"
+ },
+ {
+  "id": "w4-28",
+  "w": 4,
+  "q": "Developing tests for requirements to check their testability is called:",
+  "o": [
+   "Requirements reviews",
+   "Prototyping",
+   "Test-case generation",
+   "Traceability"
+  ],
+  "a": 2,
+  "vi": "Test-case generation: viết test cho requirement để kiểm tra tính testable.",
+  "en": "Test-case generation: developing tests for requirements to check testability.",
+  "src": "04#52"
+ },
+ {
+  "id": "w4-29",
+  "w": 4,
+  "q": "What are the main steps of requirements change management?",
+  "o": [
+   "Change request → Change analysis and costing → Change implementation",
+   "Change implementation → Change request → Review",
+   "Analysis → Design → Code",
+   "Plan → Do → Check → Act"
+  ],
+  "a": 0,
+  "vi": "Change request → change analysis & costing → change implementation.",
+  "en": "Change request → change analysis and costing → change implementation.",
+  "src": "04#57"
+ },
+ {
+  "id": "w4-30",
+  "w": 4,
+  "q": "A requirements traceability matrix is used for:",
+  "o": [
+   "Estimating effort",
+   "Impact analysis when requirements change and checking test coverage",
+   "Ranking stakeholders",
+   "Choosing a programming language"
+  ],
+  "a": 1,
+  "vi": "Traceability: liên kết requirement ↔ nguồn, design, test → impact analysis và kiểm tra test coverage.",
+  "en": "Traceability links requirements to sources, design and tests: used for impact analysis and test coverage.",
+  "src": "04#58"
+ },
+ {
+  "id": "w4-31",
+  "w": 4,
+  "q": "In RUP, the two main types of requirements documents are:",
+  "o": [
+   "Vision document and use-case specifications",
+   "User stories and burndown chart",
+   "SRS and Gantt chart",
+   "Product Backlog and Sprint Backlog"
+  ],
+  "a": 0,
+  "vi": "RUP: Vision document + use-case specs. Agile (Scrum, XP): Vision + user stories.",
+  "en": "RUP: Vision document and use-case specifications. Agile: vision and user stories.",
+  "src": "04#45"
+ },
+ {
+  "id": "w4-32",
+  "w": 4,
+  "q": "What is a key risk of AI-assisted requirements engineering mentioned in the lecture?",
+  "o": [
+   "AI cannot read documents",
+   "AI does not know your stakeholders and can invent plausible requirements",
+   "AI always refuses to write user stories",
+   "AI makes reviews unnecessary"
+  ],
+  "a": 1,
+  "vi": "AI không biết stakeholder của bạn, có thể bịa requirement nghe hợp lý → luôn validate với user thật.",
+  "en": "AI does not know your stakeholders and can invent plausible requirements; always validate with real users.",
+  "src": "04#47"
+ },
+ {
+  "id": "w4-33",
+  "w": 4,
+  "q": "Which abbreviation is expanded INCORRECTLY?",
+  "o": [
+   "NFR = Non-functional requirement",
+   "MoSCoW = Must / Should / Could / Won't have (this time)",
+   "SRS = System Requirements Standard",
+   "INVEST = Independent, Negotiable, Valuable, Estimable, Small, Testable"
+  ],
+  "a": 2,
+  "vi": "SRS = Software Requirements Specification. Các cách viết còn lại đều đúng.",
+  "en": "SRS = Software Requirements Specification. The other expansions are correct.",
+  "src": "04#12, 04#35, 04#42, 04#46, 04#58, 00",
+  "ng": 1
+ },
+ {
+  "id": "w4-34",
+  "w": 4,
+  "q": "\"Mean time to failure\" (MTTF) is a measure for which non-functional property?",
+  "o": [
+   "Robustness",
+   "Speed",
+   "Portability",
+   "Reliability"
+  ],
+  "a": 3,
+  "vi": "Reliability đo bằng MTTF, xác suất không sẵn sàng, tần suất lỗi, availability. Bẫy: Robustness đo bằng thời gian khởi động lại sau lỗi.",
+  "en": "Reliability: MTTF, probability of unavailability, rate of failure, availability. Trap: robustness is measured by time to restart after failure.",
+  "src": "04#20",
+  "ng": 1
+ },
+ {
+  "id": "w5-01",
+  "w": 5,
+  "q": "UML was created by unifying the work of:",
+  "o": [
+   "Schwaber, Sutherland and Beck",
+   "Booch, Rumbaugh and Jacobson",
+   "Ohno, Anderson and Deming",
+   "Boehm, Brooks and Royce"
+  ],
+  "a": 1,
+  "vi": "Grady Booch, James Rumbaugh, Ivar Jacobson (Rational Software).",
+  "en": "Grady Booch, James Rumbaugh and Ivar Jacobson of Rational Software.",
+  "src": "05#7"
+ },
+ {
+  "id": "w5-02",
+  "w": 5,
+  "q": "UML was adopted as a standard by the Object Management Group (OMG) in:",
+  "o": [
+   "1990",
+   "1997",
+   "2001",
+   "2007"
+  ],
+  "a": 1,
+  "vi": "OMG chuẩn hoá UML năm 1997.",
+  "en": "OMG adopted UML as a standard in 1997.",
+  "src": "05#7"
+ },
+ {
+  "id": "w5-03",
+  "w": 5,
+  "q": "A use case diagram belongs to which UML group?",
+  "o": [
+   "Structural (static) diagrams",
+   "Behavioral (dynamic) diagrams",
+   "Deployment diagrams",
+   "Package diagrams"
+  ],
+  "a": 1,
+  "vi": "Use case diagram thuộc nhóm behavioral (dynamic), cùng sequence, communication, state machine, activity.",
+  "en": "Use case diagrams are behavioral (dynamic), with sequence, communication, state machine and activity diagrams.",
+  "src": "05#8"
+ },
+ {
+  "id": "w5-04",
+  "w": 5,
+  "q": "Which of the following is a structural UML diagram?",
+  "o": [
+   "Sequence diagram",
+   "Activity diagram",
+   "Component diagram",
+   "Use case diagram"
+  ],
+  "a": 2,
+  "vi": "Structural: class, package, object, component, deployment.",
+  "en": "Structural: class, package, object, component, deployment.",
+  "src": "05#8"
+ },
+ {
+  "id": "w5-05",
+  "w": 5,
+  "q": "Which statement about actors is correct?",
+  "o": [
+   "One physical user can play only one actor",
+   "An actor represents a role; one physical user can play multiple roles",
+   "Actors must be people",
+   "Actors are internal classes of the system"
+  ],
+  "a": 1,
+  "vi": "Actor là một role; một người thật có thể đóng nhiều role; nhiều người cùng role là một actor; actor có thể là process hoặc hệ thống.",
+  "en": "An actor is a role; one user can play several roles; many users with the same role are one actor; actors can be processes or things.",
+  "src": "05#14"
+ },
+ {
+  "id": "w5-06",
+  "w": 5,
+  "q": "A use case specifies:",
+  "o": [
+   "HOW the system does something internally",
+   "WHAT the system does, but not HOW",
+   "The database schema",
+   "The class hierarchy"
+  ],
+  "a": 1,
+  "vi": "Use case nêu WHAT, không HOW; che giấu cấu trúc bên trong.",
+  "en": "A use case specifies WHAT the system does, not HOW; it hides internal structure.",
+  "src": "05#16"
+ },
+ {
+  "id": "w5-07",
+  "w": 5,
+  "q": "A use case description has:",
+  "o": [
+   "Only one flow",
+   "One main (basic) flow and alternative flows",
+   "Only exceptional flows",
+   "No flows, only actors"
+  ],
+  "a": 1,
+  "vi": "Một basic flow + alternative flows (alternative, exceptional paths).",
+  "en": "One main (basic) flow plus alternative flows (alternative and exceptional paths).",
+  "src": "05#17"
+ },
+ {
+  "id": "w5-08",
+  "w": 5,
+  "q": "A scenario is:",
+  "o": [
+   "A set of use cases",
+   "An instance of a use case: a specific sequence of events",
+   "An actor generalization",
+   "A UML structural diagram"
+  ],
+  "a": 1,
+  "vi": "Scenario là một instance cụ thể của use case (giống object so với class).",
+  "en": "A scenario is a specific sequence of events, an instance of a use case (like object vs class).",
+  "src": "05#20"
+ },
+ {
+  "id": "w5-09",
+  "w": 5,
+  "q": "Which statement about the INCLUDE relationship is correct?",
+  "o": [
+   "The included use case may stand alone",
+   "The base use case is not aware of the included use case",
+   "The base use case is aware of its included use case, and the included use case does not stand alone",
+   "Include is between an actor and a use case"
+  ],
+  "a": 2,
+  "vi": "Include: base BIẾT use case được include; use case được include không đứng một mình.",
+  "en": "Include: the base is aware of the included use case; the included use case does not stand alone.",
+  "src": "05#22"
+ },
+ {
+  "id": "w5-10",
+  "w": 5,
+  "q": "Which statement about the EXTEND relationship is correct?",
+  "o": [
+   "The base use case is aware of the extending use case",
+   "The extending use case may stand alone and the base is not aware of it",
+   "The extending use case cannot stand alone",
+   "Extend is between two actors"
+  ],
+  "a": 1,
+  "vi": "Extend: base KHÔNG biết use case mở rộng; use case mở rộng có thể đứng một mình.",
+  "en": "Extend: the base is not aware of the extending use case; the extending use case may stand alone.",
+  "src": "05#22"
+ },
+ {
+  "id": "w5-11",
+  "w": 5,
+  "q": "In the online shopping example, the <<extend>> arrow is drawn:",
+  "o": [
+   "From Checkout order to Verify shipping address",
+   "From Verify shipping address to Checkout order",
+   "From Customer to Verify shipping address",
+   "From Payment to Checkout order"
+  ],
+  "a": 1,
+  "vi": "Mũi tên extend đi từ use case mở rộng (Verify shipping address) về base (Checkout order).",
+  "en": "The extend arrow goes from the extending use case (Verify shipping address) to the base (Checkout order).",
+  "src": "05#23"
+ },
+ {
+  "id": "w5-12",
+  "w": 5,
+  "q": "In the online shopping example, what is the relationship from \"Checkout order\" to \"Payment\"?",
+  "o": [
+   "<<extend>>",
+   "<<include>>",
+   "Generalization",
+   "Association"
+  ],
+  "a": 1,
+  "vi": "Checkout order <<include>> Payment: thanh toán là phần bắt buộc của checkout.",
+  "en": "Checkout order <<include>> Payment: payment is an explicit part of checkout.",
+  "src": "05#23"
+ },
+ {
+  "id": "w5-13",
+  "w": 5,
+  "q": "In the Firefox example, \"Read web page loud\" relates to \"Load and Display web page\" by:",
+  "o": [
+   "<<include>>",
+   "<<extend>>",
+   "Generalization",
+   "Association"
+  ],
+  "a": 1,
+  "vi": "Read web page loud <<extend>> Load and Display web page (tuỳ chọn, base không biết).",
+  "en": "Read web page loud <<extend>> Load and Display web page (optional; the base is not aware).",
+  "src": "05#23"
+ },
+ {
+  "id": "w5-14",
+  "w": 5,
+  "q": "According to the notes on use case diagrams, a well-defined use case should:",
+  "o": [
+   "Put all variations into the base use case",
+   "Include common behavior from included use cases and distribute variations into extending use cases",
+   "Avoid include and extend",
+   "Contain every actor of the system"
+  ],
+  "a": 1,
+  "vi": "Hành vi chung → include; biến thể → extend.",
+  "en": "Common behavior goes into included use cases; variations into extending use cases.",
+  "src": "05#24"
+ },
+ {
+  "id": "w5-15",
+  "w": 5,
+  "q": "Which statement correctly contrasts UI and UX?",
+  "o": [
+   "UI covers the user's overall experience; UX is the look and feel",
+   "UI refers to the interactivity, look and feel of a screen; UX covers the user's overall experience with the product",
+   "UI and UX are identical",
+   "UX is only about colors"
+  ],
+  "a": 1,
+  "vi": "UI: tương tác, look & feel của màn hình. UX: toàn bộ trải nghiệm với sản phẩm.",
+  "en": "UI: interactivity, look and feel of a screen. UX: the user's overall experience with the product.",
+  "src": "05#29"
+ },
+ {
+  "id": "w5-16",
+  "w": 5,
+  "q": "According to the lecture, short-term memory can hold about how many chunks at a time?",
+  "o": [
+   "About 4 ± 1 (Miller's classic estimate: 7 ± 2)",
+   "Exactly 12",
+   "About 20",
+   "Unlimited"
+  ],
+  "a": 0,
+  "vi": "Khoảng 4 ± 1 chunk; ước lượng kinh điển của Miller là 7 ± 2.",
+  "en": "About 4 ± 1 chunks; Miller's classic estimate is 7 ± 2.",
+  "src": "05#30"
+ },
+ {
+  "id": "w5-17",
+  "w": 5,
+  "q": "\"Comparable operations should be activated in the same way\" is which UI design principle?",
+  "o": [
+   "User familiarity",
+   "Consistency",
+   "Minimal surprise",
+   "User diversity"
+  ],
+  "a": 1,
+  "vi": "Consistency: các thao tác tương tự được kích hoạt giống nhau.",
+  "en": "Consistency: comparable operations are activated in the same way.",
+  "src": "05#32"
+ },
+ {
+  "id": "w5-18",
+  "w": 5,
+  "q": "\"Users should never be surprised by the behavior of a system\" is which principle?",
+  "o": [
+   "Recoverability",
+   "Minimal surprise",
+   "User guidance",
+   "Consistency"
+  ],
+  "a": 1,
+  "vi": "Minimal surprise.",
+  "en": "Minimal surprise.",
+  "src": "05#32"
+ },
+ {
+  "id": "w5-19",
+  "w": 5,
+  "q": "\"The interface should include mechanisms to allow users to recover from errors\" is which principle?",
+  "o": [
+   "Recoverability",
+   "User guidance",
+   "User familiarity",
+   "User diversity"
+  ],
+  "a": 0,
+  "vi": "Recoverability: có cơ chế để người dùng khôi phục sau lỗi.",
+  "en": "Recoverability: mechanisms to let users recover from errors.",
+  "src": "05#33"
+ },
+ {
+  "id": "w5-20",
+  "w": 5,
+  "q": "\"The interface should use terms and concepts drawn from the experience of the people who will make most use of the system\" is:",
+  "o": [
+   "Consistency",
+   "User familiarity",
+   "Minimal surprise",
+   "User guidance"
+  ],
+  "a": 1,
+  "vi": "User familiarity: dùng thuật ngữ quen thuộc với người dùng.",
+  "en": "User familiarity: use terms and concepts familiar to the main users.",
+  "src": "05#32"
+ },
+ {
+  "id": "w5-21",
+  "w": 5,
+  "q": "\"Provide meaningful feedback when errors occur and context-sensitive help\" is which principle?",
+  "o": [
+   "User guidance",
+   "Recoverability",
+   "User diversity",
+   "Consistency"
+  ],
+  "a": 0,
+  "vi": "User guidance: feedback có ý nghĩa khi lỗi và trợ giúp theo ngữ cảnh.",
+  "en": "User guidance: meaningful feedback on errors and context-sensitive help.",
+  "src": "05#33"
+ },
+ {
+  "id": "w5-22",
+  "w": 5,
+  "q": "In WCAG 2.2, a contrast ratio of at least 4.5:1 for text belongs to which POUR principle?",
+  "o": [
+   "Perceivable",
+   "Operable",
+   "Understandable",
+   "Robust"
+  ],
+  "a": 0,
+  "vi": "Perceivable: alt text, phụ đề, tương phản ≥ 4.5:1.",
+  "en": "Perceivable: text alternatives, captions, contrast ratio ≥ 4.5:1 for text.",
+  "src": "05#34"
+ },
+ {
+  "id": "w5-23",
+  "w": 5,
+  "q": "\"Everything works with a keyboard; targets large enough to tap\" belongs to which POUR principle?",
+  "o": [
+   "Perceivable",
+   "Operable",
+   "Understandable",
+   "Robust"
+  ],
+  "a": 1,
+  "vi": "Operable: dùng được bằng bàn phím, vùng bấm đủ lớn.",
+  "en": "Operable: everything works with a keyboard; targets large enough to tap.",
+  "src": "05#34"
+ },
+ {
+  "id": "w5-24",
+  "w": 5,
+  "q": "Which accessibility rule is stated in the lecture?",
+  "o": [
+   "Use color alone to signal errors",
+   "Never use color alone to convey meaning",
+   "Avoid keyboard navigation",
+   "Design desktop-only"
+  ],
+  "a": 1,
+  "vi": "Không bao giờ dùng mỗi màu sắc để truyền ý nghĩa.",
+  "en": "Never use color alone to convey meaning.",
+  "src": "05#34"
+ },
+ {
+  "id": "w5-25",
+  "w": 5,
+  "q": "Which interaction style requires users to learn syntax and options?",
+  "o": [
+   "Direct manipulation",
+   "Menu selection",
+   "Form fill-in",
+   "Command language"
+  ],
+  "a": 3,
+  "vi": "Command language: phải học cú pháp và tuỳ chọn.",
+  "en": "Command language: users must learn syntax and options.",
+  "src": "05#40"
+ },
+ {
+  "id": "w5-26",
+  "w": 5,
+  "q": "Which interaction style is used when data entry is required?",
+  "o": [
+   "Form fill-in",
+   "Direct manipulation",
+   "Natural language",
+   "Menu selection"
+  ],
+  "a": 0,
+  "vi": "Form fill-in: dùng khi cần nhập dữ liệu.",
+  "en": "Form fill-in is used when data entry is required.",
+  "src": "05#39"
+ },
+ {
+  "id": "w5-27",
+  "w": 5,
+  "q": "Which interaction style lets users directly make changes and see results?",
+  "o": [
+   "Command language",
+   "Direct manipulation",
+   "Form fill-in",
+   "Menu selection"
+  ],
+  "a": 1,
+  "vi": "Direct manipulation: thay đổi trực tiếp và thấy kết quả.",
+  "en": "Direct manipulation: users directly make changes and see results.",
+  "src": "05#37"
+ },
+ {
+  "id": "w5-28",
+  "w": 5,
+  "q": "Digital presentation of information is best for:",
+  "o": [
+   "Showing relative values",
+   "Precise values using little screen space",
+   "Revealing trends in large data",
+   "Decoration"
+  ],
+  "a": 1,
+  "vi": "Digital: giá trị chính xác, ít chỗ. Analogue: thể hiện giá trị tương đối.",
+  "en": "Digital: precise values, little screen space. Analogue: relative values.",
+  "src": "05#42"
+ },
+ {
+  "id": "w5-29",
+  "w": 5,
+  "q": "What is the order of the UI design process in the lecture?",
+  "o": [
+   "System prototyping → User analysis → Interface evaluation",
+   "User analysis → System prototyping → Interface evaluation",
+   "Interface evaluation → User analysis → System prototyping",
+   "User analysis → Interface evaluation → System prototyping"
+  ],
+  "a": 1,
+  "vi": "User analysis → System prototyping → Interface evaluation.",
+  "en": "User analysis → System prototyping → Interface evaluation.",
+  "src": "05#45"
+ },
+ {
+  "id": "w5-30",
+  "w": 5,
+  "q": "Which user analysis technique observes the user at work?",
+  "o": [
+   "Task analysis",
+   "Interviewing",
+   "Ethnography",
+   "Questionnaires"
+  ],
+  "a": 2,
+  "vi": "Ethnography: quan sát người dùng khi làm việc.",
+  "en": "Ethnography observes the user at work.",
+  "src": "05#46"
+ },
+ {
+  "id": "w5-31",
+  "w": 5,
+  "q": "System prototyping is described as a two-stage process of:",
+  "o": [
+   "Coding then testing",
+   "Paper prototypes then automated prototypes",
+   "Wireframes then deployment",
+   "Interview then survey"
+  ],
+  "a": 1,
+  "vi": "Hai giai đoạn: paper prototypes → automated prototypes.",
+  "en": "Two stages: paper prototypes, then automated prototypes.",
+  "src": "05#47"
+ },
+ {
+  "id": "w5-32",
+  "w": 5,
+  "q": "According to the lecture, error messages should be:",
+  "o": [
+   "Short, technical and red",
+   "Polite, concise, consistent and constructive",
+   "Funny and surprising",
+   "Shown only in logs"
+  ],
+  "a": 1,
+  "vi": "Thông báo lỗi: polite, concise, consistent, constructive; dựa trên nền tảng và kinh nghiệm người dùng.",
+  "en": "Messages should be polite, concise, consistent and constructive, based on users' background and experience.",
+  "src": "05#54"
+ },
+ {
+  "id": "w5-33",
+  "w": 5,
+  "q": "Which is NOT one of the usability attributes used in interface evaluation?",
+  "o": [
+   "Learnability",
+   "Speed of operation",
+   "Profitability",
+   "Adaptability"
+  ],
+  "a": 2,
+  "vi": "Usability attributes: learnability, speed of operation, robustness, recoverability, adaptability.",
+  "en": "Usability attributes: learnability, speed of operation, robustness, recoverability, adaptability.",
+  "src": "05#49"
+ },
+ {
+  "id": "w5-34",
+  "w": 5,
+  "q": "Which is listed as a common mistake in using color in interface design?",
+  "o": [
+   "Limiting the number of colors",
+   "Using color to communicate meaning",
+   "Using color change to show status change",
+   "Using color consistently"
+  ],
+  "a": 1,
+  "vi": "Sai lầm thường gặp: dùng màu để truyền ý nghĩa và lạm dụng màu.",
+  "en": "Common mistakes: using color to communicate meaning and over-using color.",
+  "src": "05#52"
+ },
+ {
+  "id": "w5-35",
+  "w": 5,
+  "q": "Which principle of data validation does the lecture state?",
+  "o": [
+   "Trust user input to save time",
+   "Do not trust the users; check all user input data",
+   "Validate only on the server once a day",
+   "Skip business constraints"
+  ],
+  "a": 1,
+  "vi": "Không tin người dùng, kiểm tra mọi dữ liệu nhập; ràng buộc natural/business; early hoặc late checking.",
+  "en": "Do not trust the users; check all input; natural and business constraints; early or late checking.",
+  "src": "05#57"
+ },
+ {
+  "id": "w5-36",
+  "w": 5,
+  "q": "Which abbreviation is expanded INCORRECTLY?",
+  "o": [
+   "UML = Universal Modeling Language",
+   "OMG = Object Management Group",
+   "BPMN = Business Process Model and Notation",
+   "UX = User experience"
+  ],
+  "a": 0,
+  "vi": "UML = Unified Modeling Language, không phải \"Universal\". Các cách viết còn lại đều đúng.",
+  "en": "UML = Unified Modeling Language, not \"Universal\". The other expansions are correct.",
+  "src": "05#6, 05#7, 05#29",
+  "ng": 1
+ },
+ {
+  "id": "w5-37",
+  "w": 5,
+  "q": "In WCAG 2.2, the \"R\" in POUR stands for:",
+  "o": [
+   "Responsive",
+   "Robust",
+   "Readable",
+   "Reliable"
+  ],
+  "a": 1,
+  "vi": "POUR = Perceivable, Operable, Understandable, Robust. Robust: HTML ngữ nghĩa, chạy được với screen reader. Bẫy: slide cũng nói thiết kế responsive, nhưng đó không phải chữ R.",
+  "en": "POUR = Perceivable, Operable, Understandable, Robust. Robust: semantic HTML, works with screen readers. Trap: the slide also says design responsive, but that is not the R.",
+  "src": "05#34",
+  "ng": 1
+ }
+]

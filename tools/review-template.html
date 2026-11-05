@@ -1,0 +1,1099 @@
+<title>SE Quest Ôn Giữa Kỳ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Silkscreen&family=VT323&display=swap">
+<style>
+/* Layout: pixel overworld (W1–W5 + midterm boss) → world screen with an RPG command menu (Mindmap / Flashcard / Quiz) → quiz runner → reward overlay. Light = day, dark = night. Pixel faces only for headings and short Latin HUD labels. */
+:root{
+  --bg:#bfe3f2; --fg:#1b2236; --muted:#43526d;
+  --panel:#22306e; --panel-2:#2e3e8a; --panel-fg:#f3f5ff; --panel-muted:#c3cbf0; --edge:#f3f5ff; --shadow:#0b1030;
+  --gold:#ffc93c; --good:#36d39a; --bad:#ff6b7d; --rare:#7cc8ff; --legend:#ff9f43;
+  --water:#3f93d9; --water-2:#6fb6ec; --sand:#efd48a; --grass:#5dbb47; --grass-2:#3c9338; --tree:#25692f; --path:#7a5b2e; --castle:#8c93a8; --castle-2:#5d6480;
+  --f-display:"VT323", ui-monospace, monospace;
+  --f-hud:"Silkscreen", ui-monospace, monospace;
+  --f-body:"Be Vietnam Pro", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0c1330; --fg:#e7ebff; --muted:#a6b0d4;
+  --panel:#1a2560; --panel-2:#26337e; --panel-fg:#f3f5ff; --panel-muted:#b9c2ec; --edge:#cfd6ff; --shadow:#000418;
+  --gold:#ffd451; --good:#43e0a6; --bad:#ff7b8b; --rare:#8fd2ff; --legend:#ffb062;
+  --water:#13306a; --water-2:#2a4f98; --sand:#9b8a5c; --grass:#2f7a4c; --grass-2:#22603b; --tree:#123f25; --path:#e0c98d; --castle:#6a7190; --castle-2:#454b68;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0c1330; --fg:#e7ebff; --muted:#a6b0d4;
+  --panel:#1a2560; --panel-2:#26337e; --panel-fg:#f3f5ff; --panel-muted:#b9c2ec; --edge:#cfd6ff; --shadow:#000418;
+  --gold:#ffd451; --good:#43e0a6; --bad:#ff7b8b; --rare:#8fd2ff; --legend:#ffb062;
+  --water:#13306a; --water-2:#2a4f98; --sand:#9b8a5c; --grass:#2f7a4c; --grass-2:#22603b; --tree:#123f25; --path:#e0c98d; --castle:#6a7190; --castle-2:#454b68;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px dashed var(--gold);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:14px 56px;display:grid;gap:20px}
+
+.box{background:var(--panel);color:var(--panel-fg);box-shadow:inset 0 0 0 3px var(--edge),0 0 0 3px var(--shadow),6px 6px 0 3px var(--shadow);padding:18px 20px}
+.hud-label{font-family:var(--f-hud);font-size:12px;letter-spacing:.06em}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;text-wrap:balance;line-height:1.05}
+h2{font-size:36px} h3{font-size:28px}
+.muted{color:var(--muted)}
+.kw{font-weight:800;color:var(--gold)}
+.on-bg .kw{color:inherit;background:color-mix(in srgb,var(--gold) 45%,transparent);padding:0 3px}
+
+html{scroll-padding-top:calc(var(--hud-h,72px) + 12px)}
+/* HUD: sticks to the top so language, theme and home stay one tap away */
+.hud{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;position:sticky;top:0;z-index:10;background:var(--bg);
+  margin:-14px calc(-1 * max(16px,env(safe-area-inset-right,0px))) 0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding:max(10px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));transition:box-shadow .15s}
+.hud.stuck{box-shadow:0 3px 0 var(--shadow)}
+@media (max-width:560px){.hud{gap:8px 10px}.logo{font-size:28px!important}.rank{order:3;flex-basis:100%!important}.tools{margin-left:auto}}
+.logo{font-family:var(--f-display);font-size:38px;line-height:1;margin:0;color:var(--fg);text-shadow:3px 3px 0 var(--gold);border:0;background:none;padding:0}
+.rank{display:flex;align-items:center;gap:10px;flex:1 1 220px;min-width:0}
+.rank b{font-weight:800;font-size:14px;white-space:nowrap}
+.xpbar{flex:1;height:14px;background:var(--shadow);box-shadow:0 0 0 3px var(--shadow);position:relative;min-width:60px}
+.xpbar i{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(90deg,var(--good) 0 8px,color-mix(in srgb,var(--good) 72%,#000) 8px 10px);transition:width .8s steps(10)}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.pbtn{font-family:var(--f-body);font-weight:800;font-size:14px;background:var(--gold);color:#1b2236;border:0;padding:9px 14px;box-shadow:0 0 0 3px var(--shadow),inset -3px -3px 0 rgba(0,0,0,.25)}
+.pbtn:active{transform:translate(2px,2px)}
+.pbtn.ghost,.pbtn[aria-pressed="false"]{background:var(--panel-2);color:var(--panel-fg)}
+.pbtn:disabled{opacity:.5;cursor:default}
+.pbtn .kbd{font-weight:600;font-size:11px;margin-left:8px;padding:1px 5px;border:1px solid currentColor;border-radius:3px;opacity:.7}
+@media (hover: none){.pbtn .kbd{display:none}}
+
+/* Map */
+.boss{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.boss .cd{font-family:var(--f-display);font-size:44px;line-height:1;color:var(--gold)}
+.map{position:relative;aspect-ratio:16/8;max-width:100%;box-shadow:0 0 0 3px var(--shadow),6px 6px 0 3px var(--shadow);overflow:hidden}
+.map canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+.wnode{position:absolute;transform:translate(-50%,-50%);border:0;font-family:var(--f-body);font-weight:800;font-size:13px;padding:4px 9px;background:var(--panel);color:var(--panel-fg);box-shadow:0 0 0 2px var(--shadow);white-space:nowrap;display:flex;gap:6px;align-items:center}
+.wnode .st{color:var(--gold)}
+.wnode.done{background:var(--good);color:#06281c}.wnode.done .st{color:#06281c}
+.wnode.boss{background:var(--bad);color:#2a0710}
+.here{position:absolute;transform:translate(-50%,-100%);font-family:var(--f-display);font-size:30px;color:var(--gold);text-shadow:2px 2px 0 var(--shadow);animation:bob .7s steps(2) infinite;pointer-events:none}
+@keyframes bob{50%{margin-top:-6px}}
+@media (max-width:720px){.wnode .nm{display:none}}
+
+.worlds{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.wcard{display:grid;gap:8px;text-align:left;border:0;padding:16px 18px;background:var(--panel);color:var(--panel-fg);box-shadow:inset 0 0 0 2px var(--panel-2),0 0 0 3px var(--shadow),5px 5px 0 3px var(--shadow)}
+.wcard:hover{box-shadow:inset 0 0 0 2px var(--gold),0 0 0 3px var(--shadow),5px 5px 0 3px var(--shadow)}
+.wcard .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.wcard h3{font-size:26px}
+.wcard .vi{font-size:14px;color:var(--panel-muted)}
+.meter{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--panel-muted)}
+.pips{display:inline-flex;gap:5px}
+.pips i{width:12px;height:12px;background:var(--panel-2);box-shadow:0 0 0 2px var(--edge)}
+.pips i.on{background:var(--gold)}
+.tag{font-family:var(--f-hud);font-size:11px;padding:2px 6px;background:var(--panel-2);color:var(--panel-fg);white-space:nowrap}
+.tag.ok{background:var(--good);color:#06281c}.tag.gold{background:var(--gold);color:#1b2236}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.action{display:grid;gap:4px;text-align:left;border:0;padding:16px 18px;color:var(--panel-fg);box-shadow:0 0 0 3px var(--shadow),5px 5px 0 3px var(--shadow)}
+.action h3{font-size:28px}
+.action.exam{background:repeating-linear-gradient(45deg,var(--shadow) 0 10px,color-mix(in srgb,var(--bad) 40%,var(--shadow)) 10px 20px)}
+.action.rev{background:var(--panel-2)}
+.action small{font-size:14px;color:var(--panel-muted)}
+
+/* World */
+.crumb{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.world{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:760px){.world{grid-template-columns:1fr}}
+.menu{display:grid;gap:2px;padding:12px}
+@media (min-width:761px){.menu{position:sticky;top:calc(var(--hud-h,72px) + 14px)}}
+@media (max-width:760px){.menu{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:480px){.menu{grid-template-columns:repeat(2,1fr)}}
+.menu button{border:0;background:none;color:var(--panel-fg);text-align:left;padding:8px 8px 8px 26px;position:relative;font-weight:800;font-size:15px}
+.menu button::before{content:"▶";position:absolute;left:6px;visibility:hidden;color:var(--gold)}
+.menu button:hover::before,.menu button:focus-visible::before,.menu button[aria-current="true"]::before{visibility:visible}
+.menu button[aria-current="true"]{color:var(--gold)}
+.menu small{display:block;font-weight:400;font-size:12px;color:var(--panel-muted)}
+
+/* Mindmap */
+.mm{font-size:15px}
+.mm ul{list-style:none;margin:0;padding-left:16px;border-left:3px solid var(--panel-2)}
+.mm > ul{border:0;padding:0;display:grid;gap:8px}
+.mm li{padding:3px 0 3px 8px}
+.mm summary{cursor:pointer;font-weight:800;color:var(--gold);list-style:none;display:flex;gap:6px}
+.mm summary::-webkit-details-marker{display:none}
+.mm summary::before{content:"▼";font-size:11px;line-height:2;color:var(--panel-muted)}
+.mm details:not([open]) > summary::before{content:"▶"}
+.mm details details summary{color:var(--panel-fg)}
+.mm .root{font-family:var(--f-display);font-size:30px;color:var(--gold);margin-bottom:6px}
+.mm.test .leaf > span{filter:blur(5px);background:var(--panel-2);cursor:pointer;user-select:none}
+.mm.test .leaf > span.show{filter:none;background:none}
+.mmbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+
+/* Flashcards */
+.fc{display:grid;gap:16px;justify-items:center}
+.flip{width:min(460px,100%);min-height:280px;perspective:1000px;border:0;background:none;padding:0}
+.flip .in{position:relative;width:100%;min-height:280px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1.1);display:grid}
+.flip.on .in{transform:rotateY(180deg)}
+.face{grid-area:1/1;backface-visibility:hidden;background:var(--panel);color:var(--panel-fg);box-shadow:inset 0 0 0 4px var(--edge),0 0 0 4px var(--shadow),8px 8px 0 4px var(--shadow);padding:24px;display:grid;align-content:center;gap:12px;text-align:left}
+.face.front{text-align:center;justify-items:center}
+.face.front p{font-weight:800;font-size:24px;line-height:1.3;margin:0}
+.face.back{transform:rotateY(180deg);font-size:16px}
+.face.back p{margin:0}
+.fcnav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.src{font-size:12px;font-weight:600;color:var(--panel-muted)}
+
+/* Quiz */
+.qhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.hp{display:flex;gap:4px;flex-wrap:wrap}
+.hp i{width:14px;height:14px;background:var(--panel-2);box-shadow:0 0 0 2px var(--shadow)}
+.hp i.ok{background:var(--good)}.hp i.no{background:var(--bad)}.hp i.cur{background:var(--gold)}.hp i.ans{background:var(--panel-muted)}
+.q{font-weight:700;font-size:18px;line-height:1.5;margin:0 0 16px;max-width:66ch}
+.opts{display:grid;gap:10px}
+.opt{border:0;text-align:left;background:var(--panel-2);color:var(--panel-fg);padding:12px 14px 12px 44px;position:relative;box-shadow:0 0 0 2px var(--shadow);font-size:16px;line-height:1.45}
+.opt .l{position:absolute;left:12px;top:11px;font-family:var(--f-hud);font-size:13px;color:var(--gold)}
+.opt:hover:not(:disabled){box-shadow:0 0 0 2px var(--gold)}
+.opt.pick{box-shadow:0 0 0 3px var(--gold);background:color-mix(in srgb,var(--gold) 18%,var(--panel-2))}
+.opt.right{background:var(--good);color:#06281c}.opt.right .l{color:#06281c}
+.opt.wrong{background:var(--bad);color:#2a0710}.opt.wrong .l{color:#2a0710}
+.opt .mark{float:right;font-weight:800;font-size:12px;margin-left:10px;letter-spacing:.04em}
+.opt:disabled{cursor:default}
+.explain{margin-top:16px;border-top:2px dashed var(--panel-2);padding-top:12px;font-size:15px;color:var(--panel-fg)}
+.explain b{color:var(--gold)}
+.qfoot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap}
+.timer{font-family:var(--f-display);font-size:30px;color:var(--gold)}
+.timer.low{color:var(--bad)}
+
+/* Quiz hub */
+.qhub{display:grid;gap:18px}
+.qstat{display:grid;gap:8px}
+.cover{height:16px;background:var(--shadow);box-shadow:0 0 0 3px var(--shadow);position:relative}
+.cover i{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,color-mix(in srgb,var(--gold) 72%,#000) 8px 10px);transition:width .6s steps(8)}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.mode{display:grid;gap:4px;text-align:left;border:0;padding:14px 16px;background:var(--panel-2);color:var(--panel-fg);box-shadow:0 0 0 3px var(--shadow),4px 4px 0 3px var(--shadow)}
+.mode:hover{box-shadow:0 0 0 3px var(--gold),4px 4px 0 3px var(--shadow)}
+.mode:active{transform:translate(2px,2px)}
+.mode h3{font-family:var(--f-body);font-weight:800;font-size:18px;line-height:1.3}
+.mode small{font-size:13px;color:var(--panel-muted)}
+.mode.primary{background:var(--gold);color:#1b2236}.mode.primary small{color:#3a3f55}
+.note{margin:0;font-size:13px;color:var(--panel-muted)}
+
+/* Result */
+.result{display:grid;gap:18px}
+.score{font-family:var(--f-display);font-size:clamp(64px,16vw,110px);line-height:.9;color:var(--gold);text-shadow:4px 4px 0 var(--shadow);margin:0}
+.wrongs{display:grid;gap:12px}
+.wrongs .box{padding:14px 16px;font-size:15px}
+.wrongs p{margin:0 0 6px}
+
+/* Reward overlay */
+.ov{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:color-mix(in srgb,var(--shadow) 78%,transparent);padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.ov canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none}
+.stage{position:relative;display:grid;justify-items:center;gap:16px;text-align:center;max-width:440px;width:100%}
+.clear-t{font-family:var(--f-display);font-size:clamp(50px,12vw,84px);line-height:.9;margin:0;color:var(--gold);text-shadow:4px 4px 0 var(--shadow)}
+.card3d{width:220px;aspect-ratio:5/7;max-width:100%;perspective:900px}
+.card-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1.2)}
+.flipped .card-in{transform:rotateY(180deg)}
+.cface{position:absolute;inset:0;backface-visibility:hidden;box-shadow:inset 0 0 0 4px var(--edge),0 0 0 4px var(--shadow),8px 8px 0 4px var(--shadow)}
+.cback{background:repeating-conic-gradient(var(--panel) 0 25%,var(--panel-2) 0 50%) 0 0/24px 24px;display:grid;place-items:center}
+.cback span{font-family:var(--f-display);font-size:56px;color:var(--gold);text-shadow:3px 3px 0 var(--shadow)}
+.cfront{transform:rotateY(180deg);background:var(--panel);color:var(--panel-fg);display:grid;grid-template-rows:auto 1fr auto;padding:14px;text-align:left;gap:8px}
+.rar{font-family:var(--f-hud);font-size:11px;display:flex;justify-content:space-between}
+.rar b{color:var(--rare)}.rar b.leg{color:var(--legend)}
+.emblem{display:grid;place-items:center;background:var(--panel-2);box-shadow:inset 0 0 0 3px var(--shadow);font-family:var(--f-display);font-size:46px;color:var(--gold);text-align:center;line-height:1}
+.cfront h4{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0;line-height:1}
+.cfront p{margin:0;font-size:12px;line-height:1.45;color:var(--panel-muted)}
+.gain{font-weight:800;color:var(--panel-fg)}
+
+/* Collection */
+.coll{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.mini{padding:12px;display:grid;gap:4px;font-size:12px}
+.mini b{font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1}
+.mini.locked{opacity:.55}
+
+.foot{font-size:13px;color:var(--muted);margin:0}
+.toast{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;font-weight:800;font-size:14px;padding:10px 16px;background:var(--gold);color:#1b2236;box-shadow:0 0 0 3px var(--shadow)}
+
+/* Lessons */
+.learn{display:grid;gap:16px;min-width:0}
+.lvls{display:flex;flex-wrap:wrap;gap:8px}
+.lv{border:0;font-weight:800;font-size:14px;padding:6px 10px;background:var(--panel-2);color:var(--panel-fg);box-shadow:0 0 0 2px var(--shadow)}
+.lv:hover{box-shadow:0 0 0 2px var(--gold)}
+.lv.ok{box-shadow:0 0 0 2px var(--good)}
+.lv[aria-current="true"]{background:var(--gold);color:#1b2236}
+.lt{font-size:30px;margin-top:4px}
+.lc{display:grid;gap:12px;padding-top:16px;border-top:2px dashed var(--panel-2);min-width:0}
+.lc.real{padding:14px;border:2px dashed var(--gold);background:color-mix(in srgb,var(--gold) 7%,transparent)}
+.lc .tag{justify-self:start}
+.prose{font-size:16px;line-height:1.65;max-width:74ch;min-width:0}
+.prose p{margin:0 0 10px}.prose > :last-child{margin-bottom:0}
+.prose ul,.prose ol{margin:0 0 10px;padding-left:22px}
+.prose li{margin:3px 0}
+.prose li::marker{color:var(--gold)}
+.prose ul ul{margin:2px 0 0}
+.tbl{overflow-x:auto;margin:2px 0 10px;max-width:100%}
+.tbl table{border-collapse:collapse;font-size:14.5px;line-height:1.45;width:100%}
+.tbl th,.tbl td{border:2px solid var(--panel-2);padding:7px 10px;text-align:left;vertical-align:top}
+.tbl th{background:var(--panel-2);font-weight:800}
+@media (max-width:480px){.tbl table{font-size:13.5px}.tbl th,.tbl td{padding:6px 7px}}
+.mathd{overflow-x:auto;padding:4px 0 10px;font-size:1.12em}
+math{font-size:1.06em}
+.lc figure{margin:0;display:grid;gap:6px;justify-items:start}
+.zoom{border:0;padding:0;background:#fff;box-shadow:0 0 0 3px var(--shadow);cursor:zoom-in;display:block;width:100%;max-width:560px}
+.zoom img{display:block;width:100%;height:auto}
+.lc figcaption{font-size:12px;color:var(--panel-muted)}
+.svgfig{overflow-x:auto}
+.svgfig svg{display:block;width:100%;min-width:560px;max-width:680px;height:auto}
+.chk{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between;padding:14px 16px;border:2px dashed var(--gold);background:color-mix(in srgb,var(--gold) 9%,transparent)}
+.chk.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 9%,transparent)}
+.chk p{font-size:14px}
+.lv.lock{opacity:.6;cursor:not-allowed}
+.lvclear{font-size:clamp(40px,10vw,64px);text-align:left}
+.lnav{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;border-top:2px dashed var(--panel-2);padding-top:16px}
+.lb{z-index:25}
+.lbin{display:grid;gap:12px;justify-items:center;max-width:min(1200px,100%)}
+.lbin img{max-width:100%;max-height:82vh;background:#fff;box-shadow:0 0 0 3px var(--shadow)}
+
+/* Glossary terms */
+.gl{text-decoration:underline dotted var(--rare);text-decoration-thickness:2px;text-underline-offset:3px;cursor:help}
+.gl:hover,.gl[aria-expanded]{background:color-mix(in srgb,var(--rare) 22%,transparent)}
+.mm.test .gl{text-decoration:none;cursor:inherit}
+.gpop{position:fixed;z-index:40;background:var(--panel);color:var(--panel-fg);box-shadow:inset 0 0 0 2px var(--rare),0 0 0 3px var(--shadow),5px 5px 0 3px var(--shadow);padding:12px 14px;font-size:14px;line-height:1.5}
+.gpop p{margin:0 0 6px}
+.gpop .gt b{color:var(--gold);font-size:15px}.gpop .gt span{color:var(--rare);font-weight:700}
+
+/* Mindmap modes */
+.seg{display:inline-flex;gap:6px}
+#mmtools{display:inline-flex;gap:10px;flex-wrap:wrap}
+.mmg{position:relative;height:min(68vh,640px);background:var(--panel-2);box-shadow:inset 0 0 0 2px var(--shadow);margin-bottom:8px}
+.mmg svg{width:100%;height:100%;display:block;--markmap-text-color:var(--panel-fg);--markmap-font:500 14px/1.45 var(--f-body);--markmap-circle-open-bg:var(--panel);--markmap-code-bg:var(--panel)}
+#mmmsg{position:absolute;left:0;right:0;top:45%;text-align:center}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="hud">
+    <button class="logo" id="home" aria-label="SE Quest: về bản đồ">SE QUEST</button>
+    <div class="rank">
+      <b id="rankName">Intern</b>
+      <div class="xpbar" id="xpbar" role="img" aria-label="XP"><i id="xpfill" style="width:0%"></i></div>
+      <span class="hud-label" id="xptext">0 XP</span>
+    </div>
+    <div class="tools">
+      <button class="pbtn" data-setlang="vi" aria-pressed="true">VI</button>
+      <button class="pbtn" data-setlang="en" aria-pressed="false">EN</button>
+      <button class="pbtn ghost" id="daynight"></button>
+    </div>
+  </header>
+  <main id="app" aria-live="polite"></main>
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>const DATA = /*__DATA__*/null;</script>
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const app = $('#app');
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // ---------- text: **bold**, *italic*, $math$ (pre-rendered MathML), glossary terms ----------
+  const MATHRE = /(?<!\\)\$\$(.+?)(?<!\\)\$\$|(?<!\\)\$(.+?)(?<!\\)\$/g;
+  const GL = DATA.glossary, glCase = {}, glAny = {};
+  GL.forEach((g, i) => [g.t, ...(g.a || [])].forEach(s => { const k = esc(s); if (g.cs) glCase[k] = i; else glAny[k.toLowerCase()] = i; }));
+  const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const GLRE = new RegExp(`(?<![\\p{L}\\p{N}_-])(${[...Object.keys(glCase), ...Object.keys(glAny)].sort((a, b) => b.length - a.length).map(reEsc).join('|')})(?![\\p{L}\\p{N}_-])`, 'giu');
+  // ctx = { seen: Set } marks each glossary term once per block; null disables glossary.
+  const gctx = () => ({ seen: new Set() });
+  function gloss(h, ctx) {
+    return h.replace(GLRE, m => {
+      const i = glCase[m] ?? glAny[m.toLowerCase()];
+      if (i === undefined || ctx.seen.has(i)) return m;
+      ctx.seen.add(i);
+      return `<span class="gl" data-g="${i}" tabindex="0" role="button">${m}</span>`;
+    });
+  }
+  function txt(s, ctx) {
+    let h = esc(s.replace(/\\\$/g, '$'));
+    if (ctx) h = gloss(h, ctx);
+    return h.replace(/\*\*(.+?)\*\*/g, '<b class="kw">$1</b>').replace(/(^|[^*\w])\*(?!\s)([^*]+?)\*(?![*\w])/g, '$1<i>$2</i>');
+  }
+  function md(s, ctx = null) {
+    let out = '', last = 0;
+    for (const m of s.matchAll(MATHRE)) {
+      out += txt(s.slice(last, m.index), ctx);
+      const key = m[1] !== undefined ? 'D:' + m[1] : 'I:' + m[2];
+      out += DATA.math[key] || esc(m[0]);
+      last = m.index + m[0].length;
+    }
+    return out + txt(s.slice(last), ctx);
+  }
+  // Block markdown: paragraphs, "- "/"1. " lists (2-space nesting), "|" tables, "$$…$$" display math.
+  const isBlock = l => /^(\||\s*(- |\d+\. )|\$\$)/.test(l);
+  function blocks(src, ctx) {
+    const L = src.split('\n'); let h = '', i = 0;
+    while (i < L.length) {
+      const l = L[i];
+      if (!l.trim()) { i++; continue; }
+      if (/^\$\$.+\$\$$/.test(l.trim())) { h += `<div class="mathd">${md(l.trim(), ctx)}</div>`; i++; continue; }
+      if (l.startsWith('|')) { const rows = []; while (i < L.length && L[i].startsWith('|')) rows.push(L[i++]); h += table(rows, ctx); continue; }
+      if (/^\s*(- |\d+\. )/.test(l)) { const rows = []; while (i < L.length && /^\s*(- |\d+\. )/.test(L[i])) rows.push(L[i++]); h += list(rows, ctx); continue; }
+      const p = []; while (i < L.length && L[i].trim() && (p.length === 0 || !isBlock(L[i]))) p.push(L[i++]);
+      h += `<p>${md(p.join(' '), ctx)}</p>`;
+    }
+    return h;
+  }
+  function list(rows, ctx) {
+    let h = ''; const st = [];
+    for (const r of rows) {
+      const m = r.match(/^(\s*)(?:- |(\d+)\. )(.*)$/), ind = m[1].length, tag = m[2] ? 'ol' : 'ul';
+      while (st.length && st.at(-1).ind > ind) h += `</li></${st.pop().tag}>`;
+      if (!st.length || st.at(-1).ind < ind) { h += `<${tag}>`; st.push({ ind, tag }); } else h += '</li>';
+      h += `<li>${md(m[3], ctx)}`;
+    }
+    while (st.length) h += `</li></${st.pop().tag}>`;
+    return h;
+  }
+  function table(rows, ctx) {
+    const cells = r => r.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+    const head = cells(rows[0]), body = rows.slice(1).filter(r => !/^\|[\s:|-]+\|$/.test(r.trim()));
+    const th = head.some(Boolean) ? `<thead><tr>${head.map(c => `<th>${md(c, ctx)}</th>`).join('')}</tr></thead>` : '';
+    return `<div class="tbl" tabindex="0"><table>${th}<tbody>${body.map(r => `<tr>${cells(r).map(c => `<td>${md(c, ctx)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  // ---------- state (this browser only) ----------
+  const KEY = 'sq-midterm-v1';
+  // seen[w]: ids answered in a World quiz during the current round; round[w]: round number.
+  // read[levelId]: level whose quick check passed; chk[levelId]: best score; mmView: 'graph' | 'list' once the viewer picks one.
+  const fresh = () => ({ xp: 0, best: {}, passes: {}, wrong: [], cards: [], seen: {}, round: {}, read: {}, chk: {}, lang: 'vi' });
+  let S = fresh();
+  try { Object.assign(S, JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+
+  // ---------- i18n ----------
+  const T = {
+    vi: {
+      day: 'Ngày', night: 'Đêm', boss: 'Boss cuối · Thi giữa kỳ', bossDate: 'Thứ 5, 05/11/2026 · bài 01–05',
+      left: n => n > 1 ? `còn ${n} ngày` : n === 1 ? 'ngày mai thi!' : n === 0 ? 'hôm nay thi!' : 'đã thi xong',
+      worlds: 'Các World', best: 'Cao nhất', cleared: 'ĐÃ QUA', mastered: 'THÀNH THẠO', start: 'Vào học',
+      qcount: (l, n) => `chưa làm ${l}/${n} câu`,
+      exam: 'Exam Mode', examDesc: '30 câu trộn từ 5 bài · 30 phút · không gợi ý, chấm khi nộp',
+      review: 'Diệt bug', reviewDesc: n => n ? `${n} câu sai đang chờ ôn lại` : 'Chưa có câu sai nào. Làm quiz trước nhé.',
+      coll: 'Bộ sưu tập thẻ', collDesc: 'Qua World (≥ 80%) để nhận thẻ',
+      mindmap: 'Mindmap', mmDesc: 'Sơ đồ ôn', cards: 'Flashcard', cardsDesc: n => `${n} thẻ`, quiz: 'Quiz', quizDesc: n => n ? `Chưa làm ${n} câu` : 'Đã làm hết kho',
+      round: n => `VÒNG ${n}`, leftOf: (l, n) => `Chưa làm ${l} / ${n} câu`, doneOf: (d, n) => `Đã làm ${d}/${n} câu trong vòng này`,
+      nextBatch: n => `Làm tiếp ${n} câu mới`, lastBatch: n => `Làm nốt ${n} câu cuối`, nextBatchDesc: 'Lấy ngẫu nhiên trong các câu chưa làm, cần ≥ 80%',
+      allLeft: n => `Làm hết ${n} câu còn lại`, allLeftDesc: 'Một lượt dài, quét sạch kho. Vẫn cần ≥ 80%',
+      bankDone: 'Bạn đã làm hết kho câu của World này!', newRound: 'Bắt đầu vòng mới', newRoundDesc: 'Đặt lại bộ đếm "chưa làm". Điểm, thẻ, XP giữ nguyên',
+      worldBugs: n => `Diệt ${n} bug của World này`, worldBugsDesc: 'Ôn lại các câu bạn từng làm sai',
+      hubNote: 'Câu đã làm sẽ không lặp lại cho tới khi bạn bắt đầu vòng mới. Câu làm trong Exam Mode và Diệt bug không tính vào bộ đếm.',
+      tooShort: 'Lượt dưới 5 câu vẫn có XP nhưng không tính là lượt QUA.',
+      learn: 'Bài học', learnDesc: (d, n) => `${d}/${n} level`, readOf: (d, n) => `Đã qua ${d}/${n} level. Chạm vào thuật ngữ gạch chân để xem nghĩa.`,
+      chk: 'Kiểm tra nhanh', chkTag: 'KIEM TRA NHANH', chkBtn: n => `⚡ Kiểm tra nhanh · ${n} câu`, chkRetry: 'Làm lại kiểm tra',
+      chkRule: (need, n) => `Đúng ít nhất ${need}/${n} câu (sai tối đa 1) để mở level tiếp.`, chkBest: (b, n) => `Tốt nhất ${b}/${n}`,
+      lockedTip: 'Qua kiểm tra nhanh của level trước để mở', passedTag: 'DA QUA', lvClear: id => `LEVEL ${id} CLEAR!`,
+      chkPass: 'Qua level! Level tiếp theo đã mở khoá.', chkPassAgain: 'Vẫn đạt. Kiến thức đã chắc!',
+      chkFail: (need, n) => `Chưa đạt: cần đúng ít nhất ${need}/${n}. Xem giải thích các câu sai bên dưới, đọc lại level rồi thử lại.`,
+      readAgain: 'Đọc lại level', backLesson: 'Về bài học', toWorldQuiz: 'Làm quiz World ▶',
+      prevLv: 'Level trước', nextLv: 'Level tiếp', toQuiz: 'Làm quiz',
+      real: '[Thực tế]', relates: 'Liên hệ slide', zoom: 'Phóng to ảnh slide', tapZoom: 'bấm để phóng to', slideAlt: s => `Slide ${s}`, closeImg: 'Đóng',
+      graph: 'Sơ đồ', list: 'Danh sách', fit: 'Căn vừa khung', mmLoading: 'Đang tải sơ đồ…', mmFail: 'Không tải được sơ đồ (cần mạng). Hãy dùng chế độ Danh sách.',
+      mmHint: 'Bấm chấm tròn để thu/mở nhánh, kéo để di chuyển, cuộn chuột hoặc chụm 2 ngón để phóng to.',
+      days: 'ngày', cpmCap: 'Mọi task đều găng (slack = 0) · tối thiểu 14 ngày', incextCap: 'Include: base → included · Extend: extending → base',
+      ieBaseInc: 'base · biết và gọi tường minh', ieIncluded: 'included · không đứng một mình', ieExtending: 'extending · có thể đứng một mình', ieBaseExt: 'base · không biết extension',
+      selfTest: 'Che chi tiết để tự kiểm tra', showAll: 'Hiện hết chi tiết', collapse: 'Thu hết nhánh', expand: 'Mở hết nhánh',
+      tapReveal: 'Bấm vào ô mờ để xem.',
+      flip: 'Lật thẻ', prev: 'Trước', next: 'Sau', shuf: 'Xáo thẻ',
+      rule: 'Luật bản ôn: đạt ≥ 80% một lượt (từ 5 câu trở lên) là QUA (nhận thẻ), đạt 2 lượt là THÀNH THẠO. Trong một vòng, câu đã làm không lặp lại; thứ tự đáp án luôn được xáo.',
+      qn: (i, n) => `Câu ${i}/${n}`, right: 'ĐÚNG', wrongM: 'SAI', ans: 'Đáp án', src: 'Nguồn slide',
+      nextQ: 'Câu tiếp', finish: 'Xem kết quả', submit: 'Nộp bài', pickFirst: 'Chọn một đáp án',
+      result: 'Kết quả', passMsg: 'Qua màn!', failMsg: 'Chưa đạt 80%. Xem lại câu sai rồi thử lại.',
+      examPass: 'Đạt chuẩn đề thi!', wrongList: 'Các câu sai', noWrong: 'Không sai câu nào.',
+      retry: 'Làm lượt mới', backWorld: 'Về World', toMap: 'Về bản đồ',
+      bugsLeft: n => `Còn ${n} bug`, squashed: 'Đã diệt bug!',
+      levelClear: 'WORLD CLEAR!', examClear: 'BOSS DOWN!', cont: 'Tiếp tục', newCard: 'Thẻ mới',
+      xp: n => `+${n} XP`, rankUp: r => `Thăng cấp: ${r}!`,
+      foot: 'Nội dung bám slide bài 01–05 của thầy, mỗi câu ghi nguồn slide. Câu hỏi bằng tiếng Anh như đề thi. Tiến độ chỉ lưu trên trình duyệt này.',
+      timeUp: 'Hết giờ! Bài đã được nộp.', reset: 'Xoá tiến độ', confirmReset: 'Bấm lần nữa để xoá', done: 'Đã xoá tiến độ',
+    },
+    en: {
+      day: 'Day', night: 'Night', boss: 'Final boss · Midterm exam', bossDate: 'Thu, 05 Nov 2026 · lectures 01–05',
+      left: n => n > 1 ? `${n} days left` : n === 1 ? 'exam tomorrow!' : n === 0 ? 'exam today!' : 'exam is over',
+      worlds: 'Worlds', best: 'Best', cleared: 'CLEARED', mastered: 'MASTERED', start: 'Enter',
+      qcount: (l, n) => `${l}/${n} not yet done`,
+      exam: 'Exam Mode', examDesc: '30 mixed questions · 30 minutes · no hints, graded on submit',
+      review: 'Bug hunt', reviewDesc: n => n ? `${n} missed questions waiting` : 'No missed questions yet. Take a quiz first.',
+      coll: 'Card collection', collDesc: 'Clear a World (≥ 80%) to earn its card',
+      mindmap: 'Mindmap', mmDesc: 'Review map', cards: 'Flashcards', cardsDesc: n => `${n} cards`, quiz: 'Quiz', quizDesc: n => n ? `${n} not yet done` : 'Bank completed',
+      round: n => `ROUND ${n}`, leftOf: (l, n) => `${l} of ${n} questions not yet done`, doneOf: (d, n) => `${d}/${n} done this round`,
+      nextBatch: n => `Next ${n} new questions`, lastBatch: n => `Finish the last ${n}`, nextBatchDesc: 'Random picks from questions you have not done, need ≥ 80%',
+      allLeft: n => `All ${n} remaining`, allLeftDesc: 'One long run that clears the bank. Still need ≥ 80%',
+      bankDone: 'You have done every question in this World!', newRound: 'Start a new round', newRoundDesc: 'Resets the "not yet done" counter. Scores, cards and XP stay',
+      worldBugs: n => `Squash this World's ${n} bugs`, worldBugsDesc: 'Retry the questions you missed',
+      hubNote: 'Questions you have done will not repeat until you start a new round. Exam Mode and Bug hunt answers do not count toward the counter.',
+      tooShort: 'Runs under 5 questions still earn XP but do not count as a CLEAR.',
+      learn: 'Lessons', learnDesc: (d, n) => `${d}/${n} levels`, readOf: (d, n) => `${d}/${n} levels cleared. Tap an underlined term for its meaning.`,
+      chk: 'Quick check', chkTag: 'QUICK CHECK', chkBtn: n => `⚡ Quick check · ${n} questions`, chkRetry: 'Retake check',
+      chkRule: (need, n) => `Get at least ${need}/${n} right (one miss allowed) to unlock the next level.`, chkBest: (b, n) => `Best ${b}/${n}`,
+      lockedTip: 'Pass the previous level\'s quick check to unlock', passedTag: 'PASSED', lvClear: id => `LEVEL ${id} CLEAR!`,
+      chkPass: 'Level cleared! The next level is unlocked.', chkPassAgain: 'Passed again. Solid!',
+      chkFail: (need, n) => `Not yet: you need at least ${need}/${n}. Read the explanations below, review the level and try again.`,
+      readAgain: 'Review the level', backLesson: 'Back to lesson', toWorldQuiz: 'Take the World quiz ▶',
+      prevLv: 'Previous', nextLv: 'Next level', toQuiz: 'Take the quiz',
+      real: '[Real-world]', relates: 'Related slide', zoom: 'Enlarge slide image', tapZoom: 'tap to enlarge', slideAlt: s => `Slide ${s}`, closeImg: 'Close',
+      graph: 'Map', list: 'Outline', fit: 'Fit to view', mmLoading: 'Loading the map…', mmFail: 'Could not load the map (needs network). Use Outline mode.',
+      mmHint: 'Tap a circle to fold or unfold a branch, drag to pan, scroll or pinch to zoom.',
+      days: 'days', cpmCap: 'Every task is critical (slack = 0) · minimum 14 days', incextCap: 'Include: base → included · Extend: extending → base',
+      ieBaseInc: 'base · aware, calls it explicitly', ieIncluded: 'included · cannot stand alone', ieExtending: 'extending · may stand alone', ieBaseExt: 'base · not aware of the extension',
+      selfTest: 'Hide details to self-test', showAll: 'Show all details', collapse: 'Collapse all', expand: 'Expand all',
+      tapReveal: 'Tap a blurred item to reveal it.',
+      flip: 'Flip', prev: 'Prev', next: 'Next', shuf: 'Shuffle',
+      rule: 'Review rule: score ≥ 80% on a run of 5+ questions to CLEAR (earn the card), twice to MASTER. Within a round, questions you have done do not repeat; options are always reshuffled.',
+      qn: (i, n) => `Question ${i}/${n}`, right: 'CORRECT', wrongM: 'WRONG', ans: 'Answer', src: 'Slide source',
+      nextQ: 'Next question', finish: 'See results', submit: 'Submit', pickFirst: 'Pick an answer',
+      result: 'Result', passMsg: 'Level clear!', failMsg: 'Below 80%. Review the misses and try again.',
+      examPass: 'Exam-ready!', wrongList: 'Missed questions', noWrong: 'No misses.',
+      retry: 'New run', backWorld: 'Back to World', toMap: 'Back to map',
+      bugsLeft: n => `${n} bugs left`, squashed: 'Bug squashed!',
+      levelClear: 'WORLD CLEAR!', examClear: 'BOSS DOWN!', cont: 'Continue', newCard: 'New card',
+      xp: n => `+${n} XP`, rankUp: r => `Promoted: ${r}!`,
+      foot: 'Content follows the lecture slides 01–05; every question cites its slide. Questions are in English like the exam. Progress is saved in this browser only.',
+      timeUp: 'Time is up! Your answers were submitted.', reset: 'Reset progress', confirmReset: 'Tap again to reset', done: 'Progress reset',
+    },
+  };
+  const t = (k, ...a) => { const v = T[S.lang][k]; return typeof v === 'function' ? v(...a) : v; };
+
+  // ---------- game data ----------
+  const WORLDS = [
+    { w: 1, name: 'SE Introduction', vi: 'Nhập môn Công nghệ phần mềm', x: 12, y: 60, card: { t: 'Code of Ethics', em: 'ACM<br>IEEE', en: 'Eight principles: Public, Client & Employer, Product, Judgment, Management, Profession, Colleagues, Self.', vi: '8 nguyên tắc: Public, Client & Employer, Product, Judgment, Management, Profession, Colleagues, Self.' } },
+    { w: 2, name: 'Software Processes', vi: 'Quy trình phần mềm', x: 30, y: 30, card: { t: 'Product Owner', em: 'PO', en: 'Maximizes product value, defines the Product Goal, orders the Product Backlog.', vi: 'Tối đa hoá giá trị sản phẩm, định nghĩa Product Goal, sắp thứ tự Product Backlog.' } },
+    { w: 3, name: 'Project Management', vi: 'Quản lý dự án', x: 48, y: 64, card: { t: 'Critical Path', em: 'CPM', en: 'The longest chain of dependent tasks. Zero slack. Sets the minimum duration.', vi: 'Chuỗi task phụ thuộc dài nhất. Slack = 0. Quyết định thời gian tối thiểu.' } },
+    { w: 4, name: 'Requirements Engineering', vi: 'Kỹ nghệ yêu cầu', x: 66, y: 30, card: { t: 'MoSCoW', em: 'M S<br>C W', en: "Must · Should · Could · Won't (this time).", vi: "Must · Should · Could · Won't (this time)." } },
+    { w: 5, name: 'Use Case & UI/UX', vi: 'Use case & thiết kế UI/UX', x: 82, y: 62, card: { t: 'Include vs Extend', em: '«inc»<br>«ext»', en: 'Include: base aware. Extend: base unaware; arrow from extending to base.', vi: 'Include: base biết. Extend: base không biết; mũi tên từ extending về base.' } },
+  ];
+  const BOSS = { x: 93, y: 24, card: { t: 'Midterm Slayer', em: 'MID<br>TERM', en: 'Scored ≥ 80% on a 30-question timed exam across lectures 01–05.', vi: 'Đạt ≥ 80% đề 30 câu có giờ, bài 01–05.' } };
+  const RANKS = [['Intern', 0], ['Fresher', 300], ['Junior', 700], ['Middle', 1200], ['Senior', 1800], ['Tech Lead', 2500], ['Architect', 3300]];
+  const PASS = 0.8, RUN_N = 10, MIN_RUN = 5, EXAM_N = { 1: 5, 2: 8, 3: 6, 4: 6, 5: 5 }, EXAM_MIN = 30;
+  const byW = w => DATA.quiz.filter(q => q.w === w);
+  const QBYID = Object.fromEntries([...DATA.quiz, ...Object.values(DATA.checks).flat()].map(q => [q.id, q]));
+  // A level's quick check passes with at most one miss; the next level opens once the previous one passed.
+  const checkNeed = n => Math.max(1, n - 1);
+  const openLevel = w => { const secs = DATA.lessons[w], k = secs.findIndex(x => !S.read[x.id]); return k < 0 ? secs.length : k; };
+  const unseen = w => { const s = new Set(S.seen[w] || []); return byW(w).filter(q => !s.has(q.id)); };
+  // Fold a short tail into the current run so "next" never leaves a 1–4 question leftover.
+  const batchN = left => left <= RUN_N + MIN_RUN - 1 ? left : RUN_N;
+  const worldBugs = w => S.wrong.filter(id => QBYID[id] && QBYID[id].w === w);
+
+  const rankOf = xp => { let i = 0; RANKS.forEach((r, k) => { if (xp >= r[1]) i = k; }); return i; };
+  function addXP(n) {
+    const before = rankOf(S.xp);
+    S.xp += n; save(); renderHud();
+    const after = rankOf(S.xp);
+    if (after > before) toast(t('rankUp', RANKS[after][0]));
+  }
+  function renderHud() {
+    const i = rankOf(S.xp), cur = RANKS[i][1], nxt = RANKS[i + 1] ? RANKS[i + 1][1] : null;
+    $('#rankName').textContent = RANKS[i][0];
+    $('#xpfill').style.width = nxt ? ((S.xp - cur) / (nxt - cur) * 100).toFixed(1) + '%' : '100%';
+    $('#xptext').textContent = nxt ? `${S.xp}/${nxt} XP` : `${S.xp} XP`;
+    $('#xpbar').setAttribute('aria-label', `XP ${S.xp}`);
+    document.querySelectorAll('[data-setlang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setlang === S.lang)));
+    $('#daynight').textContent = isDark() ? t('day') : t('night');
+    $('#foot').textContent = t('foot');
+    root.lang = S.lang;
+  }
+  let toastTimer;
+  function toast(msg) {
+    let el = $('.toast'); if (!el) { el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+    el.textContent = msg; el.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => el.hidden = true, 2200);
+  }
+
+  // ---------- glossary popover ----------
+  const pop = document.createElement('div');
+  pop.className = 'gpop'; pop.hidden = true; pop.setAttribute('role', 'tooltip');
+  document.body.appendChild(pop);
+  let popFor = null, hideT;
+  function showGl(el) {
+    const g = GL[+el.dataset.g];
+    clearTimeout(hideT);
+    if (popFor) popFor.removeAttribute('aria-expanded');
+    pop.innerHTML = `<p class="gt"><b lang="en">${esc(g.t)}</b>${S.lang === 'vi' ? ` <span>· ${esc(g.vi)}</span>` : ''}</p><p>${md(g.d[S.lang])}</p><span class="src">${esc(t('src'))}: ${esc(g.src)}</span>`;
+    pop.hidden = false; popFor = el; el.setAttribute('aria-expanded', 'true');
+    const r = el.getBoundingClientRect(), w = Math.min(320, innerWidth - 24);
+    pop.style.width = w + 'px';
+    pop.style.left = Math.max(12, Math.min(r.left + r.width / 2 - w / 2, innerWidth - w - 12)) + 'px';
+    const h = pop.offsetHeight;
+    pop.style.top = (r.bottom + 8 + h < innerHeight ? r.bottom + 8 : Math.max(8, r.top - h - 8)) + 'px';
+  }
+  function hideGl() { if (popFor) popFor.removeAttribute('aria-expanded'); pop.hidden = true; popFor = null; }
+  // Capture phase so a tap on a term shows its meaning instead of toggling the mindmap branch underneath.
+  const glAt = e => { const el = e.target.closest && e.target.closest('.gl'); return el && !el.closest('.mm.test') ? el : null; };
+  document.addEventListener('click', e => {
+    const el = glAt(e);
+    if (el) { e.preventDefault(); e.stopPropagation(); showGl(el); }
+    else if (!e.target.closest('.gpop')) hideGl();
+  }, true);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && popFor) { const el = popFor; hideGl(); el.focus(); return; }
+    const el = glAt(e);
+    if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); showGl(el); }
+  });
+  if (matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', e => { const el = glAt(e); if (el) { if (popFor !== el) showGl(el); else clearTimeout(hideT); } else if (e.target.closest('.gpop')) clearTimeout(hideT); });
+    document.addEventListener('mouseout', e => { if (e.target.closest('.gl, .gpop')) { clearTimeout(hideT); hideT = setTimeout(hideGl, 250); } });
+  }
+  addEventListener('scroll', hideGl, { passive: true });
+  addEventListener('resize', hideGl);
+
+  // ---------- hand-drawn diagrams (inline SVG, themed by CSS tokens) ----------
+  const SVG = {
+    cpm() {
+      const N = { T1: [20, 82, 3, '0→3'], T2: [170, 22, 2, '3→5'], T3: [170, 142, 2, '3→5'], T4: [320, 82, 5, '5→10'], T5: [450, 82, 3, '10→13'], T6: [580, 82, 1, '13→14'] };
+      const E = [['T1', 'T2'], ['T1', 'T3'], ['T2', 'T4'], ['T3', 'T4'], ['T4', 'T5'], ['T5', 'T6']];
+      const W = 80, H = 60;
+      const box = ([k, [x, y, d, es]]) => `<g><rect x="${x}" y="${y}" width="${W}" height="${H}" style="fill:var(--panel-2);stroke:var(--gold);stroke-width:3"/>
+        <text x="${x + W / 2}" y="${y + 22}" text-anchor="middle" style="fill:var(--panel-fg);font-weight:800;font-size:16px">${k}</text>
+        <text x="${x + W / 2}" y="${y + 40}" text-anchor="middle" style="fill:var(--gold);font-weight:700;font-size:13px">${d} ${esc(t('days'))}</text>
+        <text x="${x + W / 2}" y="${y + 55}" text-anchor="middle" style="fill:var(--panel-muted);font-size:11px">${es}</text></g>`;
+      const edge = ([a, b]) => { const [ax, ay] = N[a], [bx, by] = N[b]; return `<line x1="${ax + W}" y1="${ay + H / 2}" x2="${bx - 4}" y2="${by + H / 2}" style="stroke:var(--gold);stroke-width:3" marker-end="url(#cpmA)"/>`; };
+      return `<svg viewBox="0 0 680 240" role="img" aria-label="${esc(t('cpmCap'))}" style="font-family:var(--f-body)">
+        <defs><marker id="cpmA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--gold)"/></marker></defs>
+        ${E.map(edge).join('')}${Object.entries(N).map(box).join('')}
+        <text x="340" y="228" text-anchor="middle" style="fill:var(--panel-fg);font-weight:800;font-size:15px">${esc(t('cpmCap'))}</text></svg>`;
+    },
+    incext() {
+      const uc = (cx, cy, rx, label, base) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="28" style="fill:var(--panel-2);stroke:${base ? 'var(--gold)' : 'var(--edge)'};stroke-width:${base ? 3 : 2}"/>
+        <text x="${cx}" y="${cy + 5}" text-anchor="middle" style="fill:var(--panel-fg);font-weight:700;font-size:15px">${label}</text>`;
+      const tag = (x, y, s) => `<text x="${x}" y="${y}" text-anchor="middle" style="fill:var(--panel-muted);font-size:12.5px">${esc(s)}</text>`;
+      const arrow = (x1, x2, y, label) => `<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" style="stroke:var(--rare);stroke-width:2.5;stroke-dasharray:8 6" marker-end="url(#ieA)"/>
+        <text x="${(x1 + x2) / 2}" y="${y - 10}" text-anchor="middle" style="fill:var(--rare);font-weight:800;font-size:15px">${label}</text>`;
+      return `<svg viewBox="0 0 680 270" role="img" aria-label="${esc(t('incextCap'))}" style="font-family:var(--f-body)">
+        <defs><marker id="ieA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10" style="fill:none;stroke:var(--rare);stroke-width:2"/></marker></defs>
+        ${uc(150, 60, 110, 'Checkout order', true)}${arrow(262, 408, 60, '«include»')}${uc(520, 60, 110, 'Payment', false)}
+        ${tag(150, 106, t('ieBaseInc'))}${tag(520, 106, t('ieIncluded'))}
+        ${uc(150, 185, 128, 'Verify shipping address', false)}${arrow(280, 408, 185, '«extend»')}${uc(520, 185, 110, 'Checkout order', true)}
+        ${tag(150, 231, t('ieExtending'))}${tag(520, 231, t('ieBaseExt'))}
+        <text x="340" y="262" text-anchor="middle" style="fill:var(--panel-fg);font-weight:800;font-size:14px">${esc(t('incextCap'))}</text></svg>`;
+    },
+  };
+
+  // ---------- theme ----------
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  $('#daynight').onclick = () => { root.dataset.theme = isDark() ? 'light' : 'dark'; renderHud(); if (view.name === 'map') drawMap(); };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderHud(); if (view.name === 'map') drawMap(); });
+  document.querySelectorAll('[data-setlang]').forEach(b => b.onclick = () => { S.lang = b.dataset.setlang; save(); renderHud(); render(); });
+  $('#home').onclick = () => go({ name: 'map' });
+  const hud = $('.hud');
+  new ResizeObserver(() => root.style.setProperty('--hud-h', hud.offsetHeight + 'px')).observe(hud);
+  addEventListener('scroll', () => hud.classList.toggle('stuck', scrollY > 4), { passive: true });
+
+  // ---------- routing ----------
+  let view = { name: 'map' };
+  let run = null, timerId = null;
+  function go(v) { view = v; if (v.name !== 'run') { clearInterval(timerId); } render(); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }
+  function render() {
+    ({ map: renderMap, world: renderWorld, run: renderRun, result: renderResult }[view.name])();
+  }
+
+  // ---------- map ----------
+  const daysLeft = () => { const now = new Date(), d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate()); const [y, m, d] = DATA.examDate.split('-').map(Number); return Math.round((new Date(y, m - 1, d) - d0) / 864e5); };
+  const cleared = w => (S.passes[w] || 0) >= 1;
+  function renderMap() {
+    const nowW = (WORLDS.find(x => !cleared(x.w)) || {}).w;
+    app.innerHTML = `
+      <div style="display:grid;gap:20px">
+      <div class="box boss">
+        <div><p class="hud-label" style="margin:0;color:var(--bad)">${esc(t('boss'))}</p><h2>${esc(t('bossDate'))}</h2></div>
+        <span class="cd">${esc(t('left', daysLeft()))}</span>
+      </div>
+      <div class="map" id="map"><canvas id="mapc" width="192" height="96" aria-hidden="true"></canvas></div>
+      <div class="actions">
+        <button class="action exam" data-act="exam"><h3>${esc(t('exam'))}</h3><small>${esc(t('examDesc'))}</small></button>
+        <button class="action rev" data-act="review" ${S.wrong.length ? '' : 'disabled style="opacity:.7;cursor:default"'}><h3>${esc(t('review'))} · ${S.wrong.length}</h3><small>${esc(t('reviewDesc', S.wrong.length))}</small></button>
+      </div>
+      <h2>${esc(t('worlds'))}</h2>
+      <div class="worlds">${WORLDS.map(x => {
+        const p = S.passes[x.w] || 0, b = S.best[x.w];
+        const tag = p >= 2 ? `<span class="tag gold">${t('mastered')}</span>` : p >= 1 ? `<span class="tag ok">${t('cleared')}</span>` : x.w === nowW ? '<span class="tag">▶ NOW</span>' : '';
+        return `<button class="wcard" data-w="${x.w}">
+          <span class="top"><span class="hud-label">WORLD ${x.w}</span>${tag}</span>
+          <h3>${esc(x.name)}</h3>${S.lang === 'vi' ? `<span class="vi">${esc(x.vi)}</span>` : ''}
+          <span class="meter"><span class="pips"><i class="${p >= 1 ? 'on' : ''}"></i><i class="${p >= 2 ? 'on' : ''}"></i></span>${esc(t('best'))}: ${b == null ? '–' : b + '%'} · ${esc(t('qcount', unseen(x.w).length, byW(x.w).length))}</span>
+        </button>`; }).join('')}
+      </div>
+      <h2>${esc(t('coll'))}</h2>
+      <p class="muted" style="margin:-10px 0 0">${esc(t('collDesc'))}</p>
+      <div class="coll">${[...WORLDS.map(x => ({ id: 'w' + x.w, c: x.card, r: 'RARE' })), { id: 'boss', c: BOSS.card, r: 'LEGENDARY' }].map(k => {
+        const has = S.cards.includes(k.id);
+        return `<div class="box mini ${has ? '' : 'locked'}"><span class="rar"><span>${k.id === 'boss' ? 'BOSS' : k.id.toUpperCase()}</span><b class="${k.r === 'LEGENDARY' ? 'leg' : ''}">${has ? k.r : '???'}</b></span><b>${has ? esc(k.c.t) : '? ? ?'}</b>${has ? `<span>${esc(k.c[S.lang])}</span>` : ''}</div>`; }).join('')}
+      </div>
+      <div><button class="pbtn ghost" id="reset">${esc(t('reset'))}</button></div>
+      </div>`;
+    const map = $('#map');
+    WORLDS.forEach(x => {
+      const b = document.createElement('button');
+      b.className = 'wnode' + (cleared(x.w) ? ' done' : '');
+      b.style.left = x.x + '%'; b.style.top = (x.y + 17) + '%';
+      b.innerHTML = `<span class="st">${cleared(x.w) ? '✔' : '▶'}</span>W${x.w}<span class="nm">· ${esc(x.name)}</span>`;
+      b.onclick = () => go({ name: 'world', w: x.w, tab: 'learn' });
+      map.appendChild(b);
+      if (x.w === nowW) { const h = document.createElement('span'); h.className = 'here'; h.textContent = '▼'; h.style.left = x.x + '%'; h.style.top = (x.y - 12) + '%'; map.appendChild(h); }
+    });
+    const bb = document.createElement('button');
+    bb.className = 'wnode boss'; bb.style.left = BOSS.x + '%'; bb.style.top = (BOSS.y + 20) + '%';
+    bb.innerHTML = `<span class="st">☠</span>BOSS`; bb.onclick = startExam; map.appendChild(bb);
+    drawMap();
+    app.querySelectorAll('[data-w]').forEach(b => b.onclick = () => go({ name: 'world', w: +b.dataset.w, tab: 'learn' }));
+    app.querySelector('[data-act="exam"]').onclick = startExam;
+    const rv = app.querySelector('[data-act="review"]'); if (S.wrong.length) rv.onclick = () => startReview();
+    const rs = $('#reset'); let armed = false;
+    rs.onclick = () => { if (!armed) { armed = true; rs.textContent = t('confirmReset'); return; } S = { ...fresh(), lang: S.lang }; save(); renderHud(); toast(t('done')); render(); };
+  }
+
+  const W = 192, H = 96;
+  const hash = (x, y) => { const s = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453; return s - Math.floor(s); };
+  function drawMap() {
+    const cv = $('#mapc'); if (!cv) return;
+    const mx = cv.getContext('2d');
+    const c = { water: css('--water'), water2: css('--water-2'), sand: css('--sand'), grass: css('--grass'), grass2: css('--grass-2'), tree: css('--tree'), path: css('--path'), castle: css('--castle'), castle2: css('--castle-2'), gold: css('--gold'), shadow: css('--shadow'), bad: css('--bad') };
+    mx.fillStyle = c.water; mx.fillRect(0, 0, W, H);
+    mx.fillStyle = c.water2;
+    for (let y = 0; y < H; y += 3) for (let x = 0; x < W; x++) if (hash(x, y) > .965) mx.fillRect(x, y, 3, 1);
+    const pts = [...WORLDS, BOSS];
+    mx.fillStyle = c.path;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i], b = pts[i + 1], ax = a.x / 100 * W, ay = a.y / 100 * H, bx = b.x / 100 * W, by = b.y / 100 * H;
+      const n = Math.hypot(bx - ax, by - ay) | 0;
+      for (let k = 0; k < n; k += 4) { const f = k / n; mx.fillRect(Math.round(ax + (bx - ax) * f), Math.round(ay + (by - ay) * f - Math.sin(f * Math.PI) * 5), 2, 2); }
+    }
+    pts.forEach((w, i) => {
+      const cx = w.x / 100 * W, cy = w.y / 100 * H, R = w === BOSS ? 11 : 14;
+      for (let y = Math.floor(cy - R - 4); y < cy + R + 4; y++) for (let x = Math.floor(cx - R - 4); x < cx + R + 4; x++) {
+        const dx = x - cx, dy = (y - cy) * 1.25, ang = Math.atan2(dy, dx);
+        const r = R * .72 + 2.4 * Math.sin(ang * 3 + i) + 1.6 * Math.sin(ang * 5 + i * 2);
+        const d = Math.hypot(dx, dy) / r;
+        if (d >= 1) continue;
+        let col = d > .82 ? c.sand : (d < .55 && hash(x, y) > .55 ? c.grass2 : c.grass);
+        if (w !== BOSS && d < .7 && hash(x * 3, y * 7) > .93) col = c.tree;
+        mx.fillStyle = col; mx.fillRect(x, y, 1, 1);
+      }
+      if (w === BOSS) {
+        mx.fillStyle = c.castle; mx.fillRect(cx - 5, cy - 6, 10, 8);
+        mx.fillStyle = c.castle2; for (let k = -5; k < 5; k += 2) mx.fillRect(cx + k, cy - 8, 1, 2); mx.fillRect(cx - 1, cy - 3, 2, 5);
+        mx.fillStyle = c.bad; mx.fillRect(cx, cy - 13, 1, 5); mx.fillRect(cx + 1, cy - 13, 3, 2);
+      } else if (cleared(w.w)) {
+        mx.fillStyle = c.shadow; mx.fillRect(cx, cy - 7, 1, 7); mx.fillStyle = c.gold; mx.fillRect(cx + 1, cy - 7, 4, 3);
+      }
+    });
+  }
+
+  // ---------- world ----------
+  const fcState = {};
+  function renderWorld() {
+    const x = WORLDS[view.w - 1], tab = view.tab;
+    const cards = DATA.cards.filter(c => c.w === view.w);
+    app.innerHTML = `
+      <div style="display:grid;gap:16px">
+      <div class="crumb"><button class="pbtn ghost" id="back">◀ ${esc(t('toMap'))}</button><span class="hud-label muted">WORLD ${x.w}</span></div>
+      <div><h2>${esc(x.name)}</h2>${S.lang === 'vi' ? `<p class="muted" style="margin:4px 0 0">${esc(x.vi)}</p>` : ''}</div>
+      <div class="world">
+        <nav class="box menu" aria-label="Activities">
+          <button data-tab="learn" aria-current="${tab === 'learn'}">${esc(t('learn'))}<small>${esc(t('learnDesc', DATA.lessons[view.w].filter(s => S.read[s.id]).length, DATA.lessons[view.w].length))}</small></button>
+          <button data-tab="mindmap" aria-current="${tab === 'mindmap'}">${esc(t('mindmap'))}<small>${esc(t('mmDesc'))}</small></button>
+          <button data-tab="cards" aria-current="${tab === 'cards'}">${esc(t('cards'))}<small>${esc(t('cardsDesc', cards.length))}</small></button>
+          <button data-tab="quiz" aria-current="${tab === 'quiz'}">${esc(t('quiz'))}<small>${esc(t('quizDesc', unseen(view.w).length))}</small></button>
+        </nav>
+        <div class="box" id="pane"></div>
+      </div>
+      <p class="foot">${esc(t('rule'))}</p>
+      </div>`;
+    $('#back').onclick = () => go({ name: 'map' });
+    app.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => go({ name: 'world', w: view.w, tab: b.dataset.tab, sec: view.sec }));
+    const pane = $('#pane');
+    if (tab === 'learn') renderLearn(pane, view.w);
+    else if (tab === 'mindmap') renderMindmap(pane, DATA.maps[view.w][S.lang]);
+    else if (tab === 'quiz') renderQuizHub(pane, view.w);
+    else renderCards(pane, cards);
+  }
+
+  function renderQuizHub(pane, w) {
+    const tot = byW(w).length, left = unseen(w).length, done = tot - left, k = batchN(left), bugs = worldBugs(w).length;
+    pane.innerHTML = `
+      <div class="qhub">
+        <div class="qstat">
+          <span class="hud-label" style="color:var(--gold)">${esc(t('round', S.round[w] || 1))}</span>
+          <p style="margin:0;font-weight:800;font-size:18px">${esc(t('leftOf', left, tot))}</p>
+          <div class="cover" role="progressbar" aria-valuemin="0" aria-valuemax="${tot}" aria-valuenow="${done}" aria-label="${esc(t('doneOf', done, tot))}"><i style="width:${(done / tot * 100).toFixed(1)}%"></i></div>
+          <p class="note">${esc(t('doneOf', done, tot))}</p>
+        </div>
+        ${left ? '' : `<p style="margin:0;font-weight:800;color:var(--good)">✔ ${esc(t('bankDone'))}</p>`}
+        <div class="modes">
+          ${left
+            ? `<button class="mode primary" id="qnext"><h3>${esc(k === left ? t('lastBatch', k) : t('nextBatch', k))}</h3><small>${esc(t('nextBatchDesc'))}</small></button>
+               ${left > k ? `<button class="mode" id="qall"><h3>${esc(t('allLeft', left))}</h3><small>${esc(t('allLeftDesc'))}</small></button>` : ''}`
+            : `<button class="mode primary" id="qround"><h3>${esc(t('newRound'))}</h3><small>${esc(t('newRoundDesc'))}</small></button>`}
+          ${bugs ? `<button class="mode" id="qbugs"><h3>${esc(t('worldBugs', bugs))}</h3><small>${esc(t('worldBugsDesc'))}</small></button>` : ''}
+        </div>
+        <p class="note">${esc(t('hubNote'))}</p>
+      </div>`;
+    const on = (id, fn) => { const b = $(id); if (b) b.onclick = fn; };
+    on('#qnext', () => startWorldRun(w));
+    on('#qall', () => startWorldRun(w, true));
+    on('#qround', () => { newRound(w); render(); });
+    on('#qbugs', () => startReview(w));
+  }
+
+  // ---------- learn ----------
+  function renderLearn(pane, w) {
+    const secs = DATA.lessons[w], open = openLevel(w);
+    const i = Math.min(view.sec ?? (open < secs.length ? open : 0), Math.min(open, secs.length - 1)), s = secs[i];
+    const done = secs.filter(x => S.read[x.id]).length, passed = !!S.read[s.id];
+    const qs = DATA.checks[s.id], need = checkNeed(qs.length), best = S.chk[s.id];
+    pane.innerHTML = `
+      <div class="learn">
+        <div class="lvls" aria-label="Levels">${secs.map((x, k) => k > open
+          ? `<button class="lv lock" disabled title="${esc(t('lockedTip'))}">🔒 ${x.id}</button>`
+          : `<button class="lv${S.read[x.id] ? ' ok' : ''}" data-sec="${k}" aria-current="${k === i}" title="${esc(x.t[S.lang])}">${S.read[x.id] ? '✔ ' : ''}${x.id}</button>`).join('')}</div>
+        <p class="note">${esc(t('readOf', done, secs.length))}</p>
+        <div><span class="hud-label" style="color:var(--gold)">LEVEL ${s.id}</span><h3 class="lt">${esc(s.t[S.lang])}</h3></div>
+        ${s.cards.map(c => {
+          const ctx = gctx();
+          const fig = c.img ? `<figure><button class="zoom" data-img="${c.img}" aria-label="${esc(t('zoom'))}"><img src="img/${c.img}.jpg" alt="${esc(t('slideAlt', c.src))}" loading="lazy" width="1000" height="563"></button><figcaption>${esc(t('slideAlt', c.src))} · ${esc(t('tapZoom'))}</figcaption></figure>` : '';
+          return `<article class="lc${c.real ? ' real' : ''}">
+            ${c.real ? `<span class="tag gold">${esc(t('real'))}</span>` : ''}
+            ${fig}<div class="prose">${blocks(c[S.lang], ctx)}</div>${c.svg ? `<div class="svgfig">${SVG[c.svg]()}</div>` : ''}
+            <span class="src">${esc(c.real ? t('relates') : t('src'))}: ${esc(c.src)}</span>
+          </article>`; }).join('')}
+        <div class="chk${passed ? ' ok' : ''}">
+          <div>
+            <span class="hud-label" style="color:${passed ? 'var(--good)' : 'var(--gold)'}">${passed ? '✔ ' + esc(t('passedTag')) : '⚡ ' + esc(t('chkTag'))}</span>
+            <p style="margin:4px 0 0">${esc(t('chkRule', need, qs.length))}${best != null ? ' · ' + esc(t('chkBest', best, qs.length)) : ''}</p>
+          </div>
+          <button class="pbtn${passed ? ' ghost' : ''}" id="lcheck">${esc(passed ? t('chkRetry') : t('chkBtn', qs.length))}</button>
+        </div>
+        <div class="lnav">
+          <button class="pbtn ghost" id="lprev" ${i === 0 ? 'disabled' : ''}>◀ ${esc(t('prevLv'))}</button>
+          ${i < secs.length - 1
+            ? `<button class="pbtn${passed ? '' : ' ghost'}" id="lnext" ${passed ? '' : 'disabled title="' + esc(t('lockedTip')) + '"'}>${passed ? '' : '🔒 '}${esc(t('nextLv'))} ▶</button>`
+            : `<button class="pbtn${passed ? '' : ' ghost'}" id="lquiz">${esc(t('toWorldQuiz'))}</button>`}
+        </div>
+      </div>`;
+    const goSec = k => { view.sec = k; render(); $('#pane').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+    pane.querySelectorAll('[data-sec]').forEach(b => b.onclick = () => goSec(+b.dataset.sec));
+    $('#lprev').onclick = () => goSec(i - 1);
+    const nx = $('#lnext'); if (nx && passed) nx.onclick = () => goSec(i + 1);
+    const lq = $('#lquiz'); if (lq) lq.onclick = () => go({ name: 'world', w, tab: 'quiz' });
+    $('#lcheck').onclick = () => startCheck(w, i);
+    pane.querySelectorAll('.zoom').forEach(b => b.onclick = () => showImage(b.dataset.img, b.querySelector('img').alt));
+  }
+
+  function showImage(name, alt) {
+    const ov = document.createElement('div');
+    ov.className = 'ov lb'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', alt);
+    ov.innerHTML = `<div class="lbin"><img src="img/${name}.jpg" alt="${esc(alt)}"><button class="pbtn" id="lbclose">${esc(t('closeImg'))} ✕</button></div>`;
+    document.body.appendChild(ov);
+    const close = () => { ov.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    ov.onclick = e => { if (e.target === ov || e.target.id === 'lbclose') close(); };
+    document.addEventListener('keydown', onKey);
+    $('#lbclose').focus();
+  }
+
+  // ---------- mindmap ----------
+  let mmLib = null;
+  const loadScript = src => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  const markmapLib = () => mmLib || (mmLib = loadScript('https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js')
+    .then(() => loadScript('https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js'))
+    .then(() => window.markmap).catch(e => { mmLib = null; throw e; }));
+  const mmMode = () => S.mmView || (matchMedia('(min-width: 761px)').matches ? 'graph' : 'list');
+
+  function renderMindmap(pane, tree) {
+    const mode = mmMode();
+    pane.innerHTML = `
+      <div class="mmbar">
+        <div class="seg" role="group" aria-label="${esc(t('mindmap'))}">
+          <button class="pbtn" data-mm="graph" aria-pressed="${mode === 'graph'}">${esc(t('graph'))}</button>
+          <button class="pbtn" data-mm="list" aria-pressed="${mode === 'list'}">${esc(t('list'))}</button>
+        </div>
+        <span id="mmtools"></span>
+      </div>
+      <div id="mmbody"></div>`;
+    pane.querySelectorAll('[data-mm]').forEach(b => b.onclick = () => { S.mmView = b.dataset.mm; save(); renderMindmap(pane, tree); });
+    (mode === 'graph' ? renderGraph : renderTree)($('#mmbody'), $('#mmtools'), tree);
+  }
+
+  async function renderGraph(body, tools, tree) {
+    tools.innerHTML = `<button class="pbtn ghost" id="mmfit">${esc(t('fit'))}</button>`;
+    body.innerHTML = `<div class="mmg"><svg id="mmsvg" aria-label="${esc(tree.t)}"></svg><p class="note" id="mmmsg">${esc(t('mmLoading'))}</p></div><p class="note">${esc(t('mmHint'))}</p>`;
+    let lib;
+    try { lib = await markmapLib(); } catch (e) { $('#mmmsg').textContent = t('mmFail'); return; }
+    const svg = $('#mmsvg'); if (!svg) return;
+    $('#mmmsg').remove();
+    const palette = ['--gold', '--good', '--rare', '--legend', '--bad', '--edge'].map(css);
+    const toMM = n => ({ content: md(n.t), children: n.c.map(toMM) });
+    const mm = lib.Markmap.create(svg, {
+      duration: reduce ? 0 : 400, initialExpandLevel: 3, maxWidth: 280, paddingX: 10, spacingVertical: 8, autoFit: false,
+      color: n => palette[(+String(n.state?.path || '').split('.')[1] || 0) % palette.length],
+    }, toMM(tree));
+    $('#mmfit').onclick = () => mm.fit();
+  }
+
+  function renderTree(body, tools, tree) {
+    const ctx = gctx();
+    const node = (n, depth) => n.c.length
+      ? `<li><details open><summary>${md(n.t, ctx)}</summary><ul>${n.c.map(k => node(k, depth + 1)).join('')}</ul></details></li>`
+      : `<li class="leaf"><span tabindex="-1">${md(n.t, ctx)}</span></li>`;
+    tools.innerHTML = `
+        <button class="pbtn" id="mmtest" aria-pressed="false">${esc(t('selfTest'))}</button>
+        <button class="pbtn ghost" id="mmfold">${esc(t('collapse'))}</button>`;
+    body.innerHTML = `
+      <p class="note" id="mmhint" hidden style="margin:0 0 12px">${esc(t('tapReveal'))}</p>
+      <div class="mm" id="mm"><p class="root">${md(tree.t)}</p><ul>${tree.c.map(k => node(k, 1)).join('')}</ul></div>`;
+    const mm = $('#mm'), tb = $('#mmtest'), fb = $('#mmfold');
+    tb.onclick = () => {
+      const on = !mm.classList.contains('test');
+      mm.classList.toggle('test', on); tb.setAttribute('aria-pressed', String(on));
+      tb.textContent = on ? t('showAll') : t('selfTest'); $('#mmhint').hidden = !on;
+      mm.querySelectorAll('.leaf > span').forEach(s => { s.classList.remove('show'); s.tabIndex = on ? 0 : -1; s.setAttribute('role', on ? 'button' : 'presentation'); });
+    };
+    mm.addEventListener('click', e => { const s = e.target.closest('.leaf > span'); if (s && mm.classList.contains('test')) s.classList.toggle('show'); });
+    mm.addEventListener('keydown', e => { const s = e.target.closest('.leaf > span'); if (s && (e.key === 'Enter' || e.key === ' ') && mm.classList.contains('test')) { e.preventDefault(); s.classList.toggle('show'); } });
+    let open = true;
+    fb.onclick = () => { open = !open; mm.querySelectorAll('ul details').forEach(d => d.open = open); fb.textContent = open ? t('collapse') : t('expand'); };
+  }
+
+  function renderCards(pane, cards) {
+    const st = fcState[view.w] || (fcState[view.w] = { order: cards.map((_, i) => i), i: 0 });
+    const c = cards[st.order[st.i]];
+    pane.innerHTML = `
+      <div class="fc">
+        <span class="hud-label">${st.i + 1} / ${cards.length}</span>
+        <button class="flip" id="flip" aria-label="${esc(t('flip'))}">
+          <span class="in">
+            <span class="face front"><span class="hud-label" style="color:var(--gold)">WORLD ${view.w}</span><p>${md(c.f)}</p><span class="src">${esc(t('flip'))} ↻</span></span>
+            <span class="face back"><p>${md(S.lang === 'en' ? c.en : c.vi)}</p><span class="src">${esc(t('src'))}: ${esc(c.src)}</span></span>
+          </span>
+        </button>
+        <div class="fcnav">
+          <button class="pbtn ghost" id="fprev" ${st.i === 0 ? 'disabled' : ''}>◀ ${esc(t('prev'))}</button>
+          <button class="pbtn" id="fflip">${esc(t('flip'))}</button>
+          <button class="pbtn ghost" id="fnext" ${st.i === cards.length - 1 ? 'disabled' : ''}>${esc(t('next'))} ▶</button>
+          <button class="pbtn ghost" id="fshuf">${esc(t('shuf'))}</button>
+        </div>
+      </div>`;
+    const flip = () => $('#flip').classList.toggle('on');
+    $('#flip').onclick = flip; $('#fflip').onclick = flip;
+    $('#fprev').onclick = () => { st.i--; renderCards(pane, cards); };
+    $('#fnext').onclick = () => { st.i++; renderCards(pane, cards); };
+    $('#fshuf').onclick = () => { st.order = shuffle(st.order); st.i = 0; renderCards(pane, cards); };
+  }
+
+  // ---------- quiz runs ----------
+  const mkRun = (kind, qs, extra = {}) => ({ kind, items: qs.map(q => ({ q, order: shuffle([0, 1, 2, 3]), pick: null })), i: 0, locked: false, ...extra });
+  function startWorldRun(w, all) {
+    const pool = unseen(w);
+    if (!pool.length) return go({ name: 'world', w, tab: 'quiz' });
+    run = mkRun('world', shuffle(pool).slice(0, all ? pool.length : batchN(pool.length)), { w });
+    go({ name: 'run' });
+  }
+  function newRound(w) { S.seen[w] = []; S.round[w] = (S.round[w] || 1) + 1; save(); }
+  function startReview(w) {
+    const pool = (w ? worldBugs(w) : S.wrong).map(id => QBYID[id]).filter(Boolean);
+    run = mkRun('review', shuffle(pool).slice(0, RUN_N), w ? { w } : {}); go({ name: 'run' });
+  }
+  function startCheck(w, sec) {
+    const lv = DATA.lessons[w][sec].id;
+    run = mkRun('check', shuffle(DATA.checks[lv]), { w, lv, sec }); go({ name: 'run' });
+  }
+  const backFromRun = () => run.kind === 'check' ? go({ name: 'world', w: run.w, tab: 'learn', sec: run.sec })
+    : run.w ? go({ name: 'world', w: run.w, tab: 'quiz' }) : go({ name: 'map' });
+  function startExam() {
+    const qs = shuffle(Object.entries(EXAM_N).flatMap(([w, n]) => shuffle(byW(+w)).slice(0, n)));
+    run = mkRun('exam', qs, { deadline: Date.now() + EXAM_MIN * 60e3 });
+    go({ name: 'run' });
+    timerId = setInterval(tick, 1000);
+  }
+  function tick() {
+    if (!run || run.kind !== 'exam' || view.name !== 'run') return clearInterval(timerId);
+    const ms = run.deadline - Date.now(), el = $('#timer');
+    if (ms <= 0) { clearInterval(timerId); toast(t('timeUp')); return finishRun(); }
+    if (el) { const m = Math.floor(ms / 6e4), s = Math.floor(ms / 1e3) % 60; el.textContent = `${m}:${String(s).padStart(2, '0')}`; el.classList.toggle('low', ms < 5 * 6e4); }
+  }
+
+  function renderRun() {
+    const it = run.items[run.i], q = it.q, n = run.items.length, exam = run.kind === 'exam';
+    const title = run.kind === 'check' ? `Level ${run.lv} · ${t('chk')}` : run.kind === 'world' ? `W${run.w} · ${t('quiz')}` : run.kind === 'exam' ? t('exam') : (run.w ? `W${run.w} · ` : '') + t('review');
+    const answered = it.pick !== null && !exam, ctx = exam ? null : gctx();
+    app.innerHTML = `
+      <div style="display:grid;gap:16px">
+      <div class="crumb"><button class="pbtn ghost" id="quit">◀ ${esc(run.kind === 'check' ? t('backLesson') : run.w ? t('backWorld') : t('toMap'))}</button><span class="hud-label muted">${esc(title)}</span></div>
+      <div class="box">
+        <div class="qhead">
+          <span class="hud-label" style="color:var(--gold)">${esc(t('qn', run.i + 1, n))} · ${esc(q.src.slice(0, 2))}</span>
+          ${exam ? '<span class="timer" id="timer">--:--</span>' : ''}
+        </div>
+        <div class="hp" aria-hidden="true" style="margin-bottom:16px">${run.items.map((x, k) => {
+          const cls = k === run.i ? 'cur' : x.pick === null ? '' : exam ? 'ans' : (x.pick === x.q.a ? 'ok' : 'no');
+          return `<i class="${cls}"></i>`; }).join('')}</div>
+        <p class="q" lang="en">${md(q.q, q.ng ? null : ctx)}</p>
+        <div class="opts">${it.order.map((oi, k) => {
+          let cls = '', mark = '';
+          if (answered) {
+            if (oi === q.a) { cls = 'right'; mark = `<span class="mark">✔ ${t('right')}</span>`; }
+            else if (oi === it.pick) { cls = 'wrong'; mark = `<span class="mark">✘ ${t('wrongM')}</span>`; }
+          } else if (exam && oi === it.pick) cls = 'pick';
+          return `<button class="opt ${cls}" data-oi="${oi}" lang="en" ${answered ? 'disabled' : ''}><span class="l">${'ABCD'[k]}</span>${md(q.o[oi])}${mark}</button>`; }).join('')}
+        </div>
+        ${answered ? `<div class="explain">${md(S.lang === 'en' ? q.en : q.vi, ctx)}<br><span class="src">${esc(t('src'))}: ${esc(q.src)}</span></div>` : ''}
+        <div class="qfoot">
+          <span class="src">${exam && it.pick === null ? esc(t('pickFirst')) : ''}</span>
+          ${answered || exam ? `<button class="pbtn" id="nextq" ${exam && it.pick === null ? 'disabled' : ''}>${esc(run.i === n - 1 ? (exam ? t('submit') : t('finish')) : t('nextQ'))}<span class="kbd" aria-hidden="true">Enter</span></button>` : ''}
+        </div>
+      </div>
+      </div>`;
+    $('#quit').onclick = () => { clearInterval(timerId); backFromRun(); };
+    app.querySelectorAll('.opt:not(:disabled)').forEach(b => b.onclick = () => answer(+b.dataset.oi));
+    const nx = $('#nextq'); if (nx) nx.onclick = () => { if (run.i === n - 1) finishRun(); else { run.i++; renderRun(); } };
+    if (exam) tick();
+    const focusEl = answered ? $('#nextq') : null; if (focusEl) focusEl.focus({ preventScroll: true });
+  }
+
+  function answer(oi) {
+    const it = run.items[run.i], q = it.q;
+    if (run.kind === 'exam') { it.pick = oi; return renderRun(); }
+    it.pick = oi;
+    if (run.kind === 'world') { const s = S.seen[run.w] || (S.seen[run.w] = []); if (!s.includes(q.id)) { s.push(q.id); save(); } }
+    const ok = oi === q.a;
+    if (ok) {
+      addXP(run.kind === 'world' ? 10 : 5);
+      if (run.kind === 'review' && S.wrong.includes(q.id)) { S.wrong = S.wrong.filter(id => id !== q.id); save(); toast(`${t('squashed')} ${t('bugsLeft', S.wrong.length)}`); }
+    } else if (!S.wrong.includes(q.id)) { S.wrong.push(q.id); save(); }
+    renderRun();
+  }
+
+  // Enter goes to the next question even after focus has left the button (tapped a term, clicked the page).
+  // A control reached with Tab keeps its own Enter; held Enter does not skip questions.
+  // (:focus-visible can't tell: Chrome turns it on by the time Enter's keydown arrives.)
+  let tabNav = false;
+  document.addEventListener('pointerdown', () => { tabNav = false; }, true);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Tab') { tabNav = true; return; }
+    if (e.key !== 'Enter' || e.repeat || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    const nx = $('#nextq');
+    if (!nx || nx.disabled) return;
+    const el = e.target.closest && e.target.closest('button, a, input, textarea, select, [tabindex]');
+    if (el === nx || (el && tabNav)) return;
+    e.preventDefault(); hideGl(); nx.click();
+  });
+
+  function finishRun() {
+    clearInterval(timerId);
+    const items = run.items, n = items.length;
+    if (run.kind === 'exam') items.forEach(it => {
+      if (it.pick === it.q.a) S.xp += 10;
+      else if (!S.wrong.includes(it.q.id)) S.wrong.push(it.q.id);
+    });
+    const correct = items.filter(it => it.pick === it.q.a).length, pct = Math.round(correct / n * 100);
+    const pass = run.kind === 'check' ? correct >= checkNeed(n) : correct / n >= PASS;
+    let reward = null, first = false;
+    if (run.kind === 'check') {
+      S.chk[run.lv] = Math.max(S.chk[run.lv] || 0, correct);
+      if (pass && !S.read[run.lv]) { S.read[run.lv] = true; S.xp += 15; first = true; }
+    }
+    const short = run.kind === 'world' && n < MIN_RUN;
+    if (run.kind === 'world') {
+      S.best[run.w] = Math.max(S.best[run.w] || 0, pct);
+      if (pass && !short) { S.passes[run.w] = (S.passes[run.w] || 0) + 1; if (!S.cards.includes('w' + run.w)) { S.cards.push('w' + run.w); S.xp += 50; reward = { c: WORLDS[run.w - 1].card, r: 'RARE', title: t('levelClear'), xp: 50 }; } }
+    }
+    if (run.kind === 'exam' && pass) { S.xp += 150; reward = { c: BOSS.card, r: 'LEGENDARY', title: t('examClear'), xp: 150, first: !S.cards.includes('boss') }; if (!S.cards.includes('boss')) S.cards.push('boss'); }
+    save(); renderHud();
+    view = { name: 'result', res: { kind: run.kind, w: run.w, lv: run.lv, sec: run.sec, correct, n, pct, pass, short, first } };
+    render(); window.scrollTo({ top: 0 });
+    if (first) toast(t('lvClear', run.lv) + ' ' + t('xp', 15));
+    if (reward) showReward(reward);
+  }
+
+  function renderResult() {
+    const r = view.res, items = run.items, wrongs = items.filter(it => it.pick !== it.q.a);
+    const chk = r.kind === 'check', last = chk && r.sec === DATA.lessons[r.w].length - 1;
+    const msg = chk ? (r.pass ? (r.first ? t('chkPass') : t('chkPassAgain')) : t('chkFail', checkNeed(r.n), r.n))
+      : r.short ? t('tooShort') : r.pass ? (r.kind === 'exam' ? t('examPass') : t('passMsg')) : t('failMsg');
+    const left = r.kind === 'world' ? unseen(r.w).length : 0;
+    const againLabel = r.kind !== 'world' ? t('retry') : left ? (batchN(left) === left ? t('lastBatch', left) : t('nextBatch', batchN(left))) : t('newRound');
+    app.innerHTML = `
+      <div class="result">
+      <div class="box" style="display:grid;gap:10px">
+        <span class="hud-label" style="color:var(--gold)">${esc(t('result'))} · ${chk ? 'LEVEL ' + r.lv : r.kind === 'world' ? 'W' + r.w : r.kind === 'exam' ? 'EXAM' : 'BUG HUNT'}</span>
+        ${chk && r.pass ? `<p class="clear-t lvclear">${esc(t('lvClear', r.lv))}</p>` : ''}
+        <p class="score">${r.pct}%</p>
+        <p style="margin:0;font-weight:800">${r.correct}/${r.n} · ${esc(msg)}</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+          ${chk ? (r.pass
+            ? `<button class="pbtn" id="cnext">${esc(last ? t('toWorldQuiz') : t('nextLv') + ' ▶')}</button><button class="pbtn ghost" id="cread">${esc(t('backLesson'))}</button>`
+            : `<button class="pbtn" id="cread">${esc(t('readAgain'))}</button><button class="pbtn ghost" id="again">${esc(t('chkRetry'))}</button>`)
+          : `<button class="pbtn" id="again">${esc(againLabel)}</button>`}
+          ${r.w && !chk ? `<button class="pbtn ghost" id="toworld">${esc(t('backWorld'))}</button>` : ''}
+          <button class="pbtn ghost" id="tomap">${esc(t('toMap'))}</button>
+        </div>
+      </div>
+      <h2>${esc(t('wrongList'))}</h2>
+      <div class="wrongs">${wrongs.length ? wrongs.map(it => `
+        <div class="box">
+          <p lang="en" style="font-weight:700">${md(it.q.q, gctx())}</p>
+          ${it.pick !== null ? `<p lang="en">✘ ${md(it.q.o[it.pick])}</p>` : ''}
+          <p lang="en" style="color:var(--good);font-weight:700">✔ ${esc(t('ans'))}: ${md(it.q.o[it.q.a])}</p>
+          <p style="color:var(--panel-muted)">${md(S.lang === 'en' ? it.q.en : it.q.vi, gctx())} <span class="src">· ${esc(it.q.src)}</span></p>
+        </div>`).join('') : `<p class="muted">${esc(t('noWrong'))}</p>`}
+      </div>
+      </div>`;
+    const cn = $('#cnext'); if (cn) cn.onclick = () => last ? go({ name: 'world', w: r.w, tab: 'quiz' }) : go({ name: 'world', w: r.w, tab: 'learn', sec: r.sec + 1 });
+    const cr = $('#cread'); if (cr) cr.onclick = () => go({ name: 'world', w: r.w, tab: 'learn', sec: r.sec });
+    const ag = $('#again'); if (ag) ag.onclick = () => {
+      if (chk) return startCheck(r.w, r.sec);
+      if (r.kind === 'world') { if (!left) newRound(r.w); return startWorldRun(r.w); }
+      if (r.kind === 'exam') return startExam();
+      const pool = r.w ? worldBugs(r.w) : S.wrong;
+      pool.length ? startReview(r.w) : (r.w ? go({ name: 'world', w: r.w, tab: 'quiz' }) : go({ name: 'map' }));
+    };
+    const tw = $('#toworld'); if (tw) tw.onclick = () => go({ name: 'world', w: r.w, tab: 'quiz' });
+    $('#tomap').onclick = () => go({ name: 'map' });
+  }
+
+  // ---------- reward ----------
+  function showReward(rw) {
+    const ov = document.createElement('div');
+    ov.className = 'ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', rw.title);
+    ov.innerHTML = `<canvas aria-hidden="true"></canvas>
+      <div class="stage">
+        <p class="clear-t">${esc(rw.title)}</p>
+        <div class="card3d" id="rcard"><div class="card-in">
+          <div class="cface cback"><span>?</span></div>
+          <div class="cface cfront">
+            <div class="rar"><span>ENGINEER CARD</span><b class="${rw.r === 'LEGENDARY' ? 'leg' : ''}">◆ ${rw.r}</b></div>
+            <div class="emblem">${rw.c.em}</div>
+            <div><h4>${esc(rw.c.t)}</h4><p>${esc(rw.c[S.lang])}</p></div>
+          </div>
+        </div></div>
+        <p class="gain">${esc(t('xp', rw.xp))} · ${esc(t('newCard'))}</p>
+        <button class="pbtn" id="rclose">${esc(t('cont'))}</button>
+      </div>`;
+    document.body.appendChild(ov);
+    const close = () => { cancelAnimationFrame(raf); ov.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    ov.querySelector('#rclose').onclick = close;
+    ov.querySelector('#rclose').focus();
+    const card = ov.querySelector('#rcard');
+    let raf;
+    if (reduce) { card.classList.add('flipped'); return; }
+    setTimeout(() => card.classList.add('flipped'), 400);
+    const cv = ov.querySelector('canvas'), cx = cv.getContext('2d');
+    const w = cv.width = 180, h = cv.height = Math.round(180 * innerHeight / Math.max(1, innerWidth));
+    const cols = [css('--gold'), css('--good'), css('--bad'), css('--rare')];
+    const ps = Array.from({ length: 90 }, () => ({ x: w / 2, y: h * .3, vx: (Math.random() - .5) * 3.4, vy: -Math.random() * 3.2 - 1, c: cols[Math.random() * 4 | 0] }));
+    let fr = 0;
+    (function loop() {
+      cx.clearRect(0, 0, w, h);
+      ps.forEach(p => { p.vy += .07; p.x += p.vx; p.y += p.vy; cx.fillStyle = p.c; cx.fillRect(Math.round(p.x), Math.round(p.y), 2, 2); });
+      if (++fr < 200) raf = requestAnimationFrame(loop); else cx.clearRect(0, 0, w, h);
+    })();
+  }
+
+  renderHud();
+  render();
+})();
+</script>
