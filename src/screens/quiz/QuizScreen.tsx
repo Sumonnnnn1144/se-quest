@@ -1,13 +1,14 @@
 import { motion } from 'motion/react';
 import { Button } from '@/components/ui/8bit/button';
-import { multiplierFor } from '@/game/battle';
+import { battleOf, multiplierFor } from '@/game/battle';
 import { MONSTERS, ROBOT } from '@/game/sprites';
 import { Rich } from '@/lib/Rich';
+import './quiz.css';
 import { DamagePop, Explain, HpBar, Monster, NextButton, Options, PixelSprite, Pips, Shot, hitKeyOf, tierOf, type QuizProps } from './parts';
 
 // Battle stage on top, command menu in a dialogue box below.
-export function ArenaQuiz({ run, battle, lang, t, onAnswer, onNext, onQuit }: QuizProps) {
-  const q = run.items[run.i].q, hitKey = hitKeyOf(run, battle);
+export function QuizScreen({ run, lang, t, onAnswer, onNext, onQuit }: Omit<QuizProps, 'battle'>) {
+  const battle = battleOf(run), q = run.items[run.i].q, hitKey = hitKeyOf(run, battle);
   return (
     <div className="quiz arena grid gap-3">
       <div className="flex items-center justify-between gap-3">
@@ -29,7 +30,7 @@ export function ArenaQuiz({ run, battle, lang, t, onAnswer, onNext, onQuit }: Qu
           </motion.div>
           <div className="plate streak-plate">
             <div>{t.streak} {battle.streak}</div>
-            <div className="text-gold">×{multiplierFor(battle.streak + 1)}</div>
+            <div className="text-gold">{t.nextMult} ×{multiplierFor(battle.streak + 1)}</div>
           </div>
         </div>
         {battle.hit > 0 && <Shot hitKey={hitKey} tier={tierOf(battle)} from={['22%', '66%']} to={['76%', '42%']} />}

@@ -1,7 +1,7 @@
-/* Three candidate quiz screens. Whatever Khang does not pick gets deleted. */
+/* Quiz screen: a battle stage above an RPG dialogue box (picked by Khang on 2026-11-05). */
 
-:root { --stage-sky: #8fd3f0; --stage-cloud: #d9f1fb; --ground: #5dbb47; --ground-2: #3c9338; --felt: #12454a; --felt-2: #0b3236; --felt-edge: #071f22; }
-.dark { --stage-sky: #16275f; --stage-cloud: #24397c; --ground: #2f7a4c; --ground-2: #22603b; --felt: #0e3438; --felt-2: #092528; --felt-edge: #041417; }
+:root { --stage-sky: #8fd3f0; --stage-cloud: #d9f1fb; --ground: #5dbb47; --ground-2: #3c9338; }
+.dark { --stage-sky: #16275f; --stage-cloud: #24397c; --ground: #2f7a4c; --ground-2: #22603b; }
 
 .q-text { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .opts { display: grid; gap: 8px; }
@@ -29,7 +29,7 @@
 .result { display: grid; gap: 12px; padding: 24px 16px; text-align: center; background: var(--card); color: var(--card-foreground); border: 6px solid var(--border); }
 .result-title { font-size: clamp(2.25rem, 9vw, 3.25rem); line-height: 1; color: var(--gold); text-wrap: balance; }
 
-/* 1. Arena: the fight is a landscape above a dialogue box. */
+/* The fight is a landscape above the dialogue box. */
 .stage {
   position: relative; height: 188px; overflow: hidden; border: 4px solid var(--border);
   background:
@@ -46,56 +46,3 @@
 .arena .opt { position: relative; padding-left: 28px; }
 .arena .opt::before { content: "▶"; position: absolute; left: 10px; top: 13px; font-size: 11px; color: var(--gold); opacity: 0; }
 .arena .opt:hover:not(:disabled)::before, .arena .opt:focus-visible::before { opacity: 1; }
-
-/* 2. Combo: a card table where the damage sum is the loudest thing on screen. */
-.combo { --card: var(--felt-2); --secondary: var(--felt); --muted-foreground: #bfe3df; color: #f3f5ff; }
-.combo .hud-label { color: var(--foreground); }
-.table-top { display: grid; gap: 16px; padding: 16px; background: var(--felt-2); border: 4px solid var(--felt-edge); }
-.combo-rail { position: relative; display: grid; gap: 10px; align-content: start; }
-.combo-monster { display: flex; align-items: center; gap: 12px; }
-.formula { display: flex; align-items: center; gap: 6px; font-family: var(--font-heading); font-size: 2rem; line-height: 1; }
-.chip, .mult { min-width: 52px; padding: 6px 8px; text-align: center; font-weight: 400; color: #0b1030; border-bottom: 5px solid rgba(0,0,0,.35); }
-.chip { background: #7cc8ff; }
-.mult { background: #ff8f9c; }
-.total { margin-left: auto; font-weight: 400; line-height: 1; color: #fff; }
-.total.t1 { font-size: 3rem; }
-.total.t2 { font-size: 3.75rem; color: #ffd451; }
-.total.t3 { font-size: 4.75rem; color: #ffb062; }
-.combo-note { font-size: .875rem; font-weight: 600; }
-.combo .opt { background: var(--felt); border-color: var(--felt-edge); box-shadow: 4px 4px 0 var(--felt-edge); transition: translate .08s, rotate .08s; }
-.combo .opt:hover:not(:disabled) { translate: -2px -2px; rotate: -.4deg; }
-.combo .explain { background: var(--felt); }
-.combo .result { background: var(--felt-2); border-color: var(--felt-edge); }
-@media (min-width: 720px) {
-  .table-top { grid-template-columns: 250px minmax(0, 1fr); }
-  .combo-monster { flex-direction: column; align-items: stretch; }
-  .combo-monster .monster { align-self: center; }
-}
-
-/* 3. Journal: warm wood and paper, the calmest of the three. */
-.journal {
-  --paper: #f8e6b8; --paper-2: #efd493; --ink: #3a2412; --wood: #8a5a2b; --wood-2: #5e3a17;
-  --gold: #7a4800; --good: #0f5f42; --bad: #a3182e; --muted-foreground: #5f4426; --border: #5e3a17;
-}
-.dark .journal { --paper: #33261a; --paper-2: #45341f; --ink: #f6e7c6; --wood: #6b4420; --wood-2: #2c1a0a; --gold: #ffd451; --good: #43e0a6; --bad: #ff9aa6; --muted-foreground: #d9c49a; --border: #1a0e04; }
-.journal .hud-label { color: var(--foreground); }
-.wood { padding: 10px; background: var(--wood); border: 4px solid var(--wood-2); }
-.page { --secondary: var(--paper-2); padding: 16px; background: var(--paper); color: var(--ink); border: 3px solid var(--wood-2); }
-.journal-head { display: flex; gap: 12px; }
-.window { flex: 0 0 136px; display: grid; gap: 4px; }
-.window-sky { position: relative; height: 72px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--stage-sky); border: 3px solid var(--wood-2); }
-.journal .plate-name { font-size: 1.125rem; }
-.journal .opt { background: var(--paper-2); color: var(--ink); border-color: var(--wood); }
-.journal .opt:hover:not(:disabled) { border-color: var(--ink); }
-.journal .opt.right { border-color: var(--good); }
-.journal .opt.wrong { border-color: var(--bad); }
-.journal .explain { color: var(--ink); }
-.journal .kw { color: var(--gold); }
-.journal .shot.t3 { background: var(--paper); }
-.journal .result { background: var(--paper); color: var(--ink); border-color: var(--wood-2); }
-.journal .result-title { color: var(--gold); }
-
-@media (prefers-reduced-motion: reduce) {
-  .combo .opt { transition: none; }
-  .combo .opt:hover:not(:disabled) { translate: none; rotate: none; }
-}

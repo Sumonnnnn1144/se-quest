@@ -6,12 +6,11 @@ import { passed, score, type Run } from '@/game/run';
 import { MONSTERS } from '@/game/sprites';
 import type { Strings } from '@/i18n';
 import { Monster } from './parts';
-import type { Variant } from './index';
 
-export function BattleResult({ run, t, variant, onBack }: { run: Run; t: Strings; variant: Variant; onBack: () => void }) {
+export function BattleResult({ run, t, onBack }: { run: Run; t: Strings; onBack: () => void }) {
   const battle = battleOf({ ...run, i: run.items.length - 1 }), n = run.items.length, name = MONSTERS[run.w].name;
   return (
-    <div className={`quiz ${variant}`}>
+    <div className="quiz">
       <div className="result" role="status">
         <motion.h1
           className="pixel-title result-title"

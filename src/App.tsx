@@ -10,7 +10,7 @@ import { isRight, startRun, type Run } from '@/game/run';
 import { MONSTERS } from '@/game/sprites';
 import { strings } from '@/i18n';
 import { BattleResult } from '@/screens/quiz/BattleResult';
-import { QuizScreen, VARIANTS, type Variant } from '@/screens/quiz';
+import { QuizScreen } from '@/screens/quiz/QuizScreen';
 import { PixelSprite } from '@/screens/quiz/parts';
 
 const initialDark = () => {
@@ -20,20 +20,12 @@ const initialDark = () => {
   return matchMedia('(prefers-color-scheme: dark)').matches;
 };
 
-// A link can open one version directly, e.g. #combo, so options are easy to compare.
-const initialVariant = (): Variant => {
-  const fromHash = location.hash.slice(1) as Variant;
-  if (VARIANTS.includes(fromHash)) return fromHash;
-  try { const s = localStorage.getItem('sq-variant') as Variant; if (VARIANTS.includes(s)) return s; } catch { /* no storage */ }
-  return 'arena';
-};
 
 export default function App() {
   const [p, setP] = useState<Progress>(load);
   const [run, setRun] = useState<Run | null>(null);
   const [done, setDone] = useState(false);
   const [dark, setDark] = useState(initialDark);
-  const [variant, setVariant] = useState(initialVariant);
   const t = strings(p.lang);
 
   useEffect(() => save(p), [p]);
@@ -45,10 +37,6 @@ export default function App() {
   const toggleTheme = () => {
     try { localStorage.setItem('sq-theme', dark ? 'light' : 'dark'); } catch { /* no storage */ }
     setDark(!dark);
-  };
-  const pickVariant = (v: Variant) => {
-    try { localStorage.setItem('sq-variant', v); } catch { /* no storage */ }
-    setVariant(v);
   };
   const onAnswer = (next: Run) => {
     const it = next.items[next.i];
@@ -77,13 +65,6 @@ export default function App() {
           </div>
         </header>
         <main className="mx-auto grid max-w-3xl gap-4 px-4 py-5">
-          <div className="flex flex-wrap items-center gap-2" role="group" aria-label={t.variantLabel}>
-            {VARIANTS.map((v, k) => (
-              <button key={v} data-variant={v} aria-pressed={v === variant} onClick={() => pickVariant(v)} className={`border-2 border-border px-3 py-1 text-sm font-semibold ${v === variant ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'}`}>
-                {k + 1}. {t.variants[v]}
-              </button>
-            ))}
-          </div>
           {!run && (
             <>
               <h1 className="pixel-title text-4xl leading-none">{t.tagline}</h1>
@@ -108,8 +89,8 @@ export default function App() {
               })}
             </>
           )}
-          {run && !done && <QuizScreen variant={variant} run={run} lang={p.lang} t={t} onAnswer={onAnswer} onNext={onNext} onQuit={quit} />}
-          {run && done && <BattleResult run={run} t={t} variant={variant} onBack={quit} />}
+          {run && !done && <QuizScreen run={run} lang={p.lang} t={t} onAnswer={onAnswer} onNext={onNext} onQuit={quit} />}
+          {run && done && <BattleResult run={run} t={t} onBack={quit} />}
         </main>
       </div>
     </MotionConfig>
