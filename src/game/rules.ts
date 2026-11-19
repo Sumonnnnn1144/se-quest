@@ -1,4 +1,4 @@
-// Game rules carried over from the midterm review page. The final pass rules (CLAUDE.md 7.2) are still open.
+// Game rules carried over from the midterm review page. The final pass rules are still open.
 export const PASS = 0.8;
 export const RUN_N = 10;
 export const MIN_RUN = 5;

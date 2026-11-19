@@ -7,19 +7,17 @@
 @import "@fontsource/be-vietnam-pro/latin-600.css";
 @import "@fontsource/be-vietnam-pro/vietnamese-800.css";
 @import "@fontsource/be-vietnam-pro/latin-800.css";
-@import "@fontsource/vt323/vietnamese-400.css";
-@import "@fontsource/vt323/latin-400.css";
-@import "@fontsource/silkscreen/latin-400.css";
+@import "@fontsource/bungee/vietnamese-400.css";
+@import "@fontsource/bungee/latin-400.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: 'VT323', ui-monospace, monospace;
-    --font-hud: 'Silkscreen', ui-monospace, monospace;
+    --font-heading: 'Bungee', 'Be Vietnam Pro', system-ui, sans-serif;
+    --font-sans: 'Be Vietnam Pro', system-ui, sans-serif;
     --color-good: var(--good);
     --color-bad: var(--bad);
     --color-gold: var(--gold);
-    --font-sans: 'Be Vietnam Pro', system-ui, sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -28,11 +26,6 @@
     --color-sidebar-primary: var(--sidebar-primary);
     --color-sidebar-foreground: var(--sidebar-foreground);
     --color-sidebar: var(--sidebar);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);
@@ -55,170 +48,63 @@
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Voxel 3D palette (chosen 2026-11-06). Gold is only for the main action and rewards. */
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-}
+  --sky-a: #47bde6; --sky-b: #a8e8ec; --sky-c: #ffe9c4; --stars: 0;
+  --page: #e8f3fa; --panel: #fbfdff; --panel-2: #e8eef8; --edge: #aebbd6;
+  --ink: #1c1f3a; --ink-2: #4a5070;
+  --gold: #ffc531; --gold-edge: #b37a00; --on-gold: #2b1d00;
+  --good: #2ecc8f; --good-ink: #0a7a50; --bad: #ff5d73; --bad-ink: #c41d3d;
+  --logo-face: #ffffff; --logo-side: #1c1f3a;
+  --w: #5cc24a; --w-ink: #1e7a2c;
 
-.dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+  /* shadcn names, mapped onto the palette above. */
+  --background: var(--page); --foreground: var(--ink);
+  --card: var(--panel); --card-foreground: var(--ink);
+  --popover: var(--panel); --popover-foreground: var(--ink);
+  --primary: var(--gold); --primary-foreground: var(--on-gold);
+  --secondary: var(--panel-2); --secondary-foreground: var(--ink);
+  --muted: var(--panel-2); --muted-foreground: var(--ink-2);
+  --accent: var(--panel-2); --accent-foreground: var(--ink);
+  --destructive: var(--bad);
+  --border: var(--edge); --input: var(--edge); --ring: var(--ink);
+  --radius: 0.375rem;
+  --sidebar: var(--panel); --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--gold); --sidebar-primary-foreground: var(--on-gold);
+  --sidebar-accent: var(--panel-2); --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--edge); --sidebar-ring: var(--ink);
 }
+.dark {
+  color-scheme: dark;
+  --sky-a: #100c2e; --sky-b: #271f5e; --sky-c: #5d3b8e; --stars: 1;
+  --page: #15123a; --panel: #231f54; --panel-2: #2f2a6c; --edge: #0b0926;
+  --ink: #f3f1ff; --ink-2: #bdb9e6;
+  --gold: #ffcf4a; --gold-edge: #a87400;
+  --good-ink: #5eebb2; --bad-ink: #ff8d9d;
+  --logo-side: #5a4bd1;
+  --w-ink: #8fe676;
+}
+/* Each World has its own colour, taken from its monster. */
+:root[data-w="1"] { --w: #e0913a; --w-ink: #8f4f0f; }
+:root[data-w="2"] { --w: #5cc24a; --w-ink: #1e7a2c; }
+:root[data-w="3"] { --w: #e8485f; --w-ink: #b81f3a; }
+:root[data-w="4"] { --w: #8a8bf5; --w-ink: #4b46c8; }
+:root[data-w="5"] { --w: #c04fe0; --w-ink: #8c28a8; }
+:root[data-w="6"] { --w: #7a7490; --w-ink: #4f4a66; }
+:root.dark[data-w="1"] { --w-ink: #ffb866; }
+:root.dark[data-w="2"] { --w-ink: #8fe676; }
+:root.dark[data-w="3"] { --w-ink: #ff8a98; }
+:root.dark[data-w="4"] { --w-ink: #b5b6ff; }
+:root.dark[data-w="5"] { --w-ink: #e39cff; }
+:root.dark[data-w="6"] { --w-ink: #c7c2e0; }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
-  html {
-    @apply font-sans;
-    }
-}
-/* SE Quest colours, carried over from the midterm review page (tools/review-template.html). */
-:root {
-  --background: #bfe3f2; --foreground: #1b2236;
-  --card: #22306e; --card-foreground: #f3f5ff;
-  --popover: #22306e; --popover-foreground: #f3f5ff;
-  --primary: #ffc93c; --primary-foreground: #1b2236;
-  --secondary: #2e3e8a; --secondary-foreground: #f3f5ff;
-  --muted: #2e3e8a; --muted-foreground: #c3cbf0;
-  --accent: #2e3e8a; --accent-foreground: #f3f5ff;
-  --destructive: #ff6b7d;
-  --border: #0b1030; --input: #0b1030; --ring: #ffc93c;
-  --gold: #ffc93c; --good: #36d39a; --bad: #ff6b7d; --edge: #f3f5ff;
-}
-.dark {
-  color-scheme: dark;
-  --background: #0c1330; --foreground: #e7ebff;
-  --card: #1a2560; --card-foreground: #f3f5ff;
-  --popover: #1a2560; --popover-foreground: #f3f5ff;
-  --primary: #ffd451; --primary-foreground: #1b2236;
-  --secondary: #26337e; --secondary-foreground: #f3f5ff;
-  --muted: #26337e; --muted-foreground: #b9c2ec;
-  --accent: #26337e; --accent-foreground: #f3f5ff;
-  --destructive: #ff7b8b;
-  --border: #000418; --input: #000418; --ring: #ffd451;
-  --gold: #ffd451; --good: #43e0a6; --bad: #ff7b8b; --edge: #cfd6ff;
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+  html { @apply font-sans; }
 }
 
-:focus-visible { outline: 3px dashed var(--ring); outline-offset: 3px; }
-.pixel-title { font-family: var(--font-heading); }
-.hud-label { font-family: var(--font-hud); font-size: 11px; letter-spacing: .04em; }
-.kw { font-weight: 800; color: var(--gold); }
-
-.opt {
-  display: flex; gap: 12px; align-items: flex-start; width: 100%; padding: 12px 14px; text-align: left;
-  background: var(--secondary); color: var(--secondary-foreground); border: 2px solid var(--border); cursor: pointer;
-}
-.opt:hover:not(:disabled) { border-color: var(--gold); }
-.opt:disabled { cursor: default; opacity: 1; }
-.opt.right { border-color: var(--good); box-shadow: inset 4px 0 0 var(--good); }
-.opt.wrong { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
-.opt.pick { border-color: var(--gold); }
-
-/* SE Quest colours, carried over from the midterm review page (tools/review-template.html). */
-:root {
-  --background: #bfe3f2; --foreground: #1b2236;
-  --card: #22306e; --card-foreground: #f3f5ff;
-  --popover: #22306e; --popover-foreground: #f3f5ff;
-  --primary: #ffc93c; --primary-foreground: #1b2236;
-  --secondary: #2e3e8a; --secondary-foreground: #f3f5ff;
-  --muted: #2e3e8a; --muted-foreground: #c3cbf0;
-  --accent: #2e3e8a; --accent-foreground: #f3f5ff;
-  --destructive: #ff6b7d;
-  --border: #0b1030; --input: #0b1030; --ring: #ffc93c;
-  --gold: #ffc93c; --good: #36d39a; --bad: #ff6b7d; --edge: #f3f5ff;
-}
-.dark {
-  color-scheme: dark;
-  --background: #0c1330; --foreground: #e7ebff;
-  --card: #1a2560; --card-foreground: #f3f5ff;
-  --popover: #1a2560; --popover-foreground: #f3f5ff;
-  --primary: #ffd451; --primary-foreground: #1b2236;
-  --secondary: #26337e; --secondary-foreground: #f3f5ff;
-  --muted: #26337e; --muted-foreground: #b9c2ec;
-  --accent: #26337e; --accent-foreground: #f3f5ff;
-  --destructive: #ff7b8b;
-  --border: #000418; --input: #000418; --ring: #ffd451;
-  --gold: #ffd451; --good: #43e0a6; --bad: #ff7b8b; --edge: #cfd6ff;
-}
-
-:focus-visible { outline: 3px dashed var(--ring); outline-offset: 3px; }
-.pixel-title { font-family: var(--font-heading); }
-.hud-label { font-family: var(--font-hud); font-size: 11px; letter-spacing: .04em; }
-.kw { font-weight: 800; color: var(--gold); }
-
-.opt {
-  display: flex; gap: 12px; align-items: flex-start; width: 100%; padding: 12px 14px; text-align: left;
-  background: var(--secondary); color: var(--secondary-foreground); border: 2px solid var(--border); cursor: pointer;
-}
-.opt:hover:not(:disabled) { border-color: var(--gold); }
-.opt:disabled { cursor: default; opacity: 1; }
-.opt.right { border-color: var(--good); box-shadow: inset 4px 0 0 var(--good); }
-.opt.wrong { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 4px; }
+.kw { font-weight: 800; }
