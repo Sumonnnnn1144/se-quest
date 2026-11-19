@@ -411,5 +411,117 @@
   "vi": "Thông báo lỗi: polite, concise, consistent, constructive. Data validation: không tin người dùng; natural/business constraints; early/late checking.",
   "en": "Polite, concise, consistent, constructive. Don't trust users; early/late checking.",
   "src": "05#54, 05#57"
+ },
+ {
+  "w": 6,
+  "f": "Design levels",
+  "vi": "Architectural (cấu trúc tổng thể) → High-level (sub-system, module) → Detailed (cấu trúc dữ liệu, thuật toán). Architectural design là quá trình; software architecture là tài liệu kết quả.",
+  "en": "Architectural (overall structure) → High-level (sub-systems, modules) → Detailed (data structures, algorithms). Design = process; architecture = output document.",
+  "src": "06#4, 06#6"
+ },
+ {
+  "w": 6,
+  "f": "C4 model",
+  "vi": "Simon Brown. System Context → Containers → Components → Code. Đồ án: ít nhất Context + Container (PA3).",
+  "en": "Simon Brown. System Context → Containers → Components → Code. Project: at least Context + Container (PA3).",
+  "src": "06#12"
+ },
+ {
+  "w": 6,
+  "f": "Quality attributes & conflicts",
+  "vi": "Performance: component lớn · Security: layered, tài sản ở lớp trong · Safety: gom vào ít sub-system · Availability: dự phòng · Maintainability: component nhỏ. Component lớn ↑ performance ↓ maintainability.",
+  "en": "Performance: large-grain · Security: layered, assets inside · Safety: few sub-systems · Availability: redundancy · Maintainability: fine-grain. Large-grain ↑ performance ↓ maintainability.",
+  "src": "06#16-17"
+ },
+ {
+  "w": 6,
+  "f": "ADR",
+  "vi": "Architecture Decision Record trong docs/adr/: Title · Status (proposed / accepted / superseded) · Context · Decision · Consequences.",
+  "en": "Architecture Decision Record in docs/adr/: Title · Status (proposed / accepted / superseded) · Context · Decision · Consequences.",
+  "src": "06#25"
+ },
+ {
+  "w": 6,
+  "f": "Repository vs Client-Server",
+  "vi": "Repository: một kho trung tâm, chia sẻ dữ liệu lớn, nhưng phải chung một data model, khó phân tán. Client-server: dễ phân tán, dễ thêm server, nhưng không có data model chung, không có registry.",
+  "en": "Repository: one central store, shares large data, but one data model and hard to distribute. Client-server: easy distribution and new servers, but no shared model or central register.",
+  "src": "06#35, 06#38"
+ },
+ {
+  "w": 6,
+  "f": "Layered & MVC",
+  "vi": "Layered: đổi interface chỉ ảnh hưởng lớp kề bên; separation of concerns nhưng chậm. MVC: Model = dữ liệu + logic, View = trình bày, Controller = nhận lệnh.",
+  "en": "Layered: an interface change only affects the adjacent layer; separation of concerns but slower. MVC: Model = data + logic, View = presentation, Controller = commands.",
+  "src": "06#40-43"
+ },
+ {
+  "w": 6,
+  "f": "Pipes & Filters · Interrupt-driven",
+  "vi": "Pipes & filters: filter xử lý độc lập, dữ liệu qua pipe; cần định dạng chung, khó event-based. Interrupt-driven: real-time, mỗi interrupt một handler; nhanh nhưng khó lập trình và validate.",
+  "en": "Pipes & filters: independent filters, data via pipes; common format, hard for events. Interrupt-driven: real-time, one handler per type; fast but hard to program and validate.",
+  "src": "06#47-51"
+ },
+ {
+  "w": 6,
+  "f": "SOA · Microservices · Event-driven",
+  "vi": "SOA: modularity, interoperability, reusability, loose coupling. Microservices: autonomy, resilience, scalability, flexibility; nhóm nhỏ nên bắt đầu bằng modular monolith. Event-driven: producer → broker (Kafka, RabbitMQ) → consumers; eventual consistency.",
+  "en": "SOA: modularity, interoperability, reusability, loose coupling. Microservices: autonomy, resilience, scalability, flexibility; small teams start with a modular monolith. Event-driven: producer → broker → consumers; eventual consistency.",
+  "src": "06#52-56"
+ },
+ {
+  "w": 7,
+  "f": "Class notation",
+  "vi": "Ba ngăn: tên · attributes · operations. Kiểu sau dấu \":\". Visibility: + public, - private, # protected. Interface: hình tròn hoặc <<interface>>.",
+  "en": "Three compartments: name · attributes · operations. Type after \":\". Visibility: + public, - private, # protected. Interface: circle or <<interface>>.",
+  "src": "07#4-7"
+ },
+ {
+  "w": 7,
+  "f": "Class relationships",
+  "vi": "Dependency: dùng tạm, nét đứt, lỏng nhất. Generalization: tam giác rỗng chỉ vào superclass. Association: đường liền, có tên và role. Multiplicity: 1, 0..1, 0..*, 1..*.",
+  "en": "Dependency: uses, dashed, least restrictive. Generalization: hollow triangle to the superclass. Association: solid line with name and roles. Multiplicity: 1, 0..1, 0..*, 1..*.",
+  "src": "07#9-13"
+ },
+ {
+  "w": 7,
+  "f": "Composition vs Aggregation",
+  "vi": "Composition: mạnh, sở hữu và quyết định vòng đời, thoi đặc (University ◆— Faculty). Aggregation: yếu, dùng không sở hữu, thoi rỗng (Faculty ◇— Lecturer).",
+  "en": "Composition: strong, owns the lifetime, filled diamond (University ◆— Faculty). Aggregation: weak, uses without owning, hollow diamond (Faculty ◇— Lecturer).",
+  "src": "07#14"
+ },
+ {
+  "w": 7,
+  "f": "BCE",
+  "vi": "Boundary: màn hình, form, API. Control: điều phối một use case. Entity: dữ liệu nghiệp vụ lâu dài. Boundary + control = system object; entity = domain object. Actor chỉ nói với boundary.",
+  "en": "Boundary: screens, forms, APIs. Control: coordinates one use case. Entity: long-lived business data. Boundary + control = system objects; entity = domain object. Actors talk only to boundaries.",
+  "src": "07#17-18"
+ },
+ {
+  "w": 7,
+  "f": "Sequence diagram",
+  "vi": "Lifeline, message (sync, async, return), activation bar, fragment (alt = if/else, opt = if, loop, par). Một sơ đồ cho mỗi scenario quan trọng; mỗi message → một operation.",
+  "en": "Lifelines, messages (sync, async, return), activation bars, fragments (alt = if/else, opt = if, loop, par). One per important scenario; every message → an operation.",
+  "src": "07#21-22"
+ },
+ {
+  "w": 7,
+  "f": "SOLID",
+  "vi": "S: một lý do để đổi · O: mở để mở rộng, đóng để sửa · L: subtype thay được base · I: nhiều interface nhỏ · D: phụ thuộc abstraction. Low coupling + high cohesion.",
+  "en": "S: one reason to change · O: open to extend, closed to modify · L: subtypes replace the base · I: many small interfaces · D: depend on abstractions. Low coupling + high cohesion.",
+  "src": "07#28-29"
+ },
+ {
+  "w": 7,
+  "f": "Design patterns",
+  "vi": "Creational: tạo object. Structural: ghép class. Behavioral: tương tác. Giá theo loại khách → Strategy; tạo đúng loại thanh toán → Factory Method; báo nhiều kênh → Observer; API khác interface → Adapter; lối vào đơn giản → Facade.",
+  "en": "Creational: creation. Structural: composition. Behavioral: interaction. Pricing rules → Strategy; payment object → Factory Method; notify channels → Observer; foreign API → Adapter; simple entry → Facade.",
+  "src": "07#31-33"
+ },
+ {
+  "w": 7,
+  "f": "Class → table mapping",
+  "vi": "Entity class → bảng, identity → PK. 1–n → FK phía n. n–n → junction table. Composition → FK NOT NULL + ON DELETE CASCADE. Chuẩn hoá 3NF, hash mật khẩu, migration trong Git.",
+  "en": "Entity class → table, identity → PK. 1–n → FK on the n side. n–n → junction table. Composition → FK NOT NULL + ON DELETE CASCADE. 3NF, hashed passwords, migrations in Git.",
+  "src": "07#36-40"
  }
 ]

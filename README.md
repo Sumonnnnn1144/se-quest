@@ -6,17 +6,17 @@
 
 ## Có gì trong web
 
-- **Bản đồ đảo 3D:** mỗi bài là một đảo (W1–W5), cùng một đảo Thi.
+- **Bản đồ đảo 3D:** mỗi bài là một đảo (W1–W7), cùng một đảo Thi.
 - **Trận đấu trắc nghiệm:** trả lời đúng thì bắn quái, đúng liên tiếp thì sát thương tăng. Quái gục khi bạn đúng đủ 80% số câu, cũng là lúc qua màn.
 - **Trang ôn giữa kỳ** (`/se-quest-on-giua-ky.html`):
-  - Bài học W1–W5 có sơ đồ minh hoạ.
+  - Bài học W1–W7 có sơ đồ minh hoạ.
   - Mindmap và flashcard.
   - Kiểm tra nhanh sau mỗi mục.
   - Quiz theo bài và kho câu sai để ôn lại ("Diệt bug").
   - Exam Mode: 30 câu trong 30 phút.
 - **Song ngữ Việt / Anh:** thuật ngữ in đậm, chạm vào để xem nghĩa.
 
-Phạm vi hiện tại là bài 01–05: SE Introduction, Software Processes, Project Management, Requirements Engineering, Use Case & UI/UX.
+Phạm vi hiện tại là bài 01–07: SE Introduction, Software Processes, Project Management, Requirements Engineering, Use Case & UI/UX, Architectural Design, Object-Oriented & Data Design. Exam Mode vẫn là đề giữa kỳ (bài 01–05).
 
 ## Về nội dung
 

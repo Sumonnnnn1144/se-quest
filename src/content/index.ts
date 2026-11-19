@@ -11,13 +11,15 @@ export const WORLDS: World[] = [
   { w: 3, name: 'Project Management', vi: 'Quản lý dự án', color: '#e8485f' },
   { w: 4, name: 'Requirements Engineering', vi: 'Kỹ nghệ yêu cầu', color: '#8a8bf5' },
   { w: 5, name: 'Use Case & UI/UX', vi: 'Use case & thiết kế UI/UX', color: '#c04fe0' },
+  { w: 6, name: 'Architectural Design', vi: 'Thiết kế kiến trúc', color: '#22b0a2' },
+  { w: 7, name: 'OO & Data Design', vi: 'Thiết kế hướng đối tượng & dữ liệu', color: '#3a96e0' },
 ];
-// The sixth island on the map.
-export const EXAM_ISLAND = 6;
+// The last island on the map, after the Worlds.
+export const EXAM_ISLAND = 8;
 export const EXAM_COLOR = '#7a7490';
 
 export type RewardCard = { w: number; f: string; vi: string; en: string; src: string };
-const REWARD_MATCH: Record<number, RegExp> = { 1: /ethic/i, 2: /waterfall/i, 3: /critical/i, 4: /moscow/i, 5: /include|extend/i };
+const REWARD_MATCH: Record<number, RegExp> = { 1: /ethic/i, 2: /waterfall/i, 3: /critical/i, 4: /moscow/i, 5: /include|extend/i, 6: /layered/i, 7: /SOLID/ };
 
 // The flashcard a World awards when its monster falls.
 export function rewardCard(w: number): RewardCard {

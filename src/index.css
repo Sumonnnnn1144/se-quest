@@ -92,13 +92,17 @@
 :root[data-w="3"] { --w: #e8485f; --w-ink: #b81f3a; }
 :root[data-w="4"] { --w: #8a8bf5; --w-ink: #4b46c8; }
 :root[data-w="5"] { --w: #c04fe0; --w-ink: #8c28a8; }
-:root[data-w="6"] { --w: #7a7490; --w-ink: #4f4a66; }
+:root[data-w="6"] { --w: #22b0a2; --w-ink: #0d6b62; }
+:root[data-w="7"] { --w: #3a96e0; --w-ink: #1a5f9e; }
+:root[data-w="8"] { --w: #7a7490; --w-ink: #4f4a66; }
 :root.dark[data-w="1"] { --w-ink: #ffb866; }
 :root.dark[data-w="2"] { --w-ink: #8fe676; }
 :root.dark[data-w="3"] { --w-ink: #ff8a98; }
 :root.dark[data-w="4"] { --w-ink: #b5b6ff; }
 :root.dark[data-w="5"] { --w-ink: #e39cff; }
-:root.dark[data-w="6"] { --w-ink: #c7c2e0; }
+:root.dark[data-w="6"] { --w-ink: #6fe3d6; }
+:root.dark[data-w="7"] { --w-ink: #8cc6ff; }
+:root.dark[data-w="8"] { --w-ink: #c7c2e0; }
 
 @layer base {
   * { @apply border-border outline-ring/50; }

@@ -24,6 +24,13 @@ function arrow(points, { dash = false, hollow = false, cls = '' } = {}) {
   const line = [...points.slice(0, -1), end].map(q => q.map(n => +n.toFixed(1)).join(',')).join(' ');
   return `<polyline points="${line}" class="l ${dash ? 'dash' : ''} ${cls}"/><polygon points="${head}" class="${hollow ? 'hh' : 'ah'} ${cls}"/>`;
 }
+// A line with an arrowhead at both ends.
+const both = points => arrow(points) + arrow([...points].reverse());
+// A database cylinder whose top edge sits at y.
+function db(cx, y, w, h, label) {
+  const rx = w / 2, ry = 6;
+  return `<path d="M${cx - rx} ${y + ry}v${h - 2 * ry}a${rx} ${ry} 0 0 0 ${w} 0v-${h - 2 * ry}" class="b"/><ellipse cx="${cx}" cy="${y + ry}" rx="${rx}" ry="${ry}" class="b"/>` + text(cx, y + h / 2 + 3, label, 't');
+}
 const smooth = pts => pts.map((p, i) => {
   if (i === 0) return `M${p[0]} ${p[1]}`;
   const a = pts[i - 1], mx = (a[0] + p[0]) / 2;
@@ -299,6 +306,184 @@ export const figures = {
     <div class="dlg bad"><p class="verdict">✘ ${L('Hướng hệ thống', 'System-oriented')}</p><div class="win"><b>Error #27</b><p>Invalid patient id</p></div><div class="btns"><span>OK</span><span>Cancel</span></div></div>
     <div class="dlg good"><p class="verdict">✔ ${L('Hướng người dùng', 'User-oriented')}</p><div class="win"><b>R. MacDonald is not a registered patient</b><p>Click Patients for a list of patients.<br>Click Retry to enter the name again.<br>Click Help for more information.</p></div><div class="btns"><span>Patients</span><span>Help</span><span>Retry</span><span>Cancel</span></div></div>
   </div>`,
+
+  /* ---------- World 6 · Architectural Design ---------- */
+
+  'arch-example': L => {
+    const g = both([[180, 34], [180, 72]]) + text(186, 53, 'HTTP/HTTPS', 'ts mut', 'start')
+      + both([[130, 82], [96, 74]]) + both([[140, 100], [96, 138]]) + both([[230, 94], [264, 116]])
+      + arrow([[180, 100], [180, 150]]) + arrow([[230, 160], [264, 130]]) + arrow([[180, 178], [180, 194]])
+      + box(130, 6, 100, 28, 'Web Client') + box(130, 72, 100, 28, 'Controller', 'hi')
+      + box(8, 60, 88, 26, 'Shipping') + box(8, 128, 88, 26, 'Payment') + box(264, 110, 88, 26, 'View')
+      + box(130, 150, 100, 28, 'Model') + db(180, 194, 70, 34, 'DB');
+    return svg(360, 234, L('Ví dụ kiến trúc: Web Client gọi Controller qua HTTP/HTTPS; Controller nối với Shipping, Payment, View và Model; Model đọc ghi DB và cập nhật View', 'Example architecture: Web Client calls the Controller over HTTP/HTTPS; the Controller talks to Shipping, Payment, View and Model; the Model uses the DB and updates the View'), g);
+  },
+
+  c4: L => {
+    const lv = [
+      ['System Context', L('Hệ thống, người dùng và các hệ thống bên ngoài', 'The system, its users and external systems')],
+      ['Containers', L('Đơn vị chạy/triển khai được: web app, mobile app, API, database', 'Deployable or runnable units: web app, mobile app, API, database')],
+      ['Components', L('Các khối chính bên trong mỗi container', 'Main building blocks inside each container')],
+      ['Code', L('Class và bảng (UML class diagram, ERD), chỉ vẽ khi cần', 'Classes and tables (UML class diagram, ERD), only when needed')],
+    ];
+    return `<ol class="fg-steps four">${lv.map(([n, d]) => `<li><b>${n}</b><small>${d}</small></li>`).join('')}</ol>
+      <p class="fg-note">${L('Phóng to dần như bản đồ: từ toàn cảnh xuống tới code.', 'Zoom in like a map: from the big picture down to code.')}</p>`;
+  },
+
+  repository: L => {
+    const g = both([[220, 50], [220, 84]]) + both([[140, 50], [140, 84]]) + both([[220, 116], [220, 150]]) + both([[140, 116], [140, 150]])
+      + both([[86, 100], [100, 100]]) + both([[260, 100], [274, 100]])
+      + box(100, 84, 160, 32, 'Project repository', 'hi')
+      + box(96, 14, 88, 36, 'Design\neditor') + box(176 + 8, 14, 88, 36, 'Code\ngenerator')
+      + box(4, 82, 82, 36, 'Design\ntranslator') + box(274, 82, 82, 36, 'Program\neditor')
+      + box(96, 150, 88, 36, 'Design\nanalyzer') + box(184, 150, 88, 36, 'Report\ngenerator');
+    return svg(360, 192, L('Repository style: sáu công cụ (design editor, code generator, design translator, program editor, design analyzer, report generator) cùng đọc ghi một project repository ở giữa', 'Repository style: six tools (design editor, code generator, design translator, program editor, design analyzer, report generator) all read and write one central project repository'), g);
+  },
+
+  'client-server': L => {
+    const servers = [['Catalogue\nserver', 'Library\ncatalogue'], ['Video\nserver', 'Film clip\nfiles'], ['Picture\nserver', 'Digitized\nphotos'], ['Web\nserver', 'Film and\nphoto info']];
+    let g = box(4, 58, 352, 24, 'Internet');
+    servers.forEach(([s, d], i) => {
+      const x = 6 + i * 88, cx = x + 39;
+      g += both([[cx, 32], [cx, 58]]) + both([[cx, 82], [cx, 106]]);
+      g += box(x, 6, 78, 26, `Client ${i + 1}`);
+      g += `<rect x="${x}" y="106" width="78" height="76" rx="12" class="b hi"/><line x1="${x}" x2="${x + 78}" y1="144" y2="144" class="l"/>`
+        + text(cx, 125, s, 'ts') + text(cx, 163, d, 'ts mut');
+    });
+    return svg(360, 188, L('Client-server: bốn client gọi qua Internet tới bốn server, mỗi server giữ một loại dữ liệu riêng (catalogue, video, ảnh, thông tin phim)', 'Client-server: four clients reach four servers over the Internet; each server holds its own data (catalogue, video, pictures, film info)'), g);
+  },
+
+  'layers-4': L => {
+    const layer = (name, inner) => `<div class="ly"><b>${name}</b><span>${inner}</span></div>`;
+    const c = L('các component', 'components');
+    return `<div class="fg-layers" role="img" aria-label="${esc(L('Bốn lớp từ trên xuống: Presentation, Business, Persistence, Database. Mỗi lớp chỉ gọi lớp ngay dưới nó', 'Four layers from top to bottom: Presentation, Business, Persistence, Database. Each layer only calls the layer right below it'))}">
+      ${layer('Presentation Layer', c)}<i>▼</i>${layer('Business Layer', c)}<i>▼</i>${layer('Persistence Layer', c)}<i>▼</i>${layer('Database Layer', 'DB')}</div>
+      <p class="fg-note">${L('Đổi interface của một lớp thì chỉ lớp kề bên bị ảnh hưởng.', 'Changing one layer\'s interface only affects the adjacent layer.')}</p>`;
+  },
+
+  mvc: L => {
+    const g = text(220, 14, 'Client', 't big')
+      + arrow([[220, 20], [220, 36]]) + arrow([[250, 66], [290, 110]]) + arrow([[250, 125], [162, 125]])
+      + arrow([[124, 110], [182, 66]]) + arrow([[78, 110], [78, 12], [188, 12]]) + arrow([[300, 140], [300, 166]])
+      + box(170, 36, 100, 30, 'Controller', 'hi') + box(60, 110, 100, 30, 'View') + box(250, 110, 100, 30, 'Model')
+      + db(300, 166, 70, 34, 'DB')
+      + text(196, 92, L('nhận lệnh', 'commands'), 'ts mut', 'start') + text(206, 140, L('cập nhật', 'updates'), 'ts mut');
+    return svg(360, 206, L('MVC: Client gửi lệnh tới Controller, Controller gọi Model, Model đọc ghi DB và cập nhật View, View hiển thị lại cho Client', 'MVC: the Client sends commands to the Controller, the Controller calls the Model, the Model uses the DB and updates the View, the View shows the result to the Client'), g);
+  },
+
+  'pipes-filters': L => {
+    const filter = (x, y, s) => `<rect x="${x}" y="${y}" width="82" height="36" rx="16" class="b hi"/>` + text(x + 41, y + 18, s, 'ts');
+    const data = (x, y, s) => box(x, y, 82, 30, s);
+    const g = arrow([[45, 38], [45, 70]]) + arrow([[136, 38], [136, 70]])
+      + arrow([[86, 88], [95, 88]]) + arrow([[177, 88], [186, 88]]) + arrow([[268, 88], [277, 88]])
+      + arrow([[136, 106], [136, 140]]) + arrow([[177, 158], [186, 158]]) + arrow([[268, 158], [277, 158]])
+      + data(4, 8, 'Invoices') + data(95, 8, 'Payments')
+      + filter(4, 70, 'Read issued\ninvoices') + filter(95, 70, 'Identify\npayments') + filter(186, 70, 'Issue\nreceipts') + data(277, 73, 'Receipts')
+      + filter(95, 140, 'Find\npayments due') + filter(186, 140, 'Issue payment\nreminder') + data(277, 143, 'Reminders')
+      + text(4, 200, L('Bo tròn: filter (bước xử lý) · Vuông: dữ liệu · Mũi tên: pipe', 'Rounded: filter (processing step) · Square: data · Arrows: pipes'), 'tm', 'start');
+    return svg(360, 208, L('Pipes and filters xử lý hoá đơn: đọc hoá đơn, xác định khoản đã trả, rồi tách thành hai nhánh: phát biên nhận, hoặc tìm khoản đến hạn và gửi nhắc nợ', 'Pipes and filters for invoices: read invoices, identify payments, then two branches: issue receipts, or find payments due and issue reminders'), g);
+  },
+
+  microservices: L => {
+    let g = box(4, 46, 352, 26, 'User Interface Layer', 'hi') + box(4, 98, 352, 26, 'Lightweight Message Broker');
+    [0, 1, 2].forEach(i => {
+      const x = 6 + i * 118, cx = x + 53;
+      g += both([[cx, 30], [cx, 46]]) + both([[cx, 72], [cx, 98]]) + both([[cx, 124], [cx, 146]]);
+      g += box(x, 4, 106, 26, 'Client requests', '');
+      g += `<rect x="${x}" y="146" width="106" height="60" rx="6" class="b"/>` + text(cx, 160, 'Service component', 'ts');
+      for (let k = 0; k < 2 + (i === 0); k++) g += `<rect x="${x + 6 + k * 33}" y="176" width="29" height="20" rx="4" class="mod"/>`;
+    });
+    g += text(4, 222, L('Mỗi service có module riêng, triển khai và mở rộng độc lập', 'Each service has its own modules and is deployed and scaled on its own'), 'tm', 'start');
+    return svg(360, 230, L('Microservices: client gửi yêu cầu qua lớp giao diện, đi qua message broker nhẹ tới các service component độc lập, mỗi service có module riêng', 'Microservices: client requests go through the user interface layer and a lightweight message broker to independent service components, each with its own modules'), g);
+  },
+
+  /* ---------- World 7 · Object-Oriented & Data Design ---------- */
+
+  'uml-class': L => {
+    const X = 4, W = 256, row = (y, s) => text(X + 8, y, s, 'ts code', 'start');
+    let g = `<rect x="${X}" y="6" width="${W}" height="100" class="b hi"/><line x1="${X}" x2="${X + W}" y1="30" y2="30" class="l"/><line x1="${X}" x2="${X + W}" y1="66" y2="66" class="l"/>`
+      + text(X + W / 2, 18, 'Employee', 't big')
+      + row(42, '-title: String') + row(56, '-baseSalary: float')
+      + row(78, '«constructor» +Employee()') + row(94, '«abstract» +calcSalary(year: int): float');
+    const brace = (y1, y2, s) => `<polyline points="${X + W + 6},${y1} ${X + W + 10},${y1} ${X + W + 10},${y2} ${X + W + 6},${y2}" class="l rel"/>` + text(X + W + 16, (y1 + y2) / 2, s, 'ts rel', 'start');
+    g += brace(8, 28, L('Tên duy\nnhất', 'Unique\nname')) + brace(32, 64, 'Attributes') + brace(68, 104, 'Operations');
+    const vis = [['+', 'public'], ['-', 'private'], ['#', 'protected']];
+    vis.forEach(([s, n], i) => { g += text(14 + i * 116, 132, s, 't hi', 'start') + text(28 + i * 116, 132, n, 'ts', 'start'); });
+    g += text(6, 152, L('Kiểu dữ liệu viết sau dấu hai chấm, ví dụ title: String', 'The data type follows a colon, e.g. title: String'), 'tm', 'start');
+    return svg(370, 160, L('Class Employee có ba ngăn: tên, attribute (-title: String, -baseSalary: float) và operation (+Employee(), +calcSalary). Ký hiệu visibility: + public, - private, # protected', 'Class Employee has three compartments: name, attributes (-title: String, -baseSalary: float) and operations (+Employee(), +calcSalary). Visibility: + public, - private, # protected'), g);
+  },
+
+  'uml-relations': L => {
+    const rows = [
+      ['Patient', 'Prescription', 'dep', 'Dependency', L('dùng tạm', 'uses')],
+      ['Doctor', 'Employee', 'gen', 'Generalization', L('là một loại', 'is a kind of')],
+      ['Doctor', 'Prescription', 'assoc', 'Association', L('được nối với', 'is linked to')],
+      ['Faculty', 'Lecturer', 'agg', 'Aggregation', L('có, không sở hữu', 'has, does not own')],
+      ['University', 'Faculty', 'comp', 'Composition', L('sở hữu cả vòng đời', 'owns its lifetime')],
+    ];
+    let g = '';
+    rows.forEach(([a, b, k, name, mean], i) => {
+      const y = 6 + i * 44, my = y + 14, x1 = 76, x2 = 172;
+      g += box(4, y, 72, 28, a) + box(172, y, 82, 28, b);
+      if (k === 'dep') g += `<line x1="${x1}" x2="${x2 - 1}" y1="${my}" y2="${my}" class="l dash"/><polyline points="${x2 - 9},${my - 6} ${x2 - 1},${my} ${x2 - 9},${my + 6}" class="l"/>`;
+      if (k === 'gen') g += arrow([[x1, my], [x2, my]], { hollow: true });
+      if (k === 'assoc') g += `<line x1="${x1}" x2="${x2}" y1="${my}" y2="${my}" class="l"/>`;
+      if (k === 'agg' || k === 'comp') g += `<line x1="${x1 + 18}" x2="${x2}" y1="${my}" y2="${my}" class="l"/><polygon points="${x1},${my} ${x1 + 9},${my - 6} ${x1 + 18},${my} ${x1 + 9},${my + 6}" class="${k === 'comp' ? 'dmd full' : 'dmd'}"/>`;
+      g += text(262, my - 6, name, 'ts rel', 'start') + text(262, my + 8, mean, 'ts mut', 'start');
+    });
+    return svg(360, 224, L('Năm quan hệ giữa class: dependency là nét đứt mũi tên mở; generalization là mũi tên tam giác rỗng chỉ vào lớp cha; association là đường thẳng; aggregation là hình thoi rỗng ở phía chứa; composition là hình thoi đặc ở phía sở hữu', 'Five class relationships: dependency is a dashed line with an open arrow; generalization is a hollow triangle pointing at the superclass; association is a plain line; aggregation is a hollow diamond at the whole; composition is a filled diamond at the owner'), g);
+  },
+
+  multiplicity: L => {
+    const g = box(4, 26, 82, 30, 'Person') + box(274, 26, 82, 30, 'Company')
+      + `<line x1="86" x2="274" y1="41" y2="41" class="l"/>`
+      + text(180, 33, 'works for', 'ts mut') + text(92, 33, '+employee', 'ts', 'start') + text(268, 33, '+employer', 'ts', 'end')
+      + text(92, 54, '1..*', 't hi', 'start') + text(268, 54, '0..*', 't hi', 'end')
+      + text(4, 80, L('Mỗi Company có 1..* Person làm nhân viên.', 'Each Company has 1..* Persons as employees.'), 'tm', 'start')
+      + text(4, 96, L('Mỗi Person làm cho 0..* Company.', 'Each Person works for 0..* Companies.'), 'tm', 'start');
+    return svg(360, 104, L('Multiplicity: Person works for Company. Đầu Person ghi 1..*, đầu Company ghi 0..*', 'Multiplicity: Person works for Company. The Person end says 1..*, the Company end says 0..*'), g);
+  },
+
+  bce: L => {
+    const k = [
+      ['«boundary»', L('Giao diện giữa actor và hệ thống: màn hình, form, API endpoint', 'The interface between actors and the system: screens, forms, API endpoints'), 'RegistrationUI'],
+      ['«control»', L('Điều phối các bước của một use case', 'Coordinates the steps of one use case'), 'RegistrationController'],
+      ['«entity»', L('Dữ liệu và luật nghiệp vụ sống lâu, lấy từ domain model', 'Long-lived business data and rules, from the domain model'), 'Course, Enrollment'],
+    ];
+    return `<ol class="fg-steps">${k.map(([n, d, e]) => `<li><b>${n}</b><small>${d}</small><small class="fg-code">${e}</small></li>`).join('')}</ol>
+      <p class="fg-note">${L('Actor → boundary → control → entity. Actor chỉ nói chuyện với boundary; entity không bao giờ gọi boundary.', 'Actor → boundary → control → entity. Actors talk only to boundaries; entities never call boundaries.')}</p>`;
+  },
+
+  sequence: L => {
+    const cols = [[':Student', 38], [':Registration\nUI', 118], [':Registration\nController', 198], [':Course', 278], [':Enrollment', 358]];
+    let g = '';
+    cols.forEach(([s, x]) => { g += `<line x1="${x}" x2="${x}" y1="38" y2="250" class="life"/>` + box(x - 36, 4, 72, 34, s); });
+    const msg = (x1, x2, y, s, ret = false) => arrow([[x1, y], [x2, y]], { dash: ret }) + text(Math.min(x1, x2) + 4, y - 5, s, ret ? 'ts mut' : 'ts', 'start');
+    g += `<rect x="194" y="78" width="8" height="160" class="act"/>`
+      + msg(38, 118, 60, L('chọn môn, Register', 'select, Register'))
+      + msg(118, 194, 84, 'register(…)') + msg(202, 278, 108, 'hasFreeSeat()') + msg(278, 202, 128, 'true / false', true)
+      + `<rect x="104" y="140" width="292" height="104" class="frame"/><path d="M104 140h34v12l-6 6h-28z" class="frame-tag"/>` + text(108, 150, 'alt', 'ts on', 'start')
+      + text(144, 152, '[seat available]', 'ts rel', 'start') + msg(202, 358, 172, 'create(studentId, courseId)') + msg(194, 118, 194, 'success', true)
+      + `<line x1="104" x2="396" y1="206" y2="206" class="l dash"/>` + text(108, 218, '[course full]', 'ts rel', 'start')
+      + msg(194, 118, 236, 'error("Course is full")', true);
+    return svg(400, 256, L('Sequence diagram cho use case Register for a course: Student chọn môn, RegistrationUI gọi register, Controller hỏi Course còn chỗ không; khung alt: còn chỗ thì tạo Enrollment và trả success, hết chỗ thì trả lỗi Course is full', 'Sequence diagram for Register for a course: the Student picks a course, RegistrationUI calls register, the Controller asks Course for a free seat; alt frame: if a seat is free it creates an Enrollment and returns success, if full it returns the error Course is full'), g);
+  },
+
+  'order-state': L => {
+    const st = (x, y, w, s, cls = '') => `<rect x="${x}" y="${y}" width="${w}" height="28" rx="12" class="b ${cls}"/>` + text(x + w / 2, y + 14, s, 'ts');
+    const final = (cx, cy) => `<circle cx="${cx}" cy="${cy}" r="9" class="b"/><circle cx="${cx}" cy="${cy}" r="5" class="dot"/>`;
+    const g = `<circle cx="10" cy="40" r="6" class="dot"/>` + arrow([[16, 40], [30, 40]])
+      + arrow([[94, 40], [120, 40]]) + text(107, 32, 'pay', 'ts rel')
+      + arrow([[170, 40], [198, 40]]) + text(184, 32, 'ship', 'ts rel')
+      + arrow([[260, 40], [286, 40]]) + text(273, 22, 'deliver', 'ts rel')
+      + st(30, 26, 64, 'Created') + st(120, 26, 50, 'Paid') + st(198, 26, 62, 'Shipped') + st(286, 26, 70, 'Delivered')
+      + arrow([[62, 54], [62, 124], [120, 124]]) + text(68, 92, 'cancel', 'ts rel', 'start')
+      + arrow([[145, 54], [145, 110]]) + text(151, 76, 'cancel [before shipping]', 'ts rel', 'start') + text(151, 90, '/ refund', 'ts rel', 'start')
+      + st(120, 110, 76, 'Cancelled', 'hi') + arrow([[196, 124], [311, 124]]) + arrow([[321, 54], [321, 114]]) + final(321, 124)
+      + text(4, 158, L('Nhãn mũi tên: event [guard] / action', 'Arrow labels: event [guard] / action'), 'tm', 'start')
+      + text(4, 174, L('Chấm đặc: trạng thái đầu · vòng tròn kép: trạng thái cuối', 'Solid dot: initial state · ringed dot: final state'), 'tm', 'start');
+    return svg(360, 182, L('State machine của Order: Created qua pay thành Paid, qua ship thành Shipped, qua deliver thành Delivered. Created có thể cancel thành Cancelled; Paid có thể cancel khi chưa giao, kèm refund', 'Order state machine: Created goes to Paid on pay, Shipped on ship, Delivered on deliver. Created can be cancelled; Paid can be cancelled before shipping, with a refund'), g);
+  },
 };
 
 // Rendered once per language at build time.

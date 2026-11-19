@@ -74,7 +74,7 @@ const quiz = JSON.parse(read('content/midterm/quiz.json'));
 const cards = JSON.parse(read('content/midterm/flashcards.json'));
 const glossary = JSON.parse(read('content/midterm/glossary.json'));
 const maps = {}, lessons = {}, checks = {};
-for (const w of [1, 2, 3, 4, 5]) {
+for (const w of [1, 2, 3, 4, 5, 6, 7]) {
   // Per-level quick checks: the correct option is written first in the source and shuffled at runtime.
   for (const [lv, qs] of Object.entries(JSON.parse(read(`content/midterm/checks/w${w}.json`)))) {
     checks[lv] = qs.map((q, k) => {

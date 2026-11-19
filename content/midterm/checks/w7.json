@@ -1,0 +1,474 @@
+{
+  "7.1": [
+    {
+      "q": "Which UML diagram is described as the most commonly used in practice?",
+      "o": [
+        "Class diagram",
+        "Sequence diagram",
+        "Use case diagram",
+        "Deployment diagram"
+      ],
+      "vi": "Class diagram là sơ đồ dùng nhiều nhất trong thực tế.",
+      "en": "The class diagram is the most commonly used diagram in practice.",
+      "src": "07#3"
+    },
+    {
+      "q": "What are the three compartments of a UML class box?",
+      "o": [
+        "Name, attributes, operations",
+        "Name, states, transitions",
+        "Actor, use case, relationship",
+        "Table, column, key"
+      ],
+      "vi": "Class: tên, attributes, operations.",
+      "en": "A class shows its name, attributes and operations.",
+      "src": "07#4"
+    },
+    {
+      "q": "In the attribute \"-baseSalary: float\", what does the colon introduce?",
+      "o": [
+        "The data type",
+        "The visibility",
+        "The default value",
+        "The multiplicity"
+      ],
+      "vi": "Kiểu dữ liệu được viết sau dấu hai chấm.",
+      "en": "The data type is specified after a colon.",
+      "src": "07#5"
+    },
+    {
+      "q": "In UML, the symbol # in front of an attribute means:",
+      "o": [
+        "protected",
+        "public",
+        "private",
+        "static"
+      ],
+      "vi": "+ public, - private, # protected.",
+      "en": "+ public, - private, # protected.",
+      "src": "07#6"
+    },
+    {
+      "q": "Which is a valid notation for an interface?",
+      "o": [
+        "A class with the stereotype <<interface>>",
+        "A filled diamond",
+        "A dashed rectangle with no name",
+        "A stick figure"
+      ],
+      "vi": "Interface: một hình tròn kèm tên, hoặc một class có stereotype <<interface>>.",
+      "en": "An interface is a named circle or a class with the <<interface>> stereotype.",
+      "src": "07#7"
+    }
+  ],
+  "7.2": [
+    {
+      "q": "Two classes have a dependency relationship when:",
+      "o": [
+        "One class is used as a parameter in an operation of the other",
+        "One class owns the lifetime of the other",
+        "One class is a subclass of the other",
+        "Both classes are stored in the same table"
+      ],
+      "vi": "Dependency: một operation gọi operation của class khác, hoặc class kia là tham số. Lỏng nhất trong các quan hệ.",
+      "en": "Dependency: one operation calls another class's operation, or one class is a parameter. It is the least restrictive.",
+      "src": "07#10"
+    },
+    {
+      "q": "Generalization is a relationship between:",
+      "o": [
+        "A general class and a more specific class",
+        "Two objects linked at runtime",
+        "A class and its database table",
+        "An actor and a use case"
+      ],
+      "vi": "Generalization: superclass (chung) và subclass (cụ thể).",
+      "en": "Generalization relates a superclass and a subclass.",
+      "src": "07#11"
+    },
+    {
+      "q": "In \"Person — works for — Company\", what are +employee and +employer?",
+      "o": [
+        "Role names at the two ends of the association",
+        "Multiplicities of the association",
+        "Names of two subclasses",
+        "Operations of Person and Company"
+      ],
+      "vi": "Association có thể có tên (works for) và role ở hai đầu (+employee, +employer). Multiplicity là 1..* và 0..*.",
+      "en": "An association can have a name (works for) and roles at both ends (+employee, +employer); the multiplicities are 1..* and 0..*.",
+      "src": "07#12-13"
+    },
+    {
+      "q": "A University owns its Faculties and is responsible for their lifetime. This is:",
+      "o": [
+        "Composition",
+        "Aggregation",
+        "Dependency",
+        "Generalization"
+      ],
+      "vi": "Composition: association mạnh, sở hữu và chịu trách nhiệm vòng đời (thoi đặc).",
+      "en": "Composition: a strong association that owns the lifetime (filled diamond).",
+      "src": "07#14"
+    },
+    {
+      "q": "Aggregation is described as:",
+      "o": [
+        "A weak association: a class uses another but does not own it",
+        "A strong association that controls the other's lifetime",
+        "A dashed dependency arrow",
+        "A superclass–subclass relationship"
+      ],
+      "vi": "Aggregation: association yếu, dùng nhưng không sở hữu (thoi rỗng).",
+      "en": "Aggregation: a weak association, using without owning (hollow diamond).",
+      "src": "07#14"
+    },
+    {
+      "q": "In the Online Shop example, how are Credit, Cash and Check related to Payment?",
+      "o": [
+        "They are subclasses of the abstract class Payment",
+        "They are attributes of Payment",
+        "They aggregate Payment",
+        "They depend on Order through Payment"
+      ],
+      "vi": "Payment là abstract class; Credit, Cash, Check là subclass qua generalization.",
+      "en": "Payment is abstract; Credit, Cash and Check are its subclasses.",
+      "src": "07#15"
+    }
+  ],
+  "7.3": [
+    {
+      "q": "Which describes a domain object?",
+      "o": [
+        "A real-world entity that takes a role in the business process and has stored data",
+        "An entity created only to support processing and calculations",
+        "A screen or form shown to the user",
+        "A temporary variable inside an operation"
+      ],
+      "vi": "Domain object: thực thể ngoài đời, có vai trò trong nghiệp vụ, có dữ liệu lưu. System object: tạo ra để xử lý.",
+      "en": "Domain objects are real-world entities with stored data; system objects support processing.",
+      "src": "07#17"
+    },
+    {
+      "q": "In BCE, which object coordinates the steps of one use case?",
+      "o": [
+        "Control",
+        "Boundary",
+        "Entity",
+        "Actor"
+      ],
+      "vi": "Control điều phối các bước của một use case, ví dụ RegistrationController.",
+      "en": "The control object coordinates one use case, e.g. RegistrationController.",
+      "src": "07#18"
+    },
+    {
+      "q": "Which BCE rule of thumb is correct?",
+      "o": [
+        "Actors talk only to boundaries",
+        "Entities call boundaries to show results",
+        "Control objects are domain objects",
+        "Boundaries hold long-lived business data"
+      ],
+      "vi": "Actor chỉ nói chuyện với boundary; entity không bao giờ gọi boundary; boundary và control là system object.",
+      "en": "Actors talk only to boundaries; entities never call boundaries; boundary and control are system objects.",
+      "src": "07#18"
+    },
+    {
+      "q": "In step 1, candidate domain classes come from:",
+      "o": [
+        "Nouns in use case specifications and user stories",
+        "Verbs in the test plan",
+        "Column names of an existing spreadsheet only",
+        "The list of UI screens"
+      ],
+      "vi": "Ứng viên class là các danh từ trong use case spec và user story.",
+      "en": "Candidate classes are the nouns in use case specs and user stories.",
+      "src": "07#19"
+    },
+    {
+      "q": "What does BCE stand for?",
+      "o": [
+        "Boundary – Control – Entity",
+        "Business – Class – Event",
+        "Base – Component – Extension",
+        "Behaviour – Container – Element"
+      ],
+      "vi": "BCE = Boundary – Control – Entity.",
+      "en": "BCE = Boundary – Control – Entity.",
+      "src": "07#18",
+      "ng": 1
+    }
+  ],
+  "7.4": [
+    {
+      "q": "In step 2, when do you create boundary and control objects?",
+      "o": [
+        "When no domain object can perform a step of the use case",
+        "Only after the database is designed",
+        "For every noun in the requirements",
+        "Never: only entities are allowed"
+      ],
+      "vi": "Mỗi bước trong kịch bản phải do một object làm; nếu không domain object nào làm được thì tạo boundary/control.",
+      "en": "Every step must be performed by some object; create boundary and control objects when no domain object can do it.",
+      "src": "07#21"
+    },
+    {
+      "q": "In a sequence diagram, which combined fragment expresses if/else?",
+      "o": [
+        "alt",
+        "opt",
+        "loop",
+        "par"
+      ],
+      "vi": "alt = if/else, opt = if, loop = lặp, par = song song.",
+      "en": "alt = if/else, opt = if, loop, par = parallel.",
+      "src": "07#22"
+    },
+    {
+      "q": "Every message in a sequence diagram should become:",
+      "o": [
+        "An operation in the class diagram",
+        "A new table in the database",
+        "A new use case",
+        "An attribute of the actor"
+      ],
+      "vi": "Mỗi message trở thành một operation trong class diagram.",
+      "en": "Every message should become an operation in the class diagram.",
+      "src": "07#22"
+    },
+    {
+      "q": "In the Login failed scenario, Encryptor and LoginAccount are classified as:",
+      "o": [
+        "System objects",
+        "Domain objects",
+        "Actors",
+        "Use cases"
+      ],
+      "vi": "Encryptor (bước 4) và LoginAccount (bước 5) là system object.",
+      "en": "Encryptor (step 4) and LoginAccount (step 5) are system objects.",
+      "src": "07#24"
+    },
+    {
+      "q": "\"Same operation, different data or processing\" calls for:",
+      "o": [
+        "Polymorphism",
+        "Encapsulation",
+        "Composition",
+        "Normalization"
+      ],
+      "vi": "Dữ liệu dùng chung → inheritance; cùng operation, xử lý khác → polymorphism; giấu dữ liệu → encapsulation.",
+      "en": "Shared data → inheritance; same operation, different processing → polymorphism; hide data → encapsulation.",
+      "src": "07#25"
+    },
+    {
+      "q": "In a state machine, how is a transition written?",
+      "o": [
+        "event [guard] / action",
+        "action / event [guard]",
+        "[state] event : action",
+        "guard -> event -> state"
+      ],
+      "vi": "Transition viết dạng event [guard] / action, ví dụ cancel [before shipping] / refund.",
+      "en": "Transitions read event [guard] / action, e.g. cancel [before shipping] / refund.",
+      "src": "07#26"
+    }
+  ],
+  "7.5": [
+    {
+      "q": "Which practice lowers coupling?",
+      "o": [
+        "Depending on interfaces and passing data explicitly",
+        "Sharing global state between modules",
+        "Putting every responsibility in one module",
+        "Copying code between modules"
+      ],
+      "vi": "Low coupling: phụ thuộc vào interface, truyền dữ liệu tường minh, tránh trạng thái toàn cục.",
+      "en": "Low coupling: depend on interfaces, pass data explicitly, avoid shared global state.",
+      "src": "07#28"
+    },
+    {
+      "q": "High cohesion means:",
+      "o": [
+        "One module has one clear responsibility",
+        "Modules depend strongly on each other",
+        "Every module can do everything",
+        "Modules share one global variable"
+      ],
+      "vi": "Cohesion cao: một module = một trách nhiệm rõ ràng.",
+      "en": "High cohesion: one module = one clear responsibility.",
+      "src": "07#28"
+    },
+    {
+      "q": "A \"God class\" that does everything violates which SOLID principle?",
+      "o": [
+        "Single Responsibility",
+        "Liskov Substitution",
+        "Interface Segregation",
+        "Dependency Inversion"
+      ],
+      "vi": "S: một class chỉ có một lý do để thay đổi; vi phạm thì sinh ra God class.",
+      "en": "S: a class has one reason to change; violating it gives a God class.",
+      "src": "07#29"
+    },
+    {
+      "q": "Business logic that creates database objects directly violates:",
+      "o": [
+        "Dependency Inversion",
+        "Open/Closed",
+        "Single Responsibility",
+        "Liskov Substitution"
+      ],
+      "vi": "D: phụ thuộc vào abstraction, không vào class cụ thể.",
+      "en": "D: depend on abstractions, not concrete classes.",
+      "src": "07#29"
+    },
+    {
+      "q": "What does YAGNI stand for?",
+      "o": [
+        "You Aren't Gonna Need It",
+        "Yet Another Generic Network Interface",
+        "Your Application Gets New Inputs",
+        "You Always Get New Ideas"
+      ],
+      "vi": "YAGNI = You Aren't Gonna Need It. DRY = Don't Repeat Yourself, KISS = Keep It Simple.",
+      "en": "YAGNI = You Aren't Gonna Need It; DRY = Don't Repeat Yourself; KISS = Keep It Simple.",
+      "src": "07#28",
+      "ng": 1
+    }
+  ],
+  "7.6": [
+    {
+      "q": "Which question do creational patterns answer?",
+      "o": [
+        "How are objects created?",
+        "How are classes and objects composed?",
+        "How do objects interact and share responsibilities?",
+        "How is data stored in tables?"
+      ],
+      "vi": "Creational: tạo object. Structural: ghép class/object. Behavioral: tương tác, chia trách nhiệm.",
+      "en": "Creational: creation. Structural: composition. Behavioral: interaction and responsibilities.",
+      "src": "07#31"
+    },
+    {
+      "q": "Adapter, Facade and Proxy belong to which group?",
+      "o": [
+        "Structural",
+        "Creational",
+        "Behavioral",
+        "Architectural"
+      ],
+      "vi": "Structural: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.",
+      "en": "Structural: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.",
+      "src": "07#31"
+    },
+    {
+      "q": "Email, SMS and the app must be notified when a booking changes. Which pattern fits?",
+      "o": [
+        "Observer",
+        "Singleton",
+        "Adapter",
+        "Builder"
+      ],
+      "vi": "Báo nhiều bên khi một thứ thay đổi → Observer.",
+      "en": "Notifying many parties when something changes → Observer.",
+      "src": "07#32"
+    },
+    {
+      "q": "Why should Singleton be used carefully?",
+      "o": [
+        "It hurts testability",
+        "It cannot hold configuration",
+        "It creates many objects",
+        "It only works with databases"
+      ],
+      "vi": "Singleton cho một object cấu hình dùng chung, nhưng làm khó test.",
+      "en": "Singleton gives one shared configuration object but hurts testability.",
+      "src": "07#32"
+    },
+    {
+      "q": "In the Strategy example, what is the benefit of adding a new pricing rule?",
+      "o": [
+        "A new class is added and Booking is not changed",
+        "Booking gets a longer if/else chain",
+        "All pricing classes must be rewritten",
+        "The database schema must change"
+      ],
+      "vi": "Luật mới = class mới, không sửa Booking (Open/Closed), mỗi luật unit test riêng được.",
+      "en": "A new rule is a new class; Booking stays unchanged (Open/Closed), and each rule is testable alone.",
+      "src": "07#33"
+    }
+  ],
+  "7.7": [
+    {
+      "q": "Which is a disadvantage of storing data in a file system?",
+      "o": [
+        "It is hard to manage large data",
+        "It is complex to set up and administer",
+        "It needs a DBMS",
+        "It is slow for small data"
+      ],
+      "vi": "File system: đơn giản, nhanh, nhưng khó quản lý dữ liệu lớn. Database: phức tạp hơn để cài đặt.",
+      "en": "Files are simple and fast but hard to manage at scale; databases are more complex to set up.",
+      "src": "07#35"
+    },
+    {
+      "q": "When mapping classes to tables, object identity becomes:",
+      "o": [
+        "A primary key",
+        "A foreign key",
+        "An index",
+        "A junction table"
+      ],
+      "vi": "Entity class → bảng, attribute → cột, object identity → primary key.",
+      "en": "Entity class → table, attributes → columns, identity → primary key.",
+      "src": "07#36"
+    },
+    {
+      "q": "How is a 1 – n association mapped to relational tables?",
+      "o": [
+        "A foreign key on the \"many\" side",
+        "A foreign key on the \"one\" side",
+        "A junction table with two foreign keys",
+        "One shared table for both classes"
+      ],
+      "vi": "1–n: FK ở phía n (student.class_id). n–n: junction table.",
+      "en": "1–n: FK on the many side (student.class_id). n–n: a junction table.",
+      "src": "07#37"
+    },
+    {
+      "q": "Which mapping is used for composition?",
+      "o": [
+        "FK NOT NULL + ON DELETE CASCADE",
+        "A junction table with extra columns",
+        "One table per class hierarchy",
+        "No foreign key at all"
+      ],
+      "vi": "Composition: FK NOT NULL và ON DELETE CASCADE, vì phần tử con sống theo phần tử cha.",
+      "en": "Composition: FK NOT NULL with ON DELETE CASCADE, since the part lives with the whole.",
+      "src": "07#37"
+    },
+    {
+      "q": "According to the checklist, when should you denormalize?",
+      "o": [
+        "Only for proven performance needs",
+        "Always, to make queries simpler",
+        "Before normalizing to 3NF",
+        "Whenever a table has more than five columns"
+      ],
+      "vi": "Chuẩn hoá tới 3NF; chỉ denormalize khi đã chứng minh cần cho hiệu năng.",
+      "en": "Normalize to 3NF; denormalize only for proven performance needs.",
+      "src": "07#40"
+    },
+    {
+      "q": "How should passwords be stored?",
+      "o": [
+        "As hashes",
+        "As plain text in a UNIQUE column",
+        "Encoded in the table name",
+        "In a separate text file"
+      ],
+      "vi": "Lưu mật khẩu dạng hash, thu thập ít và bảo vệ dữ liệu cá nhân.",
+      "en": "Store passwords as hashes and protect personal data.",
+      "src": "07#40"
+    }
+  ]
+}

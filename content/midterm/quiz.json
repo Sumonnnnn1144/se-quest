@@ -2693,5 +2693,1191 @@
   "en": "POUR = Perceivable, Operable, Understandable, Robust. Robust: semantic HTML, works with screen readers. Trap: the slide also says design responsive, but that is not the R.",
   "src": "05#34",
   "ng": 1
+ },
+ {
+  "id": "w6-01",
+  "w": 6,
+  "q": "In the software development process on the slide, architectural design belongs to which step?",
+  "o": [
+   "Requirement definition",
+   "Analysis & Design",
+   "Integration & System testing",
+   "Operation & Maintenance"
+  ],
+  "a": 1,
+  "vi": "Thiết kế nằm ở bước Analysis & Design, sau Requirement definition.",
+  "en": "Design sits in the Analysis & Design step.",
+  "src": "06#3"
+ },
+ {
+  "id": "w6-02",
+  "w": 6,
+  "q": "Software design is best defined as:",
+  "o": [
+   "Writing and testing the source code",
+   "Conceptualizing how a system will work before it is implemented or modified",
+   "Collecting requirements from stakeholders",
+   "Deploying the system to users"
+  ],
+  "a": 1,
+  "vi": "Software design: hình dung hệ thống hoạt động thế nào trước khi cài đặt hoặc sửa.",
+  "en": "Conceptualizing how the system will work before implementing or modifying it.",
+  "src": "06#4"
+ },
+ {
+  "id": "w6-03",
+  "w": 6,
+  "q": "On the slide, architectural design is the level of software design that covers:",
+  "o": [
+   "The code inside each class",
+   "The overall structure of the system",
+   "Data structures and algorithms",
+   "The test cases for each module"
+  ],
+  "a": 1,
+  "vi": "Architectural design: cấu trúc tổng thể. High-level: sub-system và module. Detailed: cấu trúc dữ liệu và thuật toán.",
+  "en": "Architectural design: overall structure. High-level: sub-systems and modules. Detailed: data structures and algorithms.",
+  "src": "06#4"
+ },
+ {
+  "id": "w6-04",
+  "w": 6,
+  "q": "Which is NOT part of architectural design?",
+  "o": [
+   "Decomposing the system into components",
+   "Identifying major components and their communications",
+   "Making design decisions and their rationale",
+   "Choosing the sorting algorithm inside one function"
+  ],
+  "a": 3,
+  "vi": "Thuật toán bên trong một hàm thuộc detailed design.",
+  "en": "Algorithms inside a function belong to detailed design.",
+  "src": "06#7"
+ },
+ {
+  "id": "w6-05",
+  "w": 6,
+  "q": "\"The set of structures needed to reason about the system, comprising software elements, relations among them, and properties of both\" is the definition by:",
+  "o": [
+   "Shaw et al., 1995",
+   "Bass, Clements & Kazman, 2021",
+   "Sommerville, 2015",
+   "Simon Brown, C4"
+  ],
+  "a": 1,
+  "vi": "Định nghĩa này của Bass, Clements & Kazman (Software Architecture in Practice, 4th ed., 2021). Shaw et al. nói về components và interactions.",
+  "en": "That is Bass, Clements & Kazman (2021); Shaw et al. speak of components and interactions.",
+  "src": "06#8"
+ },
+ {
+  "id": "w6-06",
+  "w": 6,
+  "q": "Who created the C4 model?",
+  "o": [
+   "Grady Booch",
+   "Simon Brown",
+   "Mary Shaw",
+   "Ivar Jacobson"
+  ],
+  "a": 1,
+  "vi": "C4 model của Simon Brown, bốn mức phóng to như bản đồ.",
+  "en": "The C4 model is by Simon Brown.",
+  "src": "06#12"
+ },
+ {
+  "id": "w6-07",
+  "w": 6,
+  "q": "For the course project (PA3), which C4 diagrams should you draw at least?",
+  "o": [
+   "Code and Components",
+   "Context and Container",
+   "Only the Code diagram",
+   "All four, with full UML for each"
+  ],
+  "a": 1,
+  "vi": "Đồ án: ít nhất System Context và Container diagram (PA3).",
+  "en": "At least the Context and Container diagrams (PA3).",
+  "src": "06#12"
+ },
+ {
+  "id": "w6-08",
+  "w": 6,
+  "q": "Which tools are listed for diagrams-as-code in C4?",
+  "o": [
+   "Structurizr, PlantUML, Mermaid",
+   "Photoshop, Figma, Canva",
+   "Jira, Trello, Notion",
+   "Excel, Word, PowerPoint"
+  ],
+  "a": 0,
+  "vi": "Diagrams-as-code: Structurizr, PlantUML, Mermaid.",
+  "en": "Structurizr, PlantUML, Mermaid.",
+  "src": "06#12"
+ },
+ {
+  "id": "w6-09",
+  "w": 6,
+  "q": "A module (component), unlike a sub-system:",
+  "o": [
+   "Is a system in its own right",
+   "Operates independently of other sub-systems",
+   "Provides services to other components but is not normally a separate system",
+   "Must run on its own server"
+  ],
+  "a": 2,
+  "vi": "Module cung cấp dịch vụ cho component khác nhưng thường không được xem là hệ thống riêng.",
+  "en": "A module serves other components but is not normally a separate system.",
+  "src": "06#13"
+ },
+ {
+  "id": "w6-10",
+  "w": 6,
+  "q": "\"Analysis of whether the system can meet its non-functional requirements\" is which advantage of architecture?",
+  "o": [
+   "Stakeholder communication",
+   "System analysis",
+   "Large-scale reuse",
+   "Incremental delivery"
+  ],
+  "a": 1,
+  "vi": "System analysis: kiểm tra NFR và khả năng mở rộng sau này.",
+  "en": "System analysis covers NFRs and future extensions.",
+  "src": "06#15"
+ },
+ {
+  "id": "w6-11",
+  "w": 6,
+  "q": "To improve availability, the architecture should:",
+  "o": [
+   "Use large-grain components",
+   "Include redundant components and fault-tolerance mechanisms",
+   "Put critical assets in inner layers",
+   "Localize safety features in few sub-systems"
+  ],
+  "a": 1,
+  "vi": "Availability: thêm component dự phòng và cơ chế chịu lỗi.",
+  "en": "Availability: redundant components and fault tolerance.",
+  "src": "06#16"
+ },
+ {
+  "id": "w6-12",
+  "w": 6,
+  "q": "Which architectural choice supports maintainability?",
+  "o": [
+   "Large-grain components",
+   "Fine-grain, replaceable components",
+   "Minimizing all communication",
+   "Redundant data everywhere"
+  ],
+  "a": 1,
+  "vi": "Maintainability: component nhỏ, dễ thay. Large-grain là cho performance.",
+  "en": "Maintainability: fine-grain, replaceable components. Large-grain is for performance.",
+  "src": "06#16"
+ },
+ {
+  "id": "w6-13",
+  "w": 6,
+  "q": "Introducing redundant data improves availability but makes which attribute harder?",
+  "o": [
+   "Performance",
+   "Security",
+   "Usability",
+   "Maintainability"
+  ],
+  "a": 1,
+  "vi": "Conflict: dữ liệu dư thừa giúp availability nhưng làm security khó hơn.",
+  "en": "Redundant data helps availability but makes security harder.",
+  "src": "06#17"
+ },
+ {
+  "id": "w6-14",
+  "w": 6,
+  "q": "Localizing safety-related features usually leads to:",
+  "o": [
+   "Less communication and better performance",
+   "More communication and degraded performance",
+   "Better security with no cost",
+   "Fewer components overall"
+  ],
+  "a": 1,
+  "vi": "Gom tính năng safety thường cần giao tiếp nhiều hơn, nên performance giảm.",
+  "en": "It usually means more communication, so performance degrades.",
+  "src": "06#17"
+ },
+ {
+  "id": "w6-15",
+  "w": 6,
+  "q": "\"The system should achieve 99.99% uptime\" is an architecturally significant requirement about:",
+  "o": [
+   "Performance",
+   "Scalability",
+   "Security",
+   "Availability"
+  ],
+  "a": 3,
+  "vi": "Uptime 99,99% là availability. 1.000 giao dịch/giây là performance; 1 triệu người dùng là scalability; ISO 27001 là security.",
+  "en": "Uptime is availability; 1,000 TPS is performance; 1M users is scalability; ISO 27001 is security.",
+  "src": "06#19"
+ },
+ {
+  "id": "w6-16",
+  "w": 6,
+  "q": "Data residency laws affecting a cloud architecture are an example of an ASR:",
+  "o": [
+   "Influencing technology choices",
+   "Defining constraints on the design",
+   "Shaping trade-offs between quality attributes",
+   "Removing non-functional requirements"
+  ],
+  "a": 1,
+  "vi": "Ví dụ trên slide: luật nơi lưu dữ liệu là ràng buộc (constraint) cho thiết kế.",
+  "en": "The slide gives data residency laws as a design constraint.",
+  "src": "06#18"
+ },
+ {
+  "id": "w6-17",
+  "w": 6,
+  "q": "Which is a high-priority functional requirement example that shapes the architecture?",
+  "o": [
+   "The system must comply with ISO/IEC 27001:2022",
+   "A real-time video processing application requires a low-latency streaming pipeline",
+   "The system should achieve 99.99% uptime",
+   "The system must handle 1,000 transactions per second"
+  ],
+  "a": 1,
+  "vi": "Ví dụ FR ưu tiên cao: xử lý video thời gian thực cần pipeline streaming độ trễ thấp. Ba ý còn lại là NFR.",
+  "en": "Real-time video needing a low-latency pipeline is the FR example; the others are NFRs.",
+  "src": "06#19"
+ },
+ {
+  "id": "w6-18",
+  "w": 6,
+  "q": "Which is NOT one of the questions for architectural design?",
+  "o": [
+   "How will the system be distributed?",
+   "What control strategy should be used?",
+   "How should the architecture be documented?",
+   "How many testers should the team hire?"
+  ],
+  "a": 3,
+  "vi": "7 câu hỏi về kiến trúc không gồm việc tuyển tester.",
+  "en": "Hiring testers is not among the seven questions.",
+  "src": "06#22"
+ },
+ {
+  "id": "w6-19",
+  "w": 6,
+  "q": "Which is listed as an example of a design decision?",
+  "o": [
+   "Daily backup",
+   "Hire two more developers",
+   "Write the user manual in English",
+   "Hold a sprint review every two weeks"
+  ],
+  "a": 0,
+  "vi": "Ví dụ quyết định thiết kế: React, React Native, MySQL, MVC phía server, Java back end, daily backup.",
+  "en": "Examples: React, React Native, MySQL, MVC, Java back end, daily backup.",
+  "src": "06#23"
+ },
+ {
+  "id": "w6-20",
+  "w": 6,
+  "q": "In the three-tier example decision, which were listed as alternatives?",
+  "o": [
+   "MVC, service-oriented architecture, n-tier",
+   "Waterfall, Scrum, Kanban",
+   "MySQL, PostgreSQL, MongoDB",
+   "React, Angular, Vue"
+  ],
+  "a": 0,
+  "vi": "Alternatives: MVC, service-oriented architecture, n-tier.",
+  "en": "Alternatives: MVC, SOA, n-tier.",
+  "src": "06#24"
+ },
+ {
+  "id": "w6-21",
+  "w": 6,
+  "q": "Where is an ADR kept?",
+  "o": [
+   "In the repository, e.g. docs/adr/",
+   "Only in the project manager's email",
+   "In the bug tracker",
+   "On a printed wall chart"
+  ],
+  "a": 0,
+  "vi": "ADR là tài liệu ngắn lưu ngay trong repository (docs/adr/), được review như code.",
+  "en": "ADRs live in the repository (docs/adr/) and are reviewed like code.",
+  "src": "06#25"
+ },
+ {
+  "id": "w6-22",
+  "w": 6,
+  "q": "Which ADR section records \"benefits, drawbacks, follow-up work\"?",
+  "o": [
+   "Context",
+   "Decision",
+   "Consequences",
+   "Status"
+  ],
+  "a": 2,
+  "vi": "Consequences: lợi ích, hạn chế, việc tiếp theo. Context: vấn đề và ràng buộc.",
+  "en": "Consequences hold benefits, drawbacks and follow-up work.",
+  "src": "06#25"
+ },
+ {
+  "id": "w6-23",
+  "w": 6,
+  "q": "MVC, n-tier and service-oriented are examples of:",
+  "o": [
+   "Design patterns",
+   "Architectural styles",
+   "Process models",
+   "UML diagrams"
+  ],
+  "a": 1,
+  "vi": "Ví dụ architectural style trên slide: MVC, n-tier, service-oriented.",
+  "en": "The slide lists them as architectural styles.",
+  "src": "06#28"
+ },
+ {
+  "id": "w6-24",
+  "w": 6,
+  "q": "The repository style is often used when:",
+  "o": [
+   "Sharing large amounts of data",
+   "A fast response to hardware events is essential",
+   "Every node must act as a server",
+   "Data must pass through a series of transformations"
+  ],
+  "a": 0,
+  "vi": "Repository hay dùng khi chia sẻ lượng dữ liệu lớn.",
+  "en": "Repository is used when sharing large amounts of data.",
+  "src": "06#33"
+ },
+ {
+  "id": "w6-25",
+  "w": 6,
+  "q": "Which is an ADVANTAGE of the client-server style?",
+  "o": [
+   "A shared data model across sub-systems",
+   "A central register of names and services",
+   "It is easy to add new servers or upgrade existing ones",
+   "No data interchange is needed"
+  ],
+  "a": 2,
+  "vi": "Client-server dễ thêm hoặc nâng cấp server. Không có data model chung và không có registry trung tâm là nhược điểm.",
+  "en": "Easy to add or upgrade servers; no shared model and no central register are drawbacks.",
+  "src": "06#38"
+ },
+ {
+  "id": "w6-26",
+  "w": 6,
+  "q": "Which are given as examples of peer-to-peer systems?",
+  "o": [
+   "BitTorrent and blockchain networks",
+   "Web browsers and web servers",
+   "Kafka and RabbitMQ",
+   "MySQL and PostgreSQL"
+  ],
+  "a": 0,
+  "vi": "Ví dụ P2P: BitTorrent, mạng blockchain, một số hệ thống giao tiếp thời gian thực.",
+  "en": "BitTorrent, blockchain networks, some real-time communication systems.",
+  "src": "06#39"
+ },
+ {
+  "id": "w6-27",
+  "w": 6,
+  "q": "Which is an advantage of the layered style?",
+  "o": [
+   "Separation of concerns",
+   "Very fast communication through all layers",
+   "Flexible communication between any layers",
+   "No interfaces are needed"
+  ],
+  "a": 0,
+  "vi": "Layered: separation of concerns, reuse, giảm ảnh hưởng khi đổi UI.",
+  "en": "Separation of concerns, reuse, less impact of UI changes.",
+  "src": "06#42"
+ },
+ {
+  "id": "w6-28",
+  "w": 6,
+  "q": "MVC was originally introduced for:",
+  "o": [
+   "UI applications",
+   "Database servers",
+   "Batch processing",
+   "Embedded real-time systems"
+  ],
+  "a": 0,
+  "vi": "MVC ban đầu cho ứng dụng có giao diện, nay phổ biến cho web app.",
+  "en": "Originally for UI apps, now popular for web apps.",
+  "src": "06#43"
+ },
+ {
+  "id": "w6-29",
+  "w": 6,
+  "q": "In MVC, the View is responsible for:",
+  "o": [
+   "Data and logic processing",
+   "Presentation",
+   "Accepting commands",
+   "Storing data in the DB"
+  ],
+  "a": 1,
+  "vi": "View: trình bày. Model: dữ liệu và logic. Controller: nhận lệnh.",
+  "en": "View: presentation.",
+  "src": "06#43"
+ },
+ {
+  "id": "w6-30",
+  "w": 6,
+  "q": "In pipes and filters, data travels between filters via:",
+  "o": [
+   "A shared repository",
+   "Pipes",
+   "Interrupt vectors",
+   "An event broker"
+  ],
+  "a": 1,
+  "vi": "Filter xử lý độc lập, dữ liệu đi qua filter bằng pipe.",
+  "en": "Data travels through filters via pipes.",
+  "src": "06#47"
+ },
+ {
+  "id": "w6-31",
+  "w": 6,
+  "q": "In the interrupt-driven style, each interrupt type is associated with:",
+  "o": [
+   "A memory location and a hardware switch",
+   "A database table",
+   "A web server",
+   "A user story"
+  ],
+  "a": 0,
+  "vi": "Mỗi loại interrupt gắn với một vị trí bộ nhớ và một công tắc phần cứng, có handler riêng.",
+  "en": "Each type has a memory location, a hardware switch and its own handler.",
+  "src": "06#50"
+ },
+ {
+  "id": "w6-32",
+  "w": 6,
+  "q": "Autonomy, resilience, scalability and flexibility are traits of:",
+  "o": [
+   "Service-oriented architecture",
+   "Microservice architecture",
+   "Repository style",
+   "Layered style"
+  ],
+  "a": 1,
+  "vi": "Bộ này là của microservices. SOA: modularity, interoperability, reusability, loose coupling.",
+  "en": "These are microservice traits; SOA's are modularity, interoperability, reusability, loose coupling.",
+  "src": "06#53"
+ },
+ {
+  "id": "w6-33",
+  "w": 6,
+  "q": "Which is NOT a drawback of microservices listed in the lecture?",
+  "o": [
+   "Distributed-system complexity",
+   "Data consistency across services",
+   "Operational overhead",
+   "Services cannot be scaled independently"
+  ],
+  "a": 3,
+  "vi": "Microservices mở rộng độc lập được; nhược điểm là phức tạp phân tán, nhất quán dữ liệu, chi phí vận hành, cần DevOps.",
+  "en": "Independent scaling is a benefit; drawbacks are complexity, consistency, overhead, DevOps maturity.",
+  "src": "06#55"
+ },
+ {
+  "id": "w6-34",
+  "w": 6,
+  "q": "In event-driven architecture, \"TicketBooked\" is consumed by payment, email and analytics. What sits between the producer and consumers?",
+  "o": [
+   "An event broker such as Kafka or RabbitMQ",
+   "A shared relational table",
+   "A load balancer only",
+   "An interrupt vector"
+  ],
+  "a": 0,
+  "vi": "Producer → event broker (Kafka, RabbitMQ) → một hoặc nhiều consumer.",
+  "en": "Producer → event broker (Kafka, RabbitMQ) → consumers.",
+  "src": "06#56"
+ },
+ {
+  "id": "w6-35",
+  "w": 6,
+  "q": "Which is an advantage of event-driven architecture?",
+  "o": [
+   "Easy to add new consumers",
+   "Strong immediate consistency",
+   "Easy end-to-end debugging",
+   "No need to version event schemas"
+  ],
+  "a": 0,
+  "vi": "Ưu điểm: loose coupling, dễ thêm consumer, bất đồng bộ. Nhược: khó debug, eventual consistency.",
+  "en": "Loose coupling, easy to add consumers, asynchronous.",
+  "src": "06#56"
+ },
+ {
+  "id": "w7-01",
+  "w": 7,
+  "q": "Which is NOT one of the main elements of a class diagram on the slide?",
+  "o": [
+   "Classes",
+   "Interfaces",
+   "Relationships",
+   "Lifelines"
+  ],
+  "a": 3,
+  "vi": "Class diagram: classes, interfaces, relationships, common mechanisms. Lifeline thuộc sequence diagram.",
+  "en": "Lifelines belong to sequence diagrams.",
+  "src": "07#3"
+ },
+ {
+  "id": "w7-02",
+  "w": 7,
+  "q": "A class defines:",
+  "o": [
+   "One single object at runtime",
+   "The set of objects that share the same attributes, operations, relationships and semantics",
+   "Only the data stored in a table",
+   "A step in a use case"
+  ],
+  "a": 1,
+  "vi": "Class: tập các object có chung attribute, operation, relationship và ngữ nghĩa.",
+  "en": "The set of objects sharing attributes, operations, relationships and semantics.",
+  "src": "07#4"
+ },
+ {
+  "id": "w7-03",
+  "w": 7,
+  "q": "A class name must be:",
+  "o": [
+   "Written in capital letters",
+   "Unique within its group",
+   "The same as the table name",
+   "Followed by a colon"
+  ],
+  "a": 1,
+  "vi": "Tên class phải duy nhất trong nhóm của nó.",
+  "en": "Unique within its group.",
+  "src": "07#4"
+ },
+ {
+  "id": "w7-04",
+  "w": 7,
+  "q": "An operation is:",
+  "o": [
+   "A service that can be requested from objects of the class",
+   "Data that characterizes the class",
+   "A relationship between two classes",
+   "A stored row in a table"
+  ],
+  "a": 0,
+  "vi": "Operation: dịch vụ có thể yêu cầu từ các object của class. Attribute: dữ liệu mô tả class.",
+  "en": "An operation is a requestable service; an attribute is characterizing data.",
+  "src": "07#6"
+ },
+ {
+  "id": "w7-05",
+  "w": 7,
+  "q": "In \"-cases: int\", the minus sign means the attribute is:",
+  "o": [
+   "public",
+   "protected",
+   "private",
+   "abstract"
+  ],
+  "a": 2,
+  "vi": "- là private, + là public, # là protected.",
+  "en": "- private, + public, # protected.",
+  "src": "07#6"
+ },
+ {
+  "id": "w7-06",
+  "w": 7,
+  "q": "Which relationship is described as the least restrictive?",
+  "o": [
+   "Composition",
+   "Aggregation",
+   "Generalization",
+   "Dependency"
+  ],
+  "a": 3,
+  "vi": "Dependency lỏng nhất trong các quan hệ.",
+  "en": "Dependency is less restrictive than the others.",
+  "src": "07#10"
+ },
+ {
+  "id": "w7-07",
+  "w": 7,
+  "q": "Which notation shows generalization?",
+  "o": [
+   "A dashed line with an open arrow",
+   "A solid line with a hollow triangle pointing at the superclass",
+   "A filled diamond at the owner",
+   "A plain solid line"
+  ],
+  "a": 1,
+  "vi": "Generalization: mũi tên tam giác rỗng chỉ vào superclass.",
+  "en": "A hollow triangle pointing at the superclass.",
+  "src": "07#9"
+ },
+ {
+  "id": "w7-08",
+  "w": 7,
+  "q": "An association can have:",
+  "o": [
+   "A name and roles at both ends",
+   "Only a stereotype",
+   "A primary key",
+   "An activation bar"
+  ],
+  "a": 0,
+  "vi": "Association có thể có tên và role ở hai đầu.",
+  "en": "A name and roles at both ends.",
+  "src": "07#12"
+ },
+ {
+  "id": "w7-09",
+  "w": 7,
+  "q": "Multiplicity refers to:",
+  "o": [
+   "How many attributes a class has",
+   "How many objects may be connected across an instance of an association",
+   "How many subclasses a class has",
+   "How many times a message is sent"
+  ],
+  "a": 1,
+  "vi": "Multiplicity: số object có thể nối qua một association.",
+  "en": "How many objects may be connected across an association.",
+  "src": "07#13"
+ },
+ {
+  "id": "w7-10",
+  "w": 7,
+  "q": "A Faculty uses Lecturers but does not own them. Which relationship and symbol?",
+  "o": [
+   "Composition, filled diamond",
+   "Aggregation, hollow diamond",
+   "Generalization, hollow triangle",
+   "Dependency, dashed arrow"
+  ],
+  "a": 1,
+  "vi": "Aggregation: dùng nhưng không sở hữu, thoi rỗng. Composition mới là thoi đặc.",
+  "en": "Aggregation: using without owning, hollow diamond.",
+  "src": "07#14"
+ },
+ {
+  "id": "w7-11",
+  "w": 7,
+  "q": "In the Online Shop class diagram, \"line item\" is an example of:",
+  "o": [
+   "A role name",
+   "A class name",
+   "An operation",
+   "A multiplicity"
+  ],
+  "a": 0,
+  "vi": "line item là role name ở đầu OrderDetail.",
+  "en": "\"line item\" is a role name.",
+  "src": "07#15"
+ },
+ {
+  "id": "w7-12",
+  "w": 7,
+  "q": "In the Online Shop diagram, the arrow from OrderDetail to Item shows:",
+  "o": [
+   "Navigability",
+   "Generalization",
+   "Composition",
+   "Dependency"
+  ],
+  "a": 0,
+  "vi": "Mũi tên trên association thể hiện navigability.",
+  "en": "The arrow on the association shows navigability.",
+  "src": "07#15"
+ },
+ {
+  "id": "w7-13",
+  "w": 7,
+  "q": "A system object, as opposed to a domain object:",
+  "o": [
+   "Is a real-world entity",
+   "Has stored business data",
+   "Is created to support processing and calculations",
+   "Takes a role in the business process"
+  ],
+  "a": 2,
+  "vi": "System object được tạo ra để hỗ trợ xử lý và tính toán.",
+  "en": "System objects support processing and calculations.",
+  "src": "07#17"
+ },
+ {
+  "id": "w7-14",
+  "w": 7,
+  "q": "Screens, forms and API endpoints are which kind of BCE object?",
+  "o": [
+   "Entity",
+   "Control",
+   "Boundary",
+   "Domain"
+  ],
+  "a": 2,
+  "vi": "Boundary: giao diện giữa actor và hệ thống: màn hình, form, API endpoint.",
+  "en": "Boundary objects: screens, forms, API endpoints.",
+  "src": "07#18"
+ },
+ {
+  "id": "w7-15",
+  "w": 7,
+  "q": "Which BCE objects are domain objects?",
+  "o": [
+   "Boundary",
+   "Control",
+   "Entity",
+   "Boundary and control"
+  ],
+  "a": 2,
+  "vi": "Boundary và control là system object; entity là domain object.",
+  "en": "Entities are domain objects; boundary and control are system objects.",
+  "src": "07#18"
+ },
+ {
+  "id": "w7-16",
+  "w": 7,
+  "q": "BCE maps to a layered architecture as:",
+  "o": [
+   "presentation → business → data",
+   "data → presentation → business",
+   "client → server → peer",
+   "filter → pipe → filter"
+  ],
+  "a": 0,
+  "vi": "BCE khớp với presentation → business → data.",
+  "en": "It maps to presentation → business → data.",
+  "src": "07#18"
+ },
+ {
+  "id": "w7-17",
+  "w": 7,
+  "q": "When identifying domain classes, which should be removed?",
+  "o": [
+   "Classes that store data",
+   "Classes that play a role in the business process",
+   "Attributes disguised as classes",
+   "Entities from the conceptual ERD"
+  ],
+  "a": 2,
+  "vi": "Bỏ class trùng, từ mơ hồ, và attribute đội lốt class.",
+  "en": "Remove duplicates, vague words and attributes disguised as classes.",
+  "src": "07#19"
+ },
+ {
+  "id": "w7-18",
+  "w": 7,
+  "q": "In the Shipping System example, Vessel, Region and Captain are classified as:",
+  "o": [
+   "Domain objects",
+   "System objects",
+   "Boundary objects",
+   "Control objects"
+  ],
+  "a": 0,
+  "vi": "Các entity trong domain model (Vessel, VesselType, Region, Crew, Captain) là domain object.",
+  "en": "They are domain objects from the domain model.",
+  "src": "07#20"
+ },
+ {
+  "id": "w7-19",
+  "w": 7,
+  "q": "In a sequence diagram, what does an activation bar show?",
+  "o": [
+   "When an object is executing",
+   "The multiplicity of a link",
+   "A database index",
+   "The return value type"
+  ],
+  "a": 0,
+  "vi": "Activation bar: khoảng thời gian object đang thực thi.",
+  "en": "When an object is executing.",
+  "src": "07#22"
+ },
+ {
+  "id": "w7-20",
+  "w": 7,
+  "q": "Which combined fragment means a simple \"if\" with no else?",
+  "o": [
+   "alt",
+   "opt",
+   "par",
+   "loop"
+  ],
+  "a": 1,
+  "vi": "opt = if; alt = if/else.",
+  "en": "opt = if; alt = if/else.",
+  "src": "07#22"
+ },
+ {
+  "id": "w7-21",
+  "w": 7,
+  "q": "How many sequence diagrams should you draw?",
+  "o": [
+   "Exactly one for the whole system",
+   "One per important scenario",
+   "One per class",
+   "One per database table"
+  ],
+  "a": 1,
+  "vi": "Mỗi scenario quan trọng một sơ đồ.",
+  "en": "One diagram per important scenario.",
+  "src": "07#22"
+ },
+ {
+  "id": "w7-22",
+  "w": 7,
+  "q": "In \"Register for a course\", which object answers hasFreeSeat()?",
+  "o": [
+   ":RegistrationUI",
+   ":RegistrationController",
+   ":Course",
+   ":Enrollment"
+  ],
+  "a": 2,
+  "vi": "Controller hỏi Course hasFreeSeat(); còn chỗ thì tạo Enrollment.",
+  "en": "The controller asks Course hasFreeSeat(); if a seat is free it creates an Enrollment.",
+  "src": "07#23"
+ },
+ {
+  "id": "w7-23",
+  "w": 7,
+  "q": "Encapsulation (the black-box rule) means:",
+  "o": [
+   "Hide data, expose operations",
+   "Share data through global variables",
+   "Make every attribute public",
+   "Copy behaviour into every subclass"
+  ],
+  "a": 0,
+  "vi": "Encapsulation: giấu dữ liệu, chỉ lộ operation.",
+  "en": "Hide data, expose operations.",
+  "src": "07#25"
+ },
+ {
+  "id": "w7-24",
+  "w": 7,
+  "q": "Shared data and behaviour between classes should be modelled with:",
+  "o": [
+   "Inheritance (generalization)",
+   "Composition",
+   "A junction table",
+   "A boundary object"
+  ],
+  "a": 0,
+  "vi": "Dữ liệu và hành vi dùng chung → inheritance.",
+  "en": "Shared data and behaviour → inheritance.",
+  "src": "07#25"
+ },
+ {
+  "id": "w7-25",
+  "w": 7,
+  "q": "Which objects need a state machine diagram?",
+  "o": [
+   "Objects with a status field, such as order, booking or account",
+   "Every boundary object",
+   "Only abstract classes",
+   "Objects without attributes"
+  ],
+  "a": 0,
+  "vi": "Object có trường trạng thái (order, booking, account) thì vẽ state machine.",
+  "en": "Objects with a status field.",
+  "src": "07#26"
+ },
+ {
+  "id": "w7-26",
+  "w": 7,
+  "q": "In the Order state machine, a Paid order can be cancelled:",
+  "o": [
+   "At any time, even after delivery",
+   "Before shipping, with a refund",
+   "Only by the delivery service",
+   "Never"
+  ],
+  "a": 1,
+  "vi": "Paid —cancel [before shipping] / refund→ Cancelled.",
+  "en": "Paid → Cancelled on cancel [before shipping] / refund.",
+  "src": "07#26"
+ },
+ {
+  "id": "w7-27",
+  "w": 7,
+  "q": "How does a state machine refine the class diagram?",
+  "o": [
+   "Each event becomes an operation of the class",
+   "Each state becomes a new class",
+   "Each guard becomes a table",
+   "It removes all operations"
+  ],
+  "a": 0,
+  "vi": "Mỗi event → một operation: pay(), ship(), deliver(), cancel().",
+  "en": "Each event becomes an operation: pay(), ship(), deliver(), cancel().",
+  "src": "07#26"
+ },
+ {
+  "id": "w7-28",
+  "w": 7,
+  "q": "Coupling measures:",
+  "o": [
+   "How closely responsibilities inside one module belong together",
+   "How strongly one module depends on others",
+   "How many lines of code a module has",
+   "How fast a module runs"
+  ],
+  "a": 1,
+  "vi": "Coupling: mức phụ thuộc giữa các module. Cohesion: độ gắn bó bên trong một module.",
+  "en": "Coupling is dependence between modules; cohesion is togetherness inside one.",
+  "src": "07#28"
+ },
+ {
+  "id": "w7-29",
+  "w": 7,
+  "q": "What does DRY stand for?",
+  "o": [
+   "Don't Repeat Yourself",
+   "Design Reuse Yearly",
+   "Data Ready Yet",
+   "Do Refactor Yourself"
+  ],
+  "a": 0,
+  "vi": "DRY = Don't Repeat Yourself.",
+  "en": "DRY = Don't Repeat Yourself.",
+  "src": "07#28",
+  "ng": 1
+ },
+ {
+  "id": "w7-30",
+  "w": 7,
+  "q": "\"Adding a new type means editing a big switch\" is a symptom of violating:",
+  "o": [
+   "Single Responsibility",
+   "Open/Closed",
+   "Interface Segregation",
+   "Liskov Substitution"
+  ],
+  "a": 1,
+  "vi": "O: mở để mở rộng, đóng để sửa đổi.",
+  "en": "Open/Closed: open for extension, closed for modification.",
+  "src": "07#29"
+ },
+ {
+  "id": "w7-31",
+  "w": 7,
+  "q": "A subclass that throws \"not supported\" violates:",
+  "o": [
+   "Dependency Inversion",
+   "Single Responsibility",
+   "Liskov Substitution",
+   "Open/Closed"
+  ],
+  "a": 2,
+  "vi": "L: subtype phải thay được cho base type.",
+  "en": "Liskov: subtypes must be able to replace their base type.",
+  "src": "07#29"
+ },
+ {
+  "id": "w7-32",
+  "w": 7,
+  "q": "Classes forced to implement empty methods suggest a violation of:",
+  "o": [
+   "Interface Segregation",
+   "Open/Closed",
+   "Dependency Inversion",
+   "Single Responsibility"
+  ],
+  "a": 0,
+  "vi": "I: nhiều interface nhỏ tốt hơn một interface lớn.",
+  "en": "Interface Segregation: many small interfaces over one large one.",
+  "src": "07#29"
+ },
+ {
+  "id": "w7-33",
+  "w": 7,
+  "q": "Observer, Strategy and State belong to which group of GoF patterns?",
+  "o": [
+   "Creational",
+   "Structural",
+   "Behavioral",
+   "Architectural"
+  ],
+  "a": 2,
+  "vi": "Behavioral: Chain of Responsibility, Command, Iterator, Mediator, Observer, State, Strategy, Template Method…",
+  "en": "They are behavioral patterns.",
+  "src": "07#31"
+ },
+ {
+  "id": "w7-34",
+  "w": 7,
+  "q": "Builder and Prototype belong to which group?",
+  "o": [
+   "Creational",
+   "Structural",
+   "Behavioral",
+   "Data design"
+  ],
+  "a": 0,
+  "vi": "Creational: Factory Method, Abstract Factory, Builder, Prototype, Singleton.",
+  "en": "Creational patterns.",
+  "src": "07#31"
+ },
+ {
+  "id": "w7-35",
+  "w": 7,
+  "q": "Create the right payment method object (card, e-wallet, bank transfer). Which pattern?",
+  "o": [
+   "Observer",
+   "Facade",
+   "Factory Method",
+   "Adapter"
+  ],
+  "a": 2,
+  "vi": "Tạo đúng loại object → Factory Method.",
+  "en": "Creating the right object → Factory Method.",
+  "src": "07#32"
+ },
+ {
+  "id": "w7-36",
+  "w": 7,
+  "q": "A simple entry point to a complex subsystem is provided by:",
+  "o": [
+   "Facade",
+   "Singleton",
+   "Strategy",
+   "Observer"
+  ],
+  "a": 0,
+  "vi": "Facade: một lối vào đơn giản cho subsystem phức tạp.",
+  "en": "Facade.",
+  "src": "07#32"
+ },
+ {
+  "id": "w7-37",
+  "w": 7,
+  "q": "According to the lecture, design patterns are:",
+  "o": [
+   "A goal: use as many as possible",
+   "A vocabulary, applied only when the problem appears",
+   "Only for databases",
+   "Required in every class"
+  ],
+  "a": 1,
+  "vi": "Pattern là từ vựng, không phải mục tiêu: chỉ dùng khi bài toán xuất hiện.",
+  "en": "Patterns are a vocabulary, not a goal.",
+  "src": "07#32"
+ },
+ {
+  "id": "w7-38",
+  "w": 7,
+  "q": "In the Strategy example, which element holds a PricingStrategy and calls calculate()?",
+  "o": [
+   "StudentPricing",
+   "Booking",
+   "PricingStrategy itself",
+   "The database"
+  ],
+  "a": 1,
+  "vi": "Booking giữ một PricingStrategy và gọi calculate(); các class Pricing cài interface.",
+  "en": "Booking holds a PricingStrategy and calls calculate().",
+  "src": "07#33"
+ },
+ {
+  "id": "w7-39",
+  "w": 7,
+  "q": "NoSQL storage (document, key-value, graph) is suggested for:",
+  "o": [
+   "Flexible schemas or massive scale",
+   "Very small single-user files only",
+   "Replacing all primary keys",
+   "Storing UML diagrams"
+  ],
+  "a": 0,
+  "vi": "NoSQL cho schema linh hoạt hoặc quy mô cực lớn.",
+  "en": "Flexible schemas or massive scale.",
+  "src": "07#35"
+ },
+ {
+  "id": "w7-40",
+  "w": 7,
+  "q": "How is an n – n association between Student and Course mapped?",
+  "o": [
+   "A foreign key in Student",
+   "A foreign key in Course",
+   "A junction table enrollment(student_id, course_id)",
+   "One table holding both classes"
+  ],
+  "a": 2,
+  "vi": "n–n: junction table có hai foreign key.",
+  "en": "n–n: a junction table with two foreign keys.",
+  "src": "07#37"
+ },
+ {
+  "id": "w7-41",
+  "w": 7,
+  "q": "Where do attributes of a link (association class), such as grade and date, go?",
+  "o": [
+   "Extra columns in the junction table",
+   "A new database",
+   "The Student table only",
+   "An index"
+  ],
+  "a": 0,
+  "vi": "Attribute của liên kết → cột thêm trong junction table: enrollment.grade, enrollment.date.",
+  "en": "Extra columns in the junction table.",
+  "src": "07#37"
+ },
+ {
+  "id": "w7-42",
+  "w": 7,
+  "q": "Which is NOT an option for mapping generalization to tables?",
+  "o": [
+   "One table per hierarchy",
+   "One table per class",
+   "One table per concrete class",
+   "One table per attribute"
+  ],
+  "a": 3,
+  "vi": "Generalization: một bảng cho cả cây, mỗi class một bảng, hoặc mỗi class cụ thể một bảng.",
+  "en": "Per hierarchy, per class, or per concrete class.",
+  "src": "07#37"
+ },
+ {
+  "id": "w7-43",
+  "w": 7,
+  "q": "For a database, a data specification describes:",
+  "o": [
+   "The table fields",
+   "The file format",
+   "The UI layout",
+   "The test cases"
+  ],
+  "a": 0,
+  "vi": "Database: mô tả các trường của bảng. File system: mô tả định dạng file.",
+  "en": "Database: table fields. File system: file format.",
+  "src": "07#38"
+ },
+ {
+  "id": "w7-44",
+  "w": 7,
+  "q": "Which belongs to the relational database design checklist?",
+  "o": [
+   "Manage schema changes with migration scripts in Git",
+   "Store passwords in plain text for recovery",
+   "Avoid primary keys to save space",
+   "Use plural, mixed-case table names"
+  ],
+  "a": 0,
+  "vi": "Checklist: PK/FK, 3NF, kiểu dữ liệu và ràng buộc, index, đặt tên nhất quán, hash mật khẩu, migration trong Git.",
+  "en": "PK/FK, 3NF, types and constraints, indexes, naming, hashed passwords, migrations in Git.",
+  "src": "07#40"
  }
 ]

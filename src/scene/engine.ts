@@ -1,7 +1,7 @@
 // The voxel world behind the interface: the island map and the battle stage. React drives it through this small API.
 import * as THREE from 'three';
 import type { Sprite } from '@/game/sprites';
-import { PALETTES, browser, castle, clockTower, cloud, computer, makeIsland, meshOf, questionMark, seeded, spriteVoxels, tree, unitBox, voxelMaterial, waterfall, type VoxelSet } from './voxels';
+import { PALETTES, browser, castle, classBoard, clockTower, cloud, computer, layerTower, makeIsland, meshOf, questionMark, seeded, spriteVoxels, tree, unitBox, voxelMaterial, waterfall, type VoxelSet } from './voxels';
 
 export type Rect = { x: number; y: number; w: number; h: number };
 // The part of the canvas not covered by panels. The camera frames its subject inside this box.
@@ -12,11 +12,13 @@ export type SceneOptions = {
 };
 export type GameScene = ReturnType<typeof createScene>;
 
-const ISLAND_IDS = [1, 2, 3, 4, 5, 6];
-const WIDE: Record<number, [number, number, number]> = { 1: [-41, 6, 0], 2: [-22, -9, 2], 3: [-2, 8, -1], 4: [18, -9, 2], 5: [38, 7, 0], 6: [56, -13, 4] };
-const TALL: Record<number, [number, number, number]> = { 1: [-9, 37, 0], 2: [9, 22, 1], 3: [-9, 7, 0], 4: [9, -8, 1], 5: [-9, -23, 0], 6: [8, -39, 2] };
-const SEEDS: Record<number, number> = { 1: 11, 2: 22, 3: 37, 4: 41, 5: 59, 6: 73 };
-const RADII: Record<number, number> = { 1: 10, 2: 11, 3: 10, 4: 10, 5: 11, 6: 9 };
+// Seven World islands, then the exam castle.
+const EXAM = 8;
+const ISLAND_IDS = [1, 2, 3, 4, 5, 6, 7, EXAM];
+const WIDE: Record<number, [number, number, number]> = { 1: [-66, 6, 0], 2: [-47, -9, 2], 3: [-28, 8, -1], 4: [-9, -9, 2], 5: [10, 7, 0], 6: [29, -9, 1], 7: [48, 7, 0], 8: [66, -13, 4] };
+const TALL: Record<number, [number, number, number]> = { 1: [-9, 52, 0], 2: [9, 37, 1], 3: [-9, 22, 0], 4: [9, 7, 1], 5: [-9, -8, 0], 6: [9, -23, 1], 7: [-9, -38, 0], 8: [8, -54, 2] };
+const SEEDS: Record<number, number> = { 1: 11, 2: 22, 3: 37, 4: 41, 5: 59, 6: 67, 7: 83, 8: 73 };
+const RADII: Record<number, number> = { 1: 10, 2: 11, 3: 10, 4: 10, 5: 11, 6: 10, 7: 10, 8: 9 };
 
 type Fighter = THREE.Group & { userData: { inner: THREE.Group; mesh: THREE.InstancedMesh; mat: THREE.MeshStandardMaterial; scale: number } };
 type Particle = { life: number; max: number; p: THREE.Vector3; v: THREE.Vector3; size: number; g: number; floor: number; rot: number };
@@ -87,9 +89,11 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
       if (id === 3) { clockTower(set, -4, 1, -3); tree(set, 5, -6, pal, 3); labelY = 22; }
       if (id === 4) { questionMark(set, -6, 1, -3); tree(set, -6, 5, pal, 3); tree(set, 6, -5, pal, 4); labelY = 15; }
       if (id === 5) { browser(set, -3, 2, -5); tree(set, -7, 4, pal, 3); labelY = 15; }
-      if (id === 6) { castle(set, 0, 1, -2); labelY = 20; }
+      if (id === 6) { layerTower(set, -4, 1, -3); tree(set, 6, -5, pal, 3); labelY = 22; }
+      if (id === 7) { classBoard(set, -2, 1, -6); tree(set, -7, 4, pal, 3); tree(set, 7, -4, pal, 4); labelY = 17; }
+      if (id === EXAM) { castle(set, 0, 1, -2); labelY = 20; }
       g.add(meshOf(set, { seed: SEEDS[id] }));
-      if (id < 6) {
+      if (id !== EXAM) {
         const m = fighter(monsters[id], .36, id);
         m.position.set(id === 3 ? 4 : id === 2 ? -4 : 3, id === 2 ? 1.5 : set.topAt(3, 3) + .5, id === 2 ? 6 : 4);
         m.rotation.y = .28; g.add(m); g.userData.mon = m;
@@ -121,7 +125,7 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     }
     if (stones) { mapRoot.remove(stones); disposeTree(stones); }
     const set = makeIsland(0, 0, PALETTES[1]);
-    for (let k = 0; k < 5; k++) {
+    for (let k = 0; k < ISLAND_IDS.length - 1; k++) {
       const a = pos[ISLAND_IDS[k]], b = pos[ISLAND_IDS[k + 1]], L = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.floor(L / 3.4);
       for (let i = 0; i <= n; i++) {
         const f = i / n, x = a[0] + (b[0] - a[0]) * f, z = a[1] + (b[1] - a[1]) * f;
@@ -132,8 +136,8 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     }
     set.del(0, 0, 0); set.del(0, -1, 0);
     stones = meshOf(set, { seed: 5 }); mapRoot.add(stones);
-    cloudSpan = tall ? 45 : 90;
-    clouds.forEach((c, i) => c.position.set((i / 12 * 2 - 1) * cloudSpan, -20 - (i % 3) * 8, tall ? (i / 12 * 2 - 1) * 60 : -34 + (i % 4) * 24));
+    cloudSpan = tall ? 45 : 110;
+    clouds.forEach((c, i) => c.position.set((i / 12 * 2 - 1) * cloudSpan, -20 - (i % 3) * 8, tall ? (i / 12 * 2 - 1) * 78 : -34 + (i % 4) * 24));
   }
 
   /* ---------- camera ---------- */
@@ -158,7 +162,7 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     const right = new THREE.Vector3().crossVectors(UP, DIR_MAP).normalize(), up = new THREE.Vector3().crossVectors(DIR_MAP, right);
     let xa = Infinity, xb = -Infinity, ya = Infinity, yb = -Infinity;
     for (const id of ISLAND_IDS) {
-      const [x, z, y] = pos[id], v = new THREE.Vector3(x, y, z), rd = id === 6 ? 9 : 11, px = v.dot(right), py = v.dot(up);
+      const [x, z, y] = pos[id], v = new THREE.Vector3(x, y, z), rd = id === EXAM ? 9 : 11, px = v.dot(right), py = v.dot(up);
       xa = Math.min(xa, px - rd); xb = Math.max(xb, px + rd); ya = Math.min(ya, py - 9); yb = Math.max(yb, py + 18);
     }
     const overview = right.clone().multiplyScalar((xa + xb) / 2).add(up.clone().multiplyScalar((ya + yb) / 2));
@@ -185,7 +189,7 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     renderer.setSize(W, H, false);
     const nextTall = W / H < .92;
     if (nextTall !== tall) { tall = nextTall; if (mapBuilt) layoutIslands(); }
-    if (mode === 'map') { setShadowArea(tall ? 62 : 78); frameMap(); }
+    if (mode === 'map') { setShadowArea(tall ? 80 : 100); frameMap(); }
     if (mode === 'battle') frameBattle();
     dirty = true;
   }
@@ -223,6 +227,8 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     if (w === 3) clockTower(set, 0, 1, -11);
     if (w === 4) questionMark(set, -2, 1, -10);
     if (w === 5) browser(set, -2, 2, -12);
+    if (w === 6) layerTower(set, -1, 1, -12);
+    if (w === 7) classBoard(set, -1, 1, -12);
     tree(set, -16, -9, pal, 5); tree(set, 15, -11, pal, 4); tree(set, 18, 2, pal, 3); tree(set, -19, 3, pal, 3);
     // Level grass where the two fighters stand.
     for (let x = -15; x <= 15; x++) for (let z = -3; z <= 6; z++) {

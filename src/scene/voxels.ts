@@ -12,7 +12,9 @@ export const PALETTES: Record<number, Palette> = {
   3: { grass: '#e2bd63', grass2: '#d4ab52', dirt: '#a8673e', rock: '#7d5a54', leaf: '#c8503f', leaf2: '#dd6f45' },
   4: { grass: '#e6ebff', grass2: '#d4dcfb', dirt: '#979ddf', rock: '#6c71bb', leaf: '#f6f8ff', leaf2: '#c7d0fa' },
   5: { grass: '#b478ea', grass2: '#a165dc', dirt: '#6f42ad', rock: '#4c3080', leaf: '#ff7fbf', leaf2: '#ffa6d4' },
-  6: { grass: '#57506a', grass2: '#4a4459', dirt: '#37334a', rock: '#25222f', leaf: '#37334a', leaf2: '#4a4459' },
+  6: { grass: '#8fe0c8', grass2: '#7dd3ba', dirt: '#3f8f80', rock: '#2e6b62', leaf: '#22b0a2', leaf2: '#4fd1c1' },
+  7: { grass: '#a9d8ff', grass2: '#95caf7', dirt: '#4f7fb8', rock: '#36598a', leaf: '#3a96e0', leaf2: '#6fb4f0' },
+  8: { grass: '#57506a', grass2: '#4a4459', dirt: '#37334a', rock: '#25222f', leaf: '#37334a', leaf2: '#4a4459' },
 };
 
 export const seeded = (start: number) => {
@@ -161,6 +163,28 @@ export function browser(set: VoxelSet, x: number, y: number, z: number) {
   set.box(ax, y, z + 2, 1, 2, 1, frame); set.box(ax + 2, y, z + 2, 1, 2, 1, frame);
 }
 
+// World 6: a tower of four stacked layers, like a layered architecture.
+export function layerTower(set: VoxelSet, x: number, y: number, z: number) {
+  const floors = ['#2e6b62', '#22b0a2', '#5fd6c8', '#e3fbf7'], pillar = '#1d3f3a';
+  set.box(x - 3, y, z - 3, 7, 1, 7, pillar);
+  floors.forEach((c, i) => {
+    const fy = y + 1 + i * 3;
+    set.box(x - 3, fy, z - 3, 7, 2, 7, c);
+    if (i < 3) for (const [dx, dz] of [[-3, -3], [3, -3], [-3, 3], [3, 3]]) set.set(x + dx, fy + 2, z + dz, pillar);
+  });
+  set.box(x, y + 13, z, 1, 3, 1, pillar);
+  set.set(x, y + 16, z, '#ff6b6b');
+}
+// World 7: a standing UML class box with its three compartments.
+export function classBoard(set: VoxelSet, x: number, y: number, z: number) {
+  const frame = '#0f2238', head = '#3a96e0', page = '#f2f8ff', line = '#9cc4ec';
+  set.box(x - 6, y + 2, z, 13, 12, 1, frame);
+  set.box(x - 5, y + 11, z + 1, 11, 2, 1, head);
+  set.box(x - 5, y + 3, z + 1, 11, 7, 1, page);
+  set.box(x - 5, y + 7, z + 1, 11, 1, 1, frame);
+  set.box(x - 4, y + 9, z + 1, 6, 1, 1, line); set.box(x - 4, y + 5, z + 1, 8, 1, 1, line); set.box(x - 4, y + 4, z + 1, 5, 1, 1, line);
+  set.box(x - 5, y, z, 1, 2, 1, frame); set.box(x + 5, y, z, 1, 2, 1, frame);
+}
 export function castle(set: VoxelSet, x: number, y: number, z: number) {
   const a = '#6d6880', b = '#4f4a62', lava = '#ff6a2a', flag = '#ff4d5e';
   set.box(x - 5, y, z - 4, 11, 7, 9, a);

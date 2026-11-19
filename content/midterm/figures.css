@@ -139,3 +139,18 @@
 .dlg .win p { margin: 4px 0 0; }
 .dlg .btns { display: flex; flex-wrap: wrap; gap: 6px; }
 .dlg .btns span { padding: 3px 10px; border-radius: 999px; background: #fbfdff; color: var(--f-dark); font-size: 12px; font-weight: 700; }
+
+/* World 6 and 7: architecture and UML */
+.fg-steps.four { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 480px) { .fg-steps.four { grid-template-columns: 1fr; } }
+.fg-code { font-family: ui-monospace, Consolas, monospace; color: var(--f-blue) !important; }
+.fig .code { font-family: ui-monospace, Consolas, monospace; font-weight: 500; }
+.fig .mod { fill: var(--f-blue); fill-opacity: .35; stroke: var(--f-blue); }
+.fig .dmd { fill: var(--panel); stroke: var(--f-line); stroke-width: 1.8; }
+.fig .dmd.full { fill: var(--f-ink); stroke: var(--f-ink); }
+.fig .dot { fill: var(--f-ink); }
+.fig .life { stroke: var(--f-line); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.fig .act { fill: var(--f-box); stroke: var(--f-line); stroke-width: 1.2; }
+.fig .frame { fill: none; stroke: var(--f-blue); stroke-width: 1.5; }
+.fig .frame-tag { fill: var(--f-blue); }
+.fig .ts.on { fill: var(--f-dark); font-weight: 800; }
