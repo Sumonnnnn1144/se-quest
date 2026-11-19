@@ -1,10 +1,22 @@
 node_modules/
 dist/
 .vite/
+*.tsbuildinfo
 coverage/
 playwright-report/
 test-results/
 screenshots/tmp/
 .env*
+# Local working files, not part of the site.
+.claude/
+.mcp.json
+skills-lock.json
+CLAUDE.md
+CLAUDE.local.md
+PRODUCT.md
+DESIGN.md
+design/
+content-seed/
+.private/
 .DS_Store
 Thumbs.db
