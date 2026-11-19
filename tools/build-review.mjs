@@ -1,12 +1,14 @@
 // Builds the single-page midterm review artifact from content files.
 // Usage: node tools/build-review.mjs
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import katex from 'katex';
+import { renderFigures } from '../content/midterm/figures.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = p => readFileSync(join(root, p), 'utf8');
+const figures = renderFigures();
 
 // Markdown outline (# root, ## branch, nested "- " items) -> { t, c: [] }
 function parseMindmap(md) {
@@ -35,7 +37,7 @@ function parseMindmap(md) {
   return tree;
 }
 
-// Lesson file: "## id | vi | en" levels, "@card src [img=x] [svg=x] [real]" cards, ":vi"/":en" bodies.
+// Lesson file: "## id | vi | en" levels, "@card src [fig=x] [svg=x] [real]" cards, ":vi"/":en" bodies.
 function parseLesson(md, w) {
   const secs = [];
   let card = null, lang = null;
@@ -61,7 +63,9 @@ function parseLesson(md, w) {
   for (const s of secs) for (const c of s.cards) {
     c.vi = c.vi.trim(); c.en = c.en.trim();
     if (!c.vi || !c.en) throw new Error(`w${w} ${s.id} ${c.src}: missing vi or en`);
-    if (c.img && !existsSync(join(root, `review/img/${c.img}.jpg`))) throw new Error(`w${w} ${s.id}: image ${c.img} not found`);
+    // Slide images stay out of the site: lessons use diagrams drawn for SE Quest.
+    if (c.img) throw new Error(`w${w} ${s.id}: slide images are not allowed, use fig=`);
+    if (c.fig && !figures[c.fig]) throw new Error(`w${w} ${s.id}: figure ${c.fig} not found`);
   }
   return secs;
 }
@@ -105,8 +109,11 @@ const collect = v => {
 const data = { examDate: '2026-11-05', quiz, cards, maps, lessons, checks, glossary };
 collect(data);
 data.math = math;
+data.figures = figures;
 
-const html = read('tools/review-template.html').replace('/*__DATA__*/null', () => JSON.stringify(data));
+const html = read('tools/review-template.html')
+  .replace('/*__FIGCSS__*/', () => read('content/midterm/figures.css'))
+  .replace('/*__DATA__*/null', () => JSON.stringify(data).replaceAll('</', '<\\/'));
 mkdirSync(join(root, 'review'), { recursive: true });
 writeFileSync(join(root, 'review/se-quest-on-giua-ky.html'), html);
 const nCards = Object.values(lessons).flat().reduce((s, x) => s + x.cards.length, 0);

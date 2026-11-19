@@ -1,5 +1,8 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SE Quest Ôn Giữa Kỳ</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Silkscreen&family=VT323&display=swap">
@@ -28,7 +31,9 @@
   color-scheme:dark }
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+img{max-width:100%}
+[hidden]{display:none!important}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px dashed var(--gold);outline-offset:3px}
 .wrap{max-width:1000px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:14px 56px;display:grid;gap:20px}
@@ -223,16 +228,13 @@ html{scroll-padding-top:calc(var(--hud-h,72px) + 12px)}
 .prose li::marker{color:var(--gold)}
 .prose ul ul{margin:2px 0 0}
 .tbl{overflow-x:auto;margin:2px 0 10px;max-width:100%}
-.tbl table{border-collapse:collapse;font-size:14.5px;line-height:1.45;width:100%}
+.tbl table{border-collapse:collapse;color:inherit;font-size:14.5px;line-height:1.45;width:100%}
 .tbl th,.tbl td{border:2px solid var(--panel-2);padding:7px 10px;text-align:left;vertical-align:top}
 .tbl th{background:var(--panel-2);font-weight:800}
 @media (max-width:480px){.tbl table{font-size:13.5px}.tbl th,.tbl td{padding:6px 7px}}
 .mathd{overflow-x:auto;padding:4px 0 10px;font-size:1.12em}
 math{font-size:1.06em}
-.lc figure{margin:0;display:grid;gap:6px;justify-items:start}
-.zoom{border:0;padding:0;background:#fff;box-shadow:0 0 0 3px var(--shadow);cursor:zoom-in;display:block;width:100%;max-width:560px}
-.zoom img{display:block;width:100%;height:auto}
-.lc figcaption{font-size:12px;color:var(--panel-muted)}
+/*__FIGCSS__*/
 .svgfig{overflow-x:auto}
 .svgfig svg{display:block;width:100%;min-width:560px;max-width:680px;height:auto}
 .chk{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between;padding:14px 16px;border:2px dashed var(--gold);background:color-mix(in srgb,var(--gold) 9%,transparent)}
@@ -241,9 +243,6 @@ math{font-size:1.06em}
 .lv.lock{opacity:.6;cursor:not-allowed}
 .lvclear{font-size:clamp(40px,10vw,64px);text-align:left}
 .lnav{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;border-top:2px dashed var(--panel-2);padding-top:16px}
-.lb{z-index:25}
-.lbin{display:grid;gap:12px;justify-items:center;max-width:min(1200px,100%)}
-.lbin img{max-width:100%;max-height:82vh;background:#fff;box-shadow:0 0 0 3px var(--shadow)}
 
 /* Glossary terms */
 .gl{text-decoration:underline dotted var(--rare);text-decoration-thickness:2px;text-underline-offset:3px;cursor:help}
@@ -389,7 +388,7 @@ math{font-size:1.06em}
       chkFail: (need, n) => `Chưa đạt: cần đúng ít nhất ${need}/${n}. Xem giải thích các câu sai bên dưới, đọc lại level rồi thử lại.`,
       readAgain: 'Đọc lại level', backLesson: 'Về bài học', toWorldQuiz: 'Làm quiz World ▶',
       prevLv: 'Level trước', nextLv: 'Level tiếp', toQuiz: 'Làm quiz',
-      real: '[Thực tế]', relates: 'Liên hệ slide', zoom: 'Phóng to ảnh slide', tapZoom: 'bấm để phóng to', slideAlt: s => `Slide ${s}`, closeImg: 'Đóng',
+      real: '[Thực tế]', relates: 'Liên hệ slide', figCap: s => `SE Quest vẽ lại theo slide ${s}`,
       graph: 'Sơ đồ', list: 'Danh sách', fit: 'Căn vừa khung', mmLoading: 'Đang tải sơ đồ…', mmFail: 'Không tải được sơ đồ (cần mạng). Hãy dùng chế độ Danh sách.',
       mmHint: 'Bấm chấm tròn để thu/mở nhánh, kéo để di chuyển, cuộn chuột hoặc chụm 2 ngón để phóng to.',
       days: 'ngày', cpmCap: 'Mọi task đều găng (slack = 0) · tối thiểu 14 ngày', incextCap: 'Include: base → included · Extend: extending → base',
@@ -433,7 +432,7 @@ math{font-size:1.06em}
       chkFail: (need, n) => `Not yet: you need at least ${need}/${n}. Read the explanations below, review the level and try again.`,
       readAgain: 'Review the level', backLesson: 'Back to lesson', toWorldQuiz: 'Take the World quiz ▶',
       prevLv: 'Previous', nextLv: 'Next level', toQuiz: 'Take the quiz',
-      real: '[Real-world]', relates: 'Related slide', zoom: 'Enlarge slide image', tapZoom: 'tap to enlarge', slideAlt: s => `Slide ${s}`, closeImg: 'Close',
+      real: '[Real-world]', relates: 'Related slide', figCap: s => `Redrawn by SE Quest from slide ${s}`,
       graph: 'Map', list: 'Outline', fit: 'Fit to view', mmLoading: 'Loading the map…', mmFail: 'Could not load the map (needs network). Use Outline mode.',
       mmHint: 'Tap a circle to fold or unfold a branch, drag to pan, scroll or pinch to zoom.',
       days: 'days', cpmCap: 'Every task is critical (slack = 0) · minimum 14 days', incextCap: 'Include: base → included · Extend: extending → base',
@@ -752,7 +751,7 @@ math{font-size:1.06em}
         <div><span class="hud-label" style="color:var(--gold)">LEVEL ${s.id}</span><h3 class="lt">${esc(s.t[S.lang])}</h3></div>
         ${s.cards.map(c => {
           const ctx = gctx();
-          const fig = c.img ? `<figure><button class="zoom" data-img="${c.img}" aria-label="${esc(t('zoom'))}"><img src="img/${c.img}.jpg" alt="${esc(t('slideAlt', c.src))}" loading="lazy" width="1000" height="563"></button><figcaption>${esc(t('slideAlt', c.src))} · ${esc(t('tapZoom'))}</figcaption></figure>` : '';
+          const fig = c.fig ? `<figure class="fig">${DATA.figures[c.fig][S.lang]}<figcaption>${esc(t('figCap', c.src))}</figcaption></figure>` : '';
           return `<article class="lc${c.real ? ' real' : ''}">
             ${c.real ? `<span class="tag gold">${esc(t('real'))}</span>` : ''}
             ${fig}<div class="prose">${blocks(c[S.lang], ctx)}</div>${c.svg ? `<div class="svgfig">${SVG[c.svg]()}</div>` : ''}
@@ -778,19 +777,6 @@ math{font-size:1.06em}
     const nx = $('#lnext'); if (nx && passed) nx.onclick = () => goSec(i + 1);
     const lq = $('#lquiz'); if (lq) lq.onclick = () => go({ name: 'world', w, tab: 'quiz' });
     $('#lcheck').onclick = () => startCheck(w, i);
-    pane.querySelectorAll('.zoom').forEach(b => b.onclick = () => showImage(b.dataset.img, b.querySelector('img').alt));
-  }
-
-  function showImage(name, alt) {
-    const ov = document.createElement('div');
-    ov.className = 'ov lb'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', alt);
-    ov.innerHTML = `<div class="lbin"><img src="img/${name}.jpg" alt="${esc(alt)}"><button class="pbtn" id="lbclose">${esc(t('closeImg'))} ✕</button></div>`;
-    document.body.appendChild(ov);
-    const close = () => { ov.remove(); document.removeEventListener('keydown', onKey); };
-    const onKey = e => { if (e.key === 'Escape') close(); };
-    ov.onclick = e => { if (e.target === ov || e.target.id === 'lbclose') close(); };
-    document.addEventListener('keydown', onKey);
-    $('#lbclose').focus();
   }
 
   // ---------- mindmap ----------
