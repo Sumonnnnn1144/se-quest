@@ -373,13 +373,27 @@ export function createScene(canvas: HTMLCanvasElement, stage: HTMLElement, opts:
     if (changed) pool.instanceMatrix.needsUpdate = true;
   }
   const labels: Record<number, HTMLElement | null> = {};
+  // Labels sit above their island. The selected one is placed first and never moves; any label that would
+  // overlap one already placed is lifted just clear of it, so neighbouring islands never hide each other's names.
   function placeLabels() {
-    for (const id of ISLAND_IDS) {
+    const items: { el: HTMLElement; x: number; y: number; w: number; h: number }[] = [];
+    for (const id of [selected, ...ISLAND_IDS.filter(i => i !== selected)]) {
       const el = labels[id];
       if (!el) continue;
       tmpV.copy(isles[id].position); tmpV.y += isles[id].userData.labelY; tmpV.project(cam);
-      el.style.transform = `translate(${((tmpV.x + 1) / 2 * W).toFixed(1)}px, ${((1 - tmpV.y) / 2 * H).toFixed(1)}px) translate(-50%, -100%)`;
+      items.push({ el, x: (tmpV.x + 1) / 2 * W, y: (1 - tmpV.y) / 2 * H, w: el.offsetWidth, h: el.offsetHeight });
     }
+    const GAP = 4;
+    items.forEach((a, k) => {
+      for (let moved = true, guard = 0; moved && guard < items.length; guard++) {
+        moved = false;
+        for (const b of items.slice(0, k)) {
+          const apart = Math.abs(a.x - b.x) >= (a.w + b.w) / 2 + GAP || a.y <= b.y - b.h - GAP || a.y - a.h >= b.y + GAP;
+          if (!apart) { a.y = b.y - b.h - GAP; moved = true; }
+        }
+      }
+    });
+    for (const a of items) a.el.style.transform = `translate(${a.x.toFixed(1)}px, ${a.y.toFixed(1)}px) translate(-50%, -100%)`;
   }
   function tick(now: number) {
     raf = requestAnimationFrame(tick);
